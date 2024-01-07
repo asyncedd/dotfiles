@@ -15,6 +15,10 @@
       url = "github:yokoffing/Betterfox";
       flake = false;
     };
+    firefox-csshacks = {
+      url = "github:MrOtherGuy/firefox-csshacks";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 

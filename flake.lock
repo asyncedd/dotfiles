@@ -39,6 +39,22 @@
         "type": "gitlab"
       }
     },
+    "firefox-csshacks": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703219113,
+        "narHash": "sha256-/KQNJ0h100/28GX83T1eTPnJ3v+zPBZS2rc/jDba80Y=",
+        "owner": "MrOtherGuy",
+        "repo": "firefox-csshacks",
+        "rev": "df4462f5d98266012569768ed570db5aa080030b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MrOtherGuy",
+        "repo": "firefox-csshacks",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1629284811,
@@ -110,6 +126,7 @@
       "inputs": {
         "betterfox": "betterfox",
         "firefox-addons": "firefox-addons",
+        "firefox-csshacks": "firefox-csshacks",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"

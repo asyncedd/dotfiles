@@ -98,18 +98,17 @@
 	];
 	extraConfig = userJS;
         userChrome = ''
-          #sidebar-box *,
-          #urlbar-background,
-          #navigator-toolbox {
-            transition: background-color 10s cubic-bezier(0, 0, 0, 1);
+          @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css";
+          @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
+          
+          #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] > #sidebar-header{
+            display: none
           }
-          .tab-background {
-            transition: background-color 10s cubic-bezier(0, 0, 0, 1);
-            box-shadow: none !important;
-            background-image: none !important;
-          }
-          .tab-background[selected] {
-            background-color: var(--tab-selected-bgcolor) !important;
+
+          #sidebar,
+          #sidebar-header{
+            background-color: inherit !important;
+            border-inline: none !important;
           }
         '';
       };
