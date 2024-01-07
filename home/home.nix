@@ -7,7 +7,7 @@
   imports = [
     ./shell/zsh/default.nix
     ./browsers/firefox/default.nix
-    ./desktop/wm/hyprland/default.nix
+    ./desktop/hyprland/default.nix
     ./shell/prompts/starship/default.nix
     ./terminal/kitty/default.nix
     ./software/packages.nix

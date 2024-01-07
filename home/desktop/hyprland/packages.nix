@@ -10,7 +10,7 @@
     hyprland-protocols
     hyprpicker
     swayidle
-    gtklock
+    swaylock-effects
     swaybg
     xdg-desktop-portal-hyprland
     wlsunset
