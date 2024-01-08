@@ -5,5 +5,6 @@
     ripgrep
     lazygit
     feh
+    keepassxc
   ];
 }
