@@ -95,6 +95,7 @@
           "$mod SHIFT, S, movetoworkspace, special:magic"
 
           "$mod, H, exec, grim -g \"$(slurp)\" - | swappy -f -"
+          "$mod, L, exec, swaylock"
 
           "$mod, mouse_down, workspace, e+1"
           "$mod, mouse_up, workspace, e-1"

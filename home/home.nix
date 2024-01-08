@@ -12,8 +12,6 @@
     ./terminal/kitty/default.nix
     ./software/packages.nix
   ];
- 
-  fonts.fontconfig.enable = true;
 
   home.stateVersion = "23.11";
 
