@@ -8,6 +8,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    ags.url = "github:Aylur/ags";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,18 +28,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, unstable, chaotic, home-manager, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      unstable = nixpkgs.legacyPackages.${system};
+      unstable = unstable.legacyPackages.${system};
       nixos-hardware = inputs.nixos-hardware;
     in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
-        modules = [ 
+        modules = [
           ./nixos/configuration.nix
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop
@@ -50,9 +52,10 @@
       async = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home/home.nix  ];
+        modules = [
+          ./home/home.nix
+        ];
       };
     };
   };
-
 }
