@@ -27,7 +27,8 @@
   zramSwap.enable = true;
 
   # Hyprland
-  programs.hyprland = { enable = true;
+  programs.hyprland = {
+    enable = true;
     enableNvidiaPatches = true;
     xwayland.enable = true;
   };
