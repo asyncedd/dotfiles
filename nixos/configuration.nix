@@ -24,6 +24,8 @@
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
+  zramSwap.enable = true;
+
   # Hyprland
   programs.hyprland = { enable = true;
     enableNvidiaPatches = true;
