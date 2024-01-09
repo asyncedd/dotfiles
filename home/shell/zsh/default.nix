@@ -36,6 +36,7 @@
 
       unsetopt menu_complete
       unsetopt flowcontrol
+      unsetopt BEEP
       
       setopt prompt_subst
       setopt always_to_end
