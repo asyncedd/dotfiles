@@ -41,6 +41,20 @@
         definedAliases = [ "@y" ];
       };
     }; 
+    userChrome = ''
+      @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css";
+      @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
+      
+      #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] > #sidebar-header{
+        display: none
+      }
+
+      #sidebar,
+      #sidebar-header{
+        background-color: inherit !important;
+        border-inline: none !important;
+      }
+    '';
   in {
   programs = {
     firefox = {
@@ -62,6 +76,19 @@
 	  skip-redirect
 	  sidebery
           h264ify
+
+          re-enable-right-click
+          don-t-fuck-with-paste
+
+          sponsorblock
+          return-youtube-dislikes
+
+          enhanced-github
+          refined-github
+          github-file-icons
+
+          duckduckgo-privacy-essentials
+          auto-tab-discard
 	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
@@ -97,20 +124,7 @@
 
           ''
         ];
-        userChrome = ''
-          @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css";
-          @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
-          
-          #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] > #sidebar-header{
-            display: none
-          }
-
-          #sidebar,
-          #sidebar-header{
-            background-color: inherit !important;
-            border-inline: none !important;
-          }
-        '';
+        inherit userChrome;
       };
       profiles.anom = {
         id = 1;
@@ -172,20 +186,7 @@
             user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
           ''
         ];
-        userChrome = ''
-          @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css";
-          @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
-          
-          #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] > #sidebar-header{
-            display: none
-          }
-
-          #sidebar,
-          #sidebar-header{
-            background-color: inherit !important;
-            border-inline: none !important;
-          }
-        '';
+        inherit userChrome;
       };
     };
   };
