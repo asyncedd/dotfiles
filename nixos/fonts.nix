@@ -9,6 +9,7 @@
       noto-fonts-cjk-sans
       intel-one-mono
       noto-fonts-emoji
+      nerdfonts
     ];
 
     fontconfig = {
