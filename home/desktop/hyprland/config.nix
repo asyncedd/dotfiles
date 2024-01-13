@@ -134,8 +134,21 @@
           "$mod, S, togglespecialworkspace, magic"
           "$mod SHIFT, S, movetoworkspace, special:magic"
 
-          "$mod, H, exec, grim -g \"$(slurp)\" - | swappy -f -"
+          "$mod, N, exec, grim -g \"$(slurp)\" - | swappy -f -"
           "$mod, L, exec, swaylock --screenshots --clock --grace 2 --fade-in 1 --effect-blur 7x5 --effect-vignette 0.5:0.5"
+
+          "$mod, mouse_down, workspace, e+1"
+          "$mod, mouse_up, workspace, e-1"
+
+          "$mod, h, movefocus, l"
+          "$mod, l, movefocus, r"
+          "$mod, k, movefocus, u"
+          "$mod, j, movefocus, d"
+
+          "$mod SHIFT, h, movewindow, l"
+          "$mod SHIFT, l, movewindow, r"
+          "$mod SHIFT, k, movewindow, u"
+          "$mod SHIFT, j, movewindow, d"
 
           "$mod, mouse_down, workspace, e+1"
           "$mod, mouse_up, workspace, e-1"
@@ -153,10 +166,29 @@
               in [
                 "$mod, ${ws}, workspace, ${toString (x + 1)}"
                 "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+                "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
               ]
               )
           10)
         );
     };
+    extraConfig = ''
+      # will switch to a submap called resize
+      bind=$mod,R,submap,resize
+      
+      # will start a submap called "resize"
+      submap=resize
+      
+      # sets repeatable binds for resizing the active window
+      binde = , l, resizeactive, 10 0
+      binde = , h, resizeactive, -10 0
+      binde = , k, resizeactive, 0 -10
+      binde = , j, resizeactive, 0 10 
+      # use reset to go back to the global submap
+      bind=,escape,submap,reset 
+      
+      # will reset the submap, meaning end the current one and return to the global one
+      submap=reset
+    '';
   };
 }
