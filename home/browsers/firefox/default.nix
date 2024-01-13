@@ -44,6 +44,7 @@
     userChrome = ''
       @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css";
       @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
+      @import "${inputs.lepton}/userChrome.css";
       
       #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] > #sidebar-header{
         display: none
@@ -92,6 +93,7 @@
 	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
+          (builtins.readFile "${inputs.lepton}/user.js")
           ''
             // Smooth scrolling
             user_pref("apz.overscroll.enabled", true); // DEFAULT NON-LINUX
@@ -146,6 +148,7 @@
 	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.arkenfox}/user.js")
+          (builtins.readFile "${inputs.lepton}/user.js")
           ''
             /* override recipe: enable session restore ***/
             user_pref("browser.startup.page", 3); // 0102

@@ -26,6 +26,10 @@
       url = "github:MrOtherGuy/firefox-csshacks";
       flake = false;
     };
+    lepton = { 
+      url = "github:black7375/Firefox-UI-Fix";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, unstable, chaotic, home-manager, ... }@inputs:
