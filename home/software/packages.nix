@@ -9,6 +9,7 @@
     obsidian
     neovim
     mpv
+    gnome.gnome-tweaks
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

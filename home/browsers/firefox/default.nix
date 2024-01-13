@@ -74,9 +74,8 @@
 	extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
           bitwarden
 	  ublock-origin
-	  skip-redirect
 	  sidebery
-          h264ify
+          enhanced-h264ify
 
           re-enable-right-click
           don-t-fuck-with-paste
@@ -90,6 +89,9 @@
 
           duckduckgo-privacy-essentials
           auto-tab-discard
+
+          bypass-paywalls-clean
+          raindropio
 	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
@@ -144,7 +146,7 @@
 	  ublock-origin
 	  skip-redirect
 	  sidebery
-          h264ify
+          enhanced-h264ify
 	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.arkenfox}/user.js")

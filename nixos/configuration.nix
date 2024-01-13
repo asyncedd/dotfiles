@@ -19,6 +19,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-sched-ext;
+
+  programs.dconf.enable = true;
+
   # zsh
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
@@ -33,11 +37,6 @@
     xwayland.enable = true;
   };
   
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
-  };
-
   hardware = {
     opengl.enable = true;
     nvidia.modesetting.enable = true;
@@ -79,7 +78,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma5.enable = false;
 
   # Configure keymap in X11
   services.xserver = {
@@ -132,6 +131,7 @@
     wget
     git
     kitty
+    scx
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

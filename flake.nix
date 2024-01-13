@@ -49,6 +49,7 @@
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-laptop-ssd
+          chaotic.nixosModules.default
         ];
       };
     };

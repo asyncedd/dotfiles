@@ -4,6 +4,46 @@
   wayland.windowManager.hyprland = {
     settings = {
       "$mod" = "SUPER";
+      exec = [
+        "hyprctl setcursor phinger-cursors 24"
+      ];
+      env = ''
+        XDG_SESSION_TYPE,wayland
+        XDG_SESSION_DESKTOP,Hyprland
+
+        GDK_BACKEND,wayland
+        QT_QPA_PLATFORM,wayland
+        QT_QPA_PLATFORMTHEME,qt5ct
+        QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+        QT_AUTO_SCREEN_SCALE_FACTOR,1
+        QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+
+        SDL_VIDEODRIVER,wayland
+        _JAVA_AWT_WM_NONREPARENTING,1
+        WLR_NO_HARDWARE_CURSORS,1
+        WLR_DRM_NO_ATOMIC,1
+
+        MOZ_DISABLE_RDD_SANDBOX,1
+        MOZ_ENABLE_WAYLAND,1
+
+        OZONE_PLATFORM,wayland
+
+        XCURSOR_SIZE,24
+        QT_QPA_PLATFORM,wayland
+        GDK_BACKEND,wayland,x11
+        SDL_VIDEODRIVER,wayland
+        WLR_RENDERER_ALLOW_SOFTWARE,1
+
+        QT_AUTO_SCREEN_SCALE_FACTOR,1
+
+        MOZ_ENABLE_WAYLAND,1
+        MOZ_DISABLE_RDD_SANDBOX,1
+        MOZ_DBUS_REMOTE,1
+
+        WLR_NO_HARDWARE_CURSORS,1
+        XCURSOR_THEME,phinger-cursors
+        NIXOS_OONE_WL,1
+      '';
       monitor = ",preferred,auto,1";
       input = {
         kb_layout = "us";
