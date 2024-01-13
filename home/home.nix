@@ -12,6 +12,7 @@
     ./shell/prompts/starship/default.nix
     ./terminal/kitty/default.nix
     ./software/packages.nix
+    ./software/gtk.nix
   ];
 
   home.stateVersion = "23.11";
