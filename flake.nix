@@ -32,17 +32,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, chaotic, home-manager, ... }@inputs:
-    let
+  outputs = { self, nixpkgs, unstable, chaotic, home-manager, ... }@inputs: let
+      inherit (self) outputs;
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       unstable = unstable.legacyPackages.${system};
       nixos-hardware = inputs.nixos-hardware;
     in {
+    formatter = nixpkgs.legacyPackages.${system}.alejandra;
+    overlays = import ./overlays/default.nix { inherit inputs outputs; };
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs outputs; };
         modules = [
           ./nixos/configuration.nix
           nixos-hardware.nixosModules.common-cpu-intel
@@ -56,7 +59,7 @@
     homeConfigurations = {
       async = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home/home.nix
         ];
