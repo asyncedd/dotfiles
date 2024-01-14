@@ -10,6 +10,7 @@
     neovim
     mpv
     gnome.gnome-tweaks
+    bottom
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
