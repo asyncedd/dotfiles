@@ -30,6 +30,10 @@
       url = "github:black7375/Firefox-UI-Fix";
       flake = false;
     };
+    edge-frfox = { 
+      url = "github:bmFtZQ/edge-frfox";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, unstable, chaotic, home-manager, ... }@inputs: let

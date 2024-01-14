@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }:
+{ config, pkgs, inputs, lib, outputs, ... }:
   let
     engines = {
       "GitHub" = {
@@ -42,9 +42,10 @@
       };
     }; 
     userChrome = ''
+      @import "${inputs.lepton}/chrome/userChrome.css";
       @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css";
       @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
-      @import "${inputs.lepton}/userChrome.css";
+      @import "${inputs.edge-frfox}/chrome/userChrome.css";
       
       #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] > #sidebar-header{
         display: none
@@ -56,10 +57,61 @@
         border-inline: none !important;
       }
     '';
+    userContent = ''
+      @import "${inputs.edge-frfox}/chrome/userContent.css";
+      @import "${inputs.lepton}/chrome/userContent.css";
+    '';
   in {
   programs = {
     firefox = {
       enable = true;
+      policies = { 
+        CaptivePortal = false;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DisableFirefoxAccounts = true;
+        DisableProfileImport = true;
+        DisableSetDesktopBackground = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxScreenshots = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        PasswordManagerEnabled = false;
+        FirefoxHome = {
+          Pocket = false;
+          Snippets = false;
+          TopSites = false;
+          Highlights = false;
+          Locked = true;
+        };
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          SkipOnboarding = true;
+        };
+        Cookies = {
+          Behavior = "accept";
+          Locked = false;
+        };
+        Extensions = {
+          Uninstall = [
+              "google@search.mozilla.org"
+              "bing@search.mozilla.org"
+              "amazondotcom@search.mozilla.org"
+              "ebay@search.mozilla.org"
+              "twitter@search.mozilla.org"
+          ];
+        };
+        SearchEngines = {
+          Remove = [
+            "Google"
+            "Bing"
+            "Amazon.com"
+            "eBay"
+            "Twitter"
+          ];
+        };
+      };
       profiles.async = {
         id = 0;
         name = "async";
@@ -88,7 +140,6 @@
           github-file-icons
 
           duckduckgo-privacy-essentials
-          auto-tab-discard
 
           bypass-paywalls-clean
           raindropio
@@ -96,6 +147,7 @@
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
           (builtins.readFile "${inputs.lepton}/user.js")
+          (builtins.readFile "${inputs.edge-frfox}/user.js")
           ''
             // Smooth scrolling
             user_pref("apz.overscroll.enabled", true); // DEFAULT NON-LINUX
@@ -128,7 +180,7 @@
 
           ''
         ];
-        inherit userChrome;
+        inherit userChrome userContent;
       };
       profiles.anom = {
         id = 1;
@@ -151,6 +203,7 @@
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.arkenfox}/user.js")
           (builtins.readFile "${inputs.lepton}/user.js")
+          (builtins.readFile "${inputs.edge-frfox}/user.js")
           ''
             /* override recipe: enable session restore ***/
             user_pref("browser.startup.page", 3); // 0102
@@ -191,7 +244,7 @@
             user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
           ''
         ];
-        inherit userChrome;
+        inherit userChrome userContent;
       };
     };
   };

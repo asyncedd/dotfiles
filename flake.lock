@@ -88,6 +88,22 @@
         "url": "https://flakehub.com/f/chaotic-cx/nix-empty-flake/0.1.2.tar.gz"
       }
     },
+    "edge-frfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704811011,
+        "narHash": "sha256-aPZ/7vFw3o8j6Kmn04PjLl0T9610mYrS+Plnm3ZGB0I=",
+        "owner": "bmFtZQ",
+        "repo": "edge-frfox",
+        "rev": "a0e0889a1b4e55327e7db2bd9309fe7172939a41",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bmFtZQ",
+        "repo": "edge-frfox",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -280,6 +296,7 @@
         "arkenfox": "arkenfox",
         "betterfox": "betterfox",
         "chaotic": "chaotic",
+        "edge-frfox": "edge-frfox",
         "firefox-addons": "firefox-addons",
         "firefox-csshacks": "firefox-csshacks",
         "home-manager": "home-manager_2",
