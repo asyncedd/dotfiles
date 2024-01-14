@@ -44,7 +44,7 @@
         XCURSOR_THEME,phinger-cursors
         NIXOS_OONE_WL,1
       '';
-      monitor = ",preferred,auto,1";
+      monitor = ",highres,0x0,1,bitdepth,10";
       input = {
         kb_layout = "us";
         kb_variant = "";
@@ -110,6 +110,7 @@
 
       misc = {
         force_default_wallpaper = 0;
+        vrr = true;
       };
       bindm = 
         [
@@ -152,6 +153,9 @@
 
           "$mod, mouse_down, workspace, e+1"
           "$mod, mouse_up, workspace, e-1"
+
+          "$mod, G, togglegroup"
+          "$mod, TAB, changegroupactive"
         ]
         ++ 
         (
