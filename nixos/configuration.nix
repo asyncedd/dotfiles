@@ -211,4 +211,11 @@
 
   security.pam.services.swaylock = {};
   security.pam.services.gtklock = {};
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
 }
