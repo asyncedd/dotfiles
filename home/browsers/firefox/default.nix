@@ -95,11 +95,11 @@
         };
         Extensions = {
           Uninstall = [
-              "google@search.mozilla.org"
-              "bing@search.mozilla.org"
-              "amazondotcom@search.mozilla.org"
-              "ebay@search.mozilla.org"
-              "twitter@search.mozilla.org"
+             "google@search.mozilla.org"
+             "bing@search.mozilla.org"
+             "amazondotcom@search.mozilla.org"
+             "ebay@search.mozilla.org"
+             "twitter@search.mozilla.org"
           ];
         };
         SearchEngines = {
