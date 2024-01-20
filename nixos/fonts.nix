@@ -10,6 +10,7 @@
       intel-one-mono
       noto-fonts-emoji
       nerdfonts
+      freetype
     ];
 
     fontconfig = {
@@ -19,26 +20,17 @@
         monospace = [ "Intel One Mono" ];
       };
       localConf = ''
-        <match target="font">
-          <edit name="autohint" mode="assign">
-            <bool>true</bool>
-          </edit>
-        </match>
-        <match target="font">
-          <edit name="hintstyle" mode="assign">
-            <const>hintnone</const>
-          </edit>
-        </match>
-        <match target="font">
-          <edit name="rgba" mode="assign">
-            <const>rgb</const>
-          </edit>
-        </match>
-        <match target="font">
-          <edit name="lcdfilter" mode="assign">
-            <const>lcddefault</const>
-          </edit>
-        </match>
+        <?xml version="1.0"?>
+        <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+        <fontconfig>
+          <edit mode="assign" name="antialias">       <bool>true</bool></edit>
+          <edit mode="assign" name="hinting">         <bool>true</bool></edit>
+          <edit mode="assign" name="hintstyle">       <const>hintmedium</const></edit>
+          <edit mode="assign" name="lcdfilter">       <const>lcddefault</const></edit>
+          <edit mode="assign" name="rgba">            <const>rgb</const></edit>
+
+          <edit mode="assign" name="hintstyle"><const>hintnone</const></edit>
+        </fontconfig>
       '';
     };
   };
