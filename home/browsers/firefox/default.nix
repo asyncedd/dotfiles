@@ -127,7 +127,6 @@
           bitwarden
 	  ublock-origin
 	  sidebery
-          enhanced-h264ify
 
           re-enable-right-click
           don-t-fuck-with-paste
@@ -143,6 +142,7 @@
 
           bypass-paywalls-clean
           raindropio
+          darkreader
 	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
