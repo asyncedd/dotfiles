@@ -7,6 +7,9 @@
       exec = [
         "hyprctl setcursor phinger-cursors 24"
       ];
+      exec-once = [
+        "fcitx5 -r & nm-applet --indicator"
+      ];
       env = ''
         XDG_SESSION_TYPE,wayland
         XDG_SESSION_DESKTOP,Hyprland
