@@ -52,6 +52,10 @@
         XDG_CURRENT_DESKTOP,sway
       '';
       monitor = ",highres,0x0,1,bitdepth,10";
+      windowrule = [
+        "float,^(Extension: .*)(— Mozilla Firefox)$"
+        "nofullscreenrequest,^(Extension: .*)(— Mozilla Firefox)$"
+      ];
       input = {
         kb_layout = "us";
         kb_variant = "";
