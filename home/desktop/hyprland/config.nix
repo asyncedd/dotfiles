@@ -46,6 +46,10 @@
         WLR_NO_HARDWARE_CURSORS,1
         XCURSOR_THEME,phinger-cursors
         NIXOS_OONE_WL,1
+
+        WLR_DRM_NO_ATOMIC,1
+
+        XDG_CURRENT_DESKTOP,sway
       '';
       monitor = ",highres,0x0,1,bitdepth,10";
       input = {
