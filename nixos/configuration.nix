@@ -59,10 +59,16 @@
     enableNvidiaPatches = true;
     xwayland.enable = true;
   };
-  
   hardware = {
-    opengl.enable = true;
-    nvidia.modesetting.enable = true;
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        # vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
   };
 
   xdg.portal.enable = true;
@@ -195,6 +201,7 @@
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
       inherit pkgs;
     };
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
 
   security.pam.services.swaylock = {};
