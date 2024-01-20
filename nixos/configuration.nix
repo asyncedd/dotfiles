@@ -72,7 +72,11 @@
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = 
+  with pkgs; [
+    pkgs.xdg-desktop-portal-gtk 
+    xdg-desktop-portal-wlr
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
