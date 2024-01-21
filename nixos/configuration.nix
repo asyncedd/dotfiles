@@ -56,8 +56,8 @@
   # Hyprland
   programs.hyprland = {
     enable = true;
-    enableNvidiaPatches = true;
     xwayland.enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
   hardware = {
     opengl = {
