@@ -64,7 +64,8 @@
       enable = true;
       extraPackages = with pkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        # vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        intel-compute-runtime
         vaapiVdpau
         libvdpau-va-gl
       ];
@@ -207,7 +208,7 @@
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
       inherit pkgs;
     };
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+    # vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
 
   security.pam.services.swaylock = {};
@@ -216,7 +217,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
   };
+  nix.optimise.automatic = true;
 
 }
