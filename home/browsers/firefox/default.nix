@@ -112,6 +112,21 @@
              "ebay@search.mozilla.org"
              "twitter@search.mozilla.org"
           ];
+          Install = [
+            "https://addons.mozilla.org/firefox/downloads/file/4210197/youtube_recommended_videos-1.6.3.xpi" # Unhook
+            "https://addons.mozilla.org/firefox/downloads/file/4216633/ublock_origin-1.55.0.xpi" # Ublock origin
+            "https://github.com/mbnuqw/sidebery/releases/download/v5.0.0/sidebery-5.0.0.1.xpi" # Sidebery
+            "https://addons.mozilla.org/firefox/downloads/file/3981363/re_enable_right_click-0.5.4.xpi" # Re-Enable right click
+            "https://addons.mozilla.org/firefox/downloads/file/4202411/sponsorblock-5.4.29.xpi" # SponsorBlock
+            "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi" # Return Youtube Dislike
+            "https://addons.mozilla.org/firefox/downloads/file/3764141/enhanced_github-5.0.11.xpi" # Enhanced Github
+            "https://addons.mozilla.org/firefox/downloads/file/4156831/github_file_icons-1.5.1.xpi" # Github File Icons
+            "https://addons.mozilla.org/firefox/downloads/file/4219626/refined_github-24.1.10.xpi" # Redefined Github
+            "https://gitlab.com/magnolia1234/bpc-uploads/-/raw/master/bypass_paywalls_clean-latest.xpi" # Bypass Paywalls Clean
+            "https://addons.mozilla.org/firefox/downloads/file/4198542/raindropio-6.6.19.xpi" # Raindrop.io
+            "https://addons.mozilla.org/firefox/downloads/file/4220708/darkreader-4.9.75.xpi" # Darkreader
+            "https://addons.mozilla.org/firefox/downloads/file/4218010/keepassxc_browser-1.8.11.xpi" # KeePassXC Browser
+          ];
         };
         SearchEngines = {
           Remove = [
@@ -134,27 +149,6 @@
           order = [ "DuckDuckGo" "Google" ];
           inherit engines;
         };
-	extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-          bitwarden
-	  ublock-origin
-	  sidebery
-
-          re-enable-right-click
-          don-t-fuck-with-paste
-
-          sponsorblock
-          return-youtube-dislikes
-
-          enhanced-github
-          refined-github
-          github-file-icons
-
-          duckduckgo-privacy-essentials
-
-          bypass-paywalls-clean
-          raindropio
-          darkreader
-	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
           (builtins.readFile "${inputs.lepton}/user.js")
