@@ -70,7 +70,7 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./nixos/configuration.nix
-          ./modules/hosts/nixos/default.nix
+          ./hosts/nixos/default.nix
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc

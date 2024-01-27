@@ -46,11 +46,6 @@
 
   programs.dconf.enable = true;
 
-  # zsh
-  environment.shells = with pkgs; [ zsh ];
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
-
   zramSwap.enable = true;
 
   # Hyprland
