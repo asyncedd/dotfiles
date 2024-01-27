@@ -23,7 +23,6 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    hyprland.url = "github:hyprwm/Hyprland";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
@@ -51,6 +50,8 @@
       url = "github:bmFtZQ/edge-frfox";
       flake = false;
     };
+
+    hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
   };
 
   outputs = { self, nixpkgs, unstable, chaotic, home-manager, ... }@inputs: let
@@ -69,6 +70,7 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./nixos/configuration.nix
+          ./modules/hosts/nixos/default.nix
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc
