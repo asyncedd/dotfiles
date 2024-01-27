@@ -50,6 +50,10 @@
       setopt hist_verify
       setopt inc_append_history
       setopt share_history
+
+      alias ls="eza -lo --hyperlink --total-size --git-repos -TL 1 --tree --icons"
+      alias la="eza -lao --hyperlink --total-size --git-repos -TL 1 --tree --icons"
+      alias tree="eza -lao --hyperlink --total-size --git-repos --tree --icons"
     '';
     shellAliases = {
       ll = "ls -l";
