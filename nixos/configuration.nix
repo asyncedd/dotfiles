@@ -42,7 +42,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-sched-ext;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   programs.dconf.enable = true;
 
