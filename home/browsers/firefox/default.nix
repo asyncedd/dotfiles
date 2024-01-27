@@ -40,6 +40,12 @@
         }}";
         definedAliases = [ "@y" ];
       };
+
+      "Wikipedia (en)".metaData.alias = "@wiki";
+      "Google".metaData.hidden = true;
+      "Amazon.com".metaData.hidden = true;
+      "Bing".metaData.hidden = true;
+      "eBay".metaData.hidden = true;
     }; 
     userChrome = ''
       @import "${inputs.lepton}/chrome/userChrome.css";
