@@ -59,6 +59,15 @@
     xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
+  hardware.cpu.intel.updateMicrocode = true;
+  boot = {
+    kernelModules = ["kvm-intel"];
+    kernelParams = ["i915.fastboot=1" "enable_gvt=1" "iommu=force"];
+  };
+  # enable the i915 kernel module
+  boot.initrd.kernelModules = ["i915"];
+  # better performance than the actual Intel driver
+  services.xserver.videoDrivers = ["modesetting"];
   hardware = {
     opengl = {
       enable = true;
@@ -159,7 +168,6 @@
     packages = with pkgs; [
       firefox
       kate
-    #  thunderbird
     ];
   };
 
