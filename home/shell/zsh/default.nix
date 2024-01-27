@@ -54,6 +54,14 @@
       alias ls="eza -lo --hyperlink --total-size --git-repos -TL 1 --tree --icons"
       alias la="eza -lao --hyperlink --total-size --git-repos -TL 1 --tree --icons"
       alias tree="eza -lao --hyperlink --total-size --git-repos --tree --icons"
+
+      chpwd_functions+=(chpwd_cdls)
+      function chpwd_cdls() {
+        if [[ -o interactive ]]; then
+          emulate -L zsh
+          ls
+        fi
+      }
     '';
     shellAliases = {
       ll = "ls -l";
