@@ -11,6 +11,7 @@
     mpv
     gnome.gnome-tweaks
     bottom
+    eza
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
