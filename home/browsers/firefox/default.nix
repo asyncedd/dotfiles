@@ -62,6 +62,11 @@
         background-color: inherit !important;
         border-inline: none !important;
       }
+
+      #tabbrowser-tabpanels,
+      browser {
+        border-radius: 25px !important;
+      }
     '';
     userContent = ''
       @import "${inputs.edge-frfox}/chrome/userContent.css";
