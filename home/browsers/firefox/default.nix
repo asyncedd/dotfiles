@@ -104,6 +104,7 @@
           Behavior = "accept";
           Locked = false;
         };
+        "3rdparty".Extensions."uBlock0@raymondhill.net".adminSettings = builtins.readFile ./addons/ublock.json;
         Extensions = {
           Uninstall = [
              "google@search.mozilla.org"
