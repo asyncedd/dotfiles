@@ -70,7 +70,7 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./nixos/configuration.nix
-          # ./hosts/nixos/default.nix
+          ./hosts/nixos/default.nix
           ./modules/shared/nixos.nix
           ./modules/shared/audio.nix
           ./modules/shared/desktop.nix
