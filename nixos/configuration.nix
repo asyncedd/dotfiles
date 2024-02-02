@@ -139,6 +139,18 @@
     ffmpeg
     zip
     unzip
+    gcc
+    clang
+    zig
+    nodejs_21
+    sqlite
+    sqlitecpp
+    luajitPackages.sqlite
+    kdenlive
+    rustc
+    cargo
+    rustfmt
+    rustPackages.clippy
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
