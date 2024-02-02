@@ -9,7 +9,7 @@
       cursor_blink_interval = 0;
     };
     theme = "One Dark";
-    font.name = "Intel One Mono";
+    font.name = "MapleMono";
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
       # Seti-UI + Custom

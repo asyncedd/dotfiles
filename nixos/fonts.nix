@@ -7,7 +7,7 @@
       ubuntu_font_family
       unifont
       noto-fonts-cjk-sans
-      intel-one-mono
+      maple-mono-autohint
       noto-fonts-emoji
       nerdfonts
       freetype
@@ -17,7 +17,7 @@
       defaultFonts = {
         serif = [ "Ubuntu" ];
         sansSerif = [ "Ubuntu" ];
-        monospace = [ "Intel One Mono" ];
+        monospace = [ "MapleMono" ];
       };
       localConf = ''
         <?xml version="1.0"?>
