@@ -50,6 +50,10 @@
       url = "github:bmFtZQ/edge-frfox";
       flake = false;
     };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
   };
