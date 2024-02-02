@@ -41,9 +41,59 @@
         definedAliases = [ "@y" ];
       };
 
+      "Nix Packages" = {
+        urls = [{
+          template = "https://search.nixos.org/packages";
+          params = [
+            { name = "channel"; value = "unstable"; }
+            { name = "query"; value = "{searchTerms}"; }
+          ];
+        }];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        definedAliases = [ "@npu" ];
+      };
+
+      "NixOS Wiki" = {
+        urls = [{
+          template = "https://nixos.wiki/index.php";
+          params = [{ name = "search"; value = "{searchTerms}"; }];
+        }];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        definedAliases = [ "@nw" ];
+      };
+
+      "Nixpkgs Issues" = {
+        urls = [{
+          template = "https://github.com/NixOS/nixpkgs/issues";
+          params = [
+            { name = "q"; value = "{searchTerms}"; }
+          ];
+        }];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        definedAliases = [ "@ni" ];
+      };
+
+
+      "Mojeek" = {
+        urls = [{
+	  template = "https://www.mojeek.com/search";
+	  params = [
+	    { name = "q"; value = "{searchTerms}"; }
+	    { name = "qss"; value = "Bing,Brave,DuckDuckGo,Ecosia,Google,Qwant,Startpage,Swisscows"; }
+	    { name = "theme"; value = "dark"; }
+          ];
+	}];
+	icon = "${pkgs.fetchurl {
+	  url = "https://www.mojeek.com/favicon.ico";
+	  sha256 = "sha256-KaqltNCw9h+QkCx9C3MTJt6Z7pMbtVmYys+oG6YLv5M=";
+	}}";
+	definedAliases = [ "@m" ];
+      };
+
       "Wikipedia (en)".metaData.alias = "@wiki";
       "Google".metaData.hidden = true;
       "Amazon.com".metaData.hidden = true;
+      "Amazon.co.jp".metaData.hidden = true;
       "Bing".metaData.hidden = true;
       "eBay".metaData.hidden = true;
     }; 
