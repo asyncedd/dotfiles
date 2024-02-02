@@ -113,9 +113,17 @@
         border-inline: none !important;
       }
 
-      #tabbrowser-tabpanels,
-      browser {
-        border-radius: 25px !important;
+      #appcontent
+      > #tabbrowser-tabbox
+      > #tabbrowser-tabpanels
+      > .deck-selected
+      > .browserContainer
+      > .browserStack
+      > browser {
+        border-radius: 7px !important;
+        margin: 6px !important;
+        outline: 5px solid var(--lwt-frame) !important;
+        box-shadow: rgba(0, 0, 0, 0.16) 6px 6px 6px 6px !important;
       }
     '';
     userContent = ''
