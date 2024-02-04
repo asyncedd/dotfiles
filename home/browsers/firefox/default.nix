@@ -143,6 +143,9 @@
       @import "${inputs.lepton}/chrome/userContent.css";
     '';
   in {
+  imports = [
+    ./addons/ublock.nix
+  ];
   programs = {
     firefox = {
       enable = true;
@@ -174,7 +177,6 @@
           Behavior = "accept";
           Locked = false;
         };
-        "3rdparty".Extensions."uBlock0@raymondhill.net".adminSettings = builtins.readFile ./addons/ublock.json;
         Extensions = {
           Uninstall = [
              "google@search.mozilla.org"
