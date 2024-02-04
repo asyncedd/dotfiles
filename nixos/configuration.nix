@@ -151,6 +151,7 @@
     cargo
     rustfmt
     rustPackages.clippy
+    tor-browser
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
