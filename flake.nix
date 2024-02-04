@@ -50,6 +50,10 @@
       url = "github:bmFtZQ/edge-frfox";
       flake = false;
     };
+    firefox-mod-blur = {
+      url = "github:datguypiko/Firefox-Mod-Blur";
+      flake = false;
+    };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
