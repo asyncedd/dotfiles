@@ -104,6 +104,20 @@
         definedAliases = [ "@ub" ];
       };
 
+      "Brave" = {
+        urls = [{
+          template = "https://search.brave.com/search";
+          params = [
+            { name = "q"; value = "{searchTerms}"; }
+          ];
+        }];
+        icon = "${pkgs.fetchurl {
+          url = "https://cdn.search.brave.com/serp/v2/_app/immutable/assets/brave-search-icon.rCBTNmje.svg";
+          sha256 = "sha256-Y56N3DuSdJyVQ16TV8zany5CBw75O6oPRkOq0BWyljI=";
+        }}";
+        definedAliases = [ "@b" ];
+      };
+
       "Wikipedia (en)".metaData.alias = "@wiki";
       "Google".metaData.hidden = true;
       "Amazon.com".metaData.hidden = true;
@@ -113,17 +127,27 @@
     }; 
     userChrome = ''
       @import "${inputs.lepton}/userChrome.css";
-      @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css";
+      /* @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css"; */
       @import "${inputs.firefox-csshacks}/chrome/centered_statuspanel.css";
-      /* @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css"; */
+      @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
       /* @import "${inputs.edge-frfox}/chrome/userChrome.css"; */
       @import "${./userChrome}/macos_buttons.css";
       @import "${./userChrome}/urlbar.css";
+      @import "${inputs.firefox-mod-blur}/userChrome.css";
       
       #sidebar-header,
       #sidebar-splitter {
           display: none !important;
       }
+
+      #titlebar{
+        will-change: unset !important;
+        transition: none !important;
+        opacity: 1 !important;
+        padding: 0px !important;
+        margin: 0px !important;
+      }
+      #TabsToolbar{ visibility: collapse !important } 
 
       #appcontent
       > #tabbrowser-tabbox
@@ -141,6 +165,7 @@
     userContent = ''
       @import "${inputs.edge-frfox}/chrome/userContent.css";
       @import "${inputs.lepton}/chrome/userContent.css";
+      @import "${inputs.firefox-mod-blur}/userContent.css";
     '';
   in {
   imports = [
@@ -199,6 +224,9 @@
             "https://addons.mozilla.org/firefox/downloads/file/4198542/raindropio-6.6.19.xpi" # Raindrop.io
             "https://addons.mozilla.org/firefox/downloads/file/4220708/darkreader-4.9.75.xpi" # Darkreader
             "https://addons.mozilla.org/firefox/downloads/file/4218010/keepassxc_browser-1.8.11.xpi" # KeePassXC Browser
+            "https://addons.mozilla.org/firefox/downloads/file/4229258/enhancer_for_youtube-2.0.122.xpi" # Enhancer for Youtube
+            "https://addons.mozilla.org/firefox/downloads/file/4205769/soundfixer-1.4.1.xpi" # Soundfixer
+            "https://addons.mozilla.org/firefox/downloads/file/4220396/violentmonkey-2.18.0.xpi" # Violentmonkey
           ];
         };
         SearchEngines = {
@@ -217,9 +245,9 @@
         isDefault = true;
         search = {
           force = true;
-          default = "DuckDuckGo";
-          privateDefault = "DuckDuckGo";
-          order = [ "DuckDuckGo" "Google" ];
+          default = "Brave";
+          privateDefault = "Brave";
+          order = [ "DuckDuckGo" "Brave" "GitHub" "Reddit" "Youtube" "Nix Packages" "NixOS Wiki" "Nixpkgs Issues" "Mojeek" "Urban Dictionary" ];
           inherit engines;
         };
 	extraConfig = lib.strings.concatStrings [
@@ -266,9 +294,9 @@
         isDefault = false;
         search = {
           force = true;
-          default = "DuckDuckGo";
-          privateDefault = "DuckDuckGo";
-          order = [ "DuckDuckGo" "Google" ];
+          default = "Brave";
+          privateDefault = "Brave";
+          order = [ "DuckDuckGo" "Brave" "GitHub" "Reddit" "Youtube" "Nix Packages" "NixOS Wiki" "Nixpkgs Issues" "Mojeek" "Urban Dictionary" ];
           inherit engines;
         };
 	extraConfig = lib.strings.concatStrings [
