@@ -35,7 +35,6 @@ along with this program. If not, see http://www.gnu.org/licenses
 }
 
 #main-window #urlbar {
-    z-index: 9999 !important;
     width: 100% !important;
     margin-top: 0 !important;
     margin-left: 0 !important;
@@ -44,6 +43,7 @@ along with this program. If not, see http://www.gnu.org/licenses
 }
 
 #main-window #urlbar[breakout][breakout-extend] {
+    z-index: 9999 !important;
     opacity: 0.97 !important;
     width: 100% !important;
     left: 0;
