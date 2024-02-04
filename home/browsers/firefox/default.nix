@@ -246,7 +246,7 @@
       };
       profiles.anom = {
         id = 1;
-        name = "anom";
+        name = "anon";
         isDefault = false;
         search = {
           force = true;
