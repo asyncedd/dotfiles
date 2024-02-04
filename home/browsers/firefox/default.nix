@@ -90,6 +90,20 @@
 	definedAliases = [ "@m" ];
       };
 
+      "Urban Dictionary" = {
+        urls = [{
+          template = "https://www.urbandictionary.com/define.php";
+          params = [
+            { name = "term"; value = "{searchTerms}"; }
+          ];
+        }];
+        icon = "${pkgs.fetchurl {
+          url = "https://www.urbandictionary.com/favicon.ico";
+          sha256 = "sha256-JVdGocDJfuRr1d/An9Ba1jHiKlWF+tf0+i9Yz4OdIiA=";
+        }}";
+        definedAliases = [ "@ub" ];
+      };
+
       "Wikipedia (en)".metaData.alias = "@wiki";
       "Google".metaData.hidden = true;
       "Amazon.com".metaData.hidden = true;
