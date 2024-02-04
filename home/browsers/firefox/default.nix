@@ -255,13 +255,6 @@
           order = [ "DuckDuckGo" "Google" ];
           inherit engines;
         };
-	extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-          bitwarden
-	  ublock-origin
-	  skip-redirect
-	  sidebery
-          enhanced-h264ify
-	];
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.arkenfox}/user.js")
           (builtins.readFile "${inputs.lepton}/user.js")
@@ -277,7 +270,6 @@
             // homepage
             user_pref("browser.startup.homepage", "about:home");
             user_pref("browser.newtabpage.enabled", true);
-            user_pref("browser.startup.page", 1);
           
             // disable the "master switch" that disables about:home
             //user_pref("browser.startup.homepage_override.mstone", "");
@@ -304,6 +296,27 @@
 
             user_pref("browser.formfill.enable", true);
             user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+            /* 2801: delete cookies and site data on exit
+             * 0=keep until they expire (default), 2=keep until you close Firefox
+             * [SETTING] Privacy & Security>Cookies and Site Data>Delete cookies and site data when Firefox is closed
+             * [SETTING] to add site exceptions: Ctrl+I>Permissions>Cookies>Allow
+             *   If using FPI the syntax must be https://example.com/^firstPartyDomain=example.com
+             * [SETTING] to manage site exceptions: Options>Privacy & Security>Permissions>Settings ***/
+            user_pref("network.cookie.lifetimePolicy", 2);
+            
+            /* override recipe: enable session restore ***/
+            user_pref("browser.startup.page", 3); // 0102
+            // user_pref("browser.privatebrowsing.autostart", false); // 0110 required if you had it set as true
+            // user_pref("places.history.enabled", true); // 0862 required if you had it set as false
+            user_pref("browser.sessionstore.privacy_level", 0); // 1003 optional [to restore cookies/formdata]
+            // user_pref("network.cookie.lifetimePolicy", 0); // 2801 [don't: add cookie + site data exceptions instead]
+            user_pref("privacy.clearOnShutdown.history", false); // 2811
+            // user_pref("privacy.clearOnShutdown.cookies", false); // 2811 optional: default false arkenfox v94
+            // user_pref("privacy.clearOnShutdown.formdata", false); // 2811 optional
+            user_pref("privacy.cpd.history", false); // 2812 to match when you use Ctrl-Shift-Del
+            // user_pref("privacy.cpd.cookies", false); // 2812 optional: default false arkenfox v94
+            // user_pref("privacy.cpd.formdata", false); // 2812 optional
           ''
         ];
         inherit userChrome userContent;
