@@ -7,6 +7,7 @@
     ];
     userSettings = [
       [ "advancedUserEnabled" "true" ]
+      [ "ignoreGeneticCosmeticFilters" "true" ]
       [ "popupPanelSections" "31" ]
     ];
     toOverwrite = {
