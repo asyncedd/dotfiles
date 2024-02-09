@@ -11,13 +11,20 @@
       noto-fonts-emoji
       nerdfonts
       freetype
+      lexend
+      twitter-color-emoji
     ];
 
     fontconfig = {
+      antialias = true;
+      cache32Bit = true;
+      hinting.enable = true;
+      hinting.autohint = true;
       defaultFonts = {
-        serif = [ "Ubuntu" ];
-        sansSerif = [ "Ubuntu" ];
+        serif = [ "Lexend" ];
+        sansSerif = [ "Lexend" ];
         monospace = [ "MapleMono" ];
+        emoji = [ "Twemoji" ];
       };
       localConf = ''
         <?xml version="1.0"?>
@@ -30,6 +37,19 @@
           <edit mode="assign" name="rgba">            <const>rgb</const></edit>
 
           <edit mode="assign" name="hintstyle"><const>hintnone</const></edit>
+          <!-- Japanese -->
+          <!-- "lang=ja" or "lang=ja-*" -->
+          <match target="pattern">
+            <test name="lang" compare="contains">
+              <string>ja</string>
+            </test>
+            <test name="family">
+              <string>serif</string>
+            </test>
+            <edit name="family" mode="append" binding="strong">
+              <string>Noto Serif CJK JP</string>
+            </edit>
+          </match>
         </fontconfig>
       '';
     };
