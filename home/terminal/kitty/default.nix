@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     settings = {
-      font_size = "9";
+      font_size = "10";
       window_margin_width = "5";
       enable_audio_bell = false;
       update_check_interval = 0;
