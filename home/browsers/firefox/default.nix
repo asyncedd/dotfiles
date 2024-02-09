@@ -131,8 +131,8 @@
       @import "${inputs.firefox-csshacks}/chrome/centered_statuspanel.css";
       /* @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css"; */
       /* @import "${inputs.edge-frfox}/chrome/userChrome.css"; */
-      @import "${./userChrome}/macos_buttons.css";
-      @import "${./userChrome}/urlbar.css";
+      /* @import "${./userChrome}/macos_buttons.css"; */
+      /* @import "${./userChrome}/urlbar.css"; */
       @import "${inputs.firefox-mod-blur}/userChrome.css";
       
       #sidebar-header,
