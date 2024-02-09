@@ -1,5 +1,27 @@
+{ lib, ... }:
+
 {
   programs.firefox.policies."3rdparty".Extensions."uBlock0@raymondhill.net" = {
+    adminSettings = {
+      dynamicFilteringString = lib.concatMapStrings (x: x + "\n") [
+        "behind-the-scene * * noop"
+	"behind-the-scene * inline-script noop"
+        "behind-the-scene * 1p-script noop"
+	"behind-the-scene * 3p-script noop"
+	"behind-the-scene * 3p-frame noop"
+	"behind-the-scene * image noop"
+	"behind-the-scene * 3p noop"
+	"* * 3p-frame block"
+	"* * 3p-script block"
+
+	"github.com * 3p-script allow"
+	"reddit.com * 3p-script allow"
+	"imgur.com * 3p-script allow"
+	"chat.openai.com * 3p-script allow"
+	"youtube.com * 3p-script allow"
+      ];
+      hostnameSwitchesString = "no-large-media: behind-the-scene false\nno-csp-reports: * true";
+    };
     advancedSettings = [
       [ "cnameMaxTTL" "720" ]
       [ "filterAuthorMode" "true" ]
@@ -65,20 +87,6 @@
          "opera-scheme"
          "vivaldi-scheme"
          "wyciwyg-scheme"
-      ];
-      dynamicFilteringString = [ 
-        "behind-the-scene * * noop"
-        "behind-the-scene * inline-script noop"
-        "behind-the-scene * 1p-script noop"
-        "behind-the-scene * 3p-script noop"
-        "behind-the-scene * 3p-frame noop"
-        "behind-the-scene * image noop"
-        "behind-the-scene * 3p noop"
-        "* * 3p-frame block"
-      ];
-      hostnameSwitchesString = [
-        "no-large-media: behind-the-scene false"
-        "no-csp-reports: * true"
       ];
     };
   };
