@@ -27,6 +27,7 @@
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
 
       ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_NEX
+      bindkey '^[[Z' reverse-menu-complete
       bindkey '^[OA' history-substring-search-up
       bindkey '^[[A' history-substring-search-up
       bindkey '^[OB' history-substring-search-down
