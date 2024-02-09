@@ -129,7 +129,7 @@
       /* @import "${inputs.lepton}/userChrome.css"; */
       /* @import "${inputs.firefox-csshacks}/chrome/hide_tabs_toolbar.css"; */
       @import "${inputs.firefox-csshacks}/chrome/centered_statuspanel.css";
-      @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css";
+      /* @import "${inputs.firefox-csshacks}/chrome/window_control_placeholder_support.css"; */
       /* @import "${inputs.edge-frfox}/chrome/userChrome.css"; */
       @import "${./userChrome}/macos_buttons.css";
       @import "${./userChrome}/urlbar.css";
