@@ -134,6 +134,7 @@
       /* @import "${./userChrome}/macos_buttons.css"; */
       /* @import "${./userChrome}/urlbar.css"; */
       @import "${inputs.firefox-mod-blur}/userChrome.css";
+      @import "${inputs.firefox-mod-blur}/EXTRA MODS/Min-max-close control buttons/Left side MacOS style buttons/min-max-close_buttons.css";
       
       #sidebar-header,
       #sidebar-splitter {
