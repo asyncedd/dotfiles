@@ -7,6 +7,7 @@
     ];
     userSettings = [
       [ "advancedUserEnabled" "true" ]
+      [ "popupPanelSections" "31" ]
     ];
     toOverwrite = {
       filterLists = [
@@ -54,7 +55,6 @@
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
         "https://big.oisd.nl/"
       ];
-      popupPanelSections = "31";
       trustedSiteDirectives = [
          "about-scheme"
          "chrome-extension-scheme"
