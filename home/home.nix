@@ -6,6 +6,8 @@
   
   imports = [
     ./shell/zsh/default.nix
+    ./shell/zoxide/default.nix
+    ./shell/fzf/default.nix
     ./browsers/firefox/default.nix
     ./desktop/ags/default.nix
     ./desktop/hyprland/default.nix
