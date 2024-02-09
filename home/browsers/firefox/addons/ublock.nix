@@ -19,6 +19,7 @@
 	"imgur.com * 3p-script allow"
 	"chat.openai.com * 3p-script allow"
 	"youtube.com * 3p-script allow"
+	"scratch.mit.edu * 3p-script allow"
       ];
       hostnameSwitchesString = "no-large-media: behind-the-scene false\nno-csp-reports: * true";
     };
