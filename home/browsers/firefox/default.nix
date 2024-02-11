@@ -1,109 +1,6 @@
 { config, pkgs, inputs, lib, outputs, ... }:
   let
     engines = {
-      "GitHub" = {
-        url = [{
-          template = "https://github.com/search";
-          params = [
-            { name = "q"; value = "{searchTerms}"; }
-          ];
-        }];
-        icon = "${pkgs.fetchurl {
-          url = "https://github.githubassets.com/favicons/favicon.svg";
-          sha256 = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
-        }}";
-        definedAliases = [ "@gh" ];
-      };
-
-      "Reddit" = {
-        urls = [{
-          template = "https://www.reddit.com/search";
-          params = [
-            { name = "q"; value = "{searchTerms}"; }
-          ];
-        }];
-        icon = "${pkgs.fetchurl {
-          url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
-          sha256 = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
-        }}";
-        definedAliases = [ "@r" ];
-      };
-
-      "Youtube" = {
-        urls = [{
-          template = "https://www.youtube.com/results";
-          params = [{ name = "search_query"; value = "{searchTerms}"; }];
-        }];
-        icon = "${pkgs.fetchurl {
-          url = "www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
-          sha256 = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
-        }}";
-        definedAliases = [ "@y" ];
-      };
-
-      "Nix Packages" = {
-        urls = [{
-          template = "https://search.nixos.org/packages";
-          params = [
-            { name = "channel"; value = "unstable"; }
-            { name = "query"; value = "{searchTerms}"; }
-          ];
-        }];
-        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@npu" ];
-      };
-
-      "NixOS Wiki" = {
-        urls = [{
-          template = "https://nixos.wiki/index.php";
-          params = [{ name = "search"; value = "{searchTerms}"; }];
-        }];
-        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@nw" ];
-      };
-
-      "Nixpkgs Issues" = {
-        urls = [{
-          template = "https://github.com/NixOS/nixpkgs/issues";
-          params = [
-            { name = "q"; value = "{searchTerms}"; }
-          ];
-        }];
-        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@ni" ];
-      };
-
-
-      "Mojeek" = {
-        urls = [{
-	  template = "https://www.mojeek.com/search";
-	  params = [
-	    { name = "q"; value = "{searchTerms}"; }
-	    { name = "qss"; value = "Bing,Brave,DuckDuckGo,Ecosia,Google,Qwant,Startpage,Swisscows"; }
-	    { name = "theme"; value = "dark"; }
-          ];
-	}];
-	icon = "${pkgs.fetchurl {
-	  url = "https://www.mojeek.com/favicon.ico";
-	  sha256 = "sha256-KaqltNCw9h+QkCx9C3MTJt6Z7pMbtVmYys+oG6YLv5M=";
-	}}";
-	definedAliases = [ "@m" ];
-      };
-
-      "Urban Dictionary" = {
-        urls = [{
-          template = "https://www.urbandictionary.com/define.php";
-          params = [
-            { name = "term"; value = "{searchTerms}"; }
-          ];
-        }];
-        icon = "${pkgs.fetchurl {
-          url = "https://www.urbandictionary.com/favicon.ico";
-          sha256 = "sha256-JVdGocDJfuRr1d/An9Ba1jHiKlWF+tf0+i9Yz4OdIiA=";
-        }}";
-        definedAliases = [ "@ub" ];
-      };
-
       "Brave" = {
         urls = [{
           template = "https://search.brave.com/search";
@@ -168,6 +65,13 @@
       @import "${inputs.lepton}/chrome/userContent.css";
       @import "${inputs.firefox-mod-blur}/userContent.css";
     '';
+    search = {
+      force = true;
+      default = "Brave";
+      privateDefault = "Brave";
+      order = [ "Brave" "DuckDuckGo" ];
+      inherit engines;
+    };
   in {
   imports = [
     ./addons/ublock.nix
@@ -180,13 +84,7 @@
         id = 0;
         name = "async";
         isDefault = true;
-        search = {
-          force = true;
-          default = "Brave";
-          privateDefault = "Brave";
-          order = [ "DuckDuckGo" "Brave" "GitHub" "Reddit" "Youtube" "Nix Packages" "NixOS Wiki" "Nixpkgs Issues" "Mojeek" "Urban Dictionary" ];
-          inherit engines;
-        };
+        inherit search;
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
           (builtins.readFile "${inputs.lepton}/user.js")
@@ -257,13 +155,7 @@
         id = 1;
         name = "anon";
         isDefault = false;
-        search = {
-          force = true;
-          default = "Brave";
-          privateDefault = "Brave";
-          order = [ "DuckDuckGo" "Brave" "GitHub" "Reddit" "Youtube" "Nix Packages" "NixOS Wiki" "Nixpkgs Issues" "Mojeek" "Urban Dictionary" ];
-          inherit engines;
-        };
+        inherit search;
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
           (builtins.readFile "${inputs.lepton}/user.js")
@@ -334,13 +226,7 @@
         id = 2;
         name = "arkenfox";
         isDefault = false;
-        search = {
-          force = true;
-          default = "Brave";
-          privateDefault = "Brave";
-          order = [ "DuckDuckGo" "Brave" "GitHub" "Reddit" "Youtube" "Nix Packages" "NixOS Wiki" "Nixpkgs Issues" "Mojeek" "Urban Dictionary" ];
-          inherit engines;
-        };
+        inherit search;
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.arkenfox}/user.js")
           (builtins.readFile "${inputs.lepton}/user.js")
