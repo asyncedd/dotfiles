@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -19,5 +19,7 @@
     grim
     slurp
     swappy
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprland-contrib.packages.${pkgs.system}.hdrop
   ];
 }
