@@ -77,7 +77,11 @@
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs outputs; };
+        specialArgs = {
+          inherit inputs outputs;
+          inherit system;
+          inherit editor;
+        };
         modules = [
           ./nixos/configuration.nix
           ./hosts/nixos/default.nix
@@ -96,8 +100,13 @@
     homeConfigurations = {
       async = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs outputs; };
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          inherit system;
+          inherit editor;
+        };
         modules = [
+          inputs.hyprland.homeManagerModules.default
           ./home/home.nix
         ];
       };
