@@ -115,6 +115,35 @@
       user_pref("toolkit.scrollbox.horizontalScrollDistance",                    5);//NSS      [5]
       user_pref("toolkit.scrollbox.verticalScrollDistance",                      3);//NSS      [3]
     '';
+    disableSafeBrowsing = ''
+      // Get the fuck out of here, safebrowsing
+      user_pref("browser.safebrowsing.malware.enabled", false);
+      user_pref("browser.safebrowsing.phishing.enabled", false);
+      user_pref("browser.safebrowsing.downloads.enabled", false);
+
+      user_pref("browser.safebrowsing.downloads.remote.url", "");
+      user_pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
+      user_pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
+      user_pref("browser.safebrowsing.allowOverride", false);
+    '';
+    disableGeoLocation = ''
+      user_pref("geo.enabled", false);
+      
+      // Use Mozilla geolocation service instead of Google if permission is granted [FF74+]
+      user_pref("geo.provider.network.url", "");
+      // user_pref("geo.provider.network.logging.enabled", true); // [HIDDEN PREF]
+      // -------------------------------------
+      // Disable using the OS's geolocation service
+      user_pref("geo.provider.ms-windows-location", false); // [WINDOWS]
+      user_pref("geo.provider.use_corelocation", false); // [MAC]
+      user_pref("geo.provider.use_gpsd", false); // [LINUX] [HIDDEN PREF]
+      user_pref("geo.provider.geoclue.always_high_accuracy", false); // [LINUX]
+      user_pref("geo.provider.use_geoclue", false); // [FF102+] [LINUX]
+      // -------------------------------------
+      // Disable region updates
+      user_pref("browser.region.network.url", ""); // [FF78+] Defense-in-depth
+      user_pref("browser.region.update.enabled", false); // [FF79+]
+    '';
     search = {
       force = true;
       default = "Brave";
@@ -140,6 +169,8 @@
           (builtins.readFile "${inputs.lepton}/user.js")
           (builtins.readFile "${inputs.edge-frfox}/user.js")
           smoothScrolling
+          disableSafeBrowsing
+          disableGeoLocation
           ''
             // Better fonts
             user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
@@ -170,6 +201,8 @@
           (builtins.readFile "${inputs.lepton}/user.js")
           (builtins.readFile "${inputs.edge-frfox}/user.js")
           smoothScrolling
+          disableSafeBrowsing
+          disableGeoLocation
           ''
             // Better fonts
             user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
@@ -198,10 +231,10 @@
         inherit search;
 	extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.arkenfox}/user.js")
-          (builtins.readFile "${inputs.lepton}/user.js")
-          (builtins.readFile "${inputs.edge-frfox}/user.js")
+          ''
+            user_pref("browser.formfill.enable", true);
+          ''
         ];
-        inherit userChrome userContent;
       };
     };
   };
