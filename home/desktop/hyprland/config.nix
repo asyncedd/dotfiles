@@ -1,4 +1,4 @@
-{ config, ... }:
+{ inputs, pkgs, config, ... }:
 
 {
   imports = [
@@ -51,6 +51,15 @@
         rounding = 10;
         blur = {
           enabled = true;
+          noise = "0.1";
+          contrast = "1.1";
+          brightness = "1.2";
+          size = 6;
+          passes = 3;
+          xray = true;
+          special = true;
+          ignore_opacity = true;
+          new_optimizations = true;
         };
         drop_shadow = false;
 
