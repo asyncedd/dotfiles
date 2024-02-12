@@ -62,6 +62,7 @@
          "fanboy-cookiemonster"
          "ublock-cookies-easylist"
          "easylist"
+         "JPN-1"
          "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
          "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
          "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
