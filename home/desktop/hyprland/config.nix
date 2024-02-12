@@ -34,7 +34,11 @@
       general = {
         gaps_in = 5;
         gaps_out = 20;
-        border_size = 0;
+        border_size = 2;
+
+        # "col.active_border" = "rgba(7ebae464)";
+        "col.active_border" = "rgba(7ebae4ff)";
+        "col.inactive_border" = "rgba(7ebae40A)";
 
         resize_on_border = true;
 
