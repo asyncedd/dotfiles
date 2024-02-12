@@ -12,6 +12,7 @@
       ];
       exec-once = [
         "fcitx5 -r & nm-applet --indicator"
+        "ags"
       ];
       monitor = ",highres,0x0,1,bitdepth,10";
       input = {

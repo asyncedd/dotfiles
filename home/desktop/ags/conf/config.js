@@ -12,15 +12,41 @@ import { exec, execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 // so to make a reuseable widget, make it a function
 // then you can simply instantiate one by calling it
 
+// const Workspaces = () => Widget.Box({
+//     class_name: 'workspaces',
+//     children: Hyprland.bind('workspaces').transform(ws => {
+//         return ws.map(({ id }) => Widget.Button({
+//             on_clicked: () => Hyprland.sendMessage(`dispatch workspace ${id}`),
+//             child: Widget.Label(`${id}`),
+//             class_name: Hyprland.active.workspace.bind('id')
+//                 .transform(i => `${i === id ? 'focused' : ''}`),
+//         }));
+//     }),
+// });
+
 const Workspaces = () => Widget.Box({
-    class_name: 'workspaces',
-    children: Hyprland.bind('workspaces').transform(ws => {
-        return ws.map(({ id }) => Widget.Button({
-            on_clicked: () => Hyprland.sendMessage(`dispatch workspace ${id}`),
-            child: Widget.Label(`${id}`),
-            class_name: Hyprland.active.workspace.bind('id')
-                .transform(i => `${i === id ? 'focused' : ''}`),
-        }));
+	class_name: 'workspaces',
+    child: Widget.Box({
+        children: [Widget.EventBox({
+            onScrollUp: () => execAsync('hyprctl dispatch workspace +1'),
+            onScrollDown: () => execAsync('hyprctl dispatch workspace -1'),
+            className: 'eventbox',
+            child: Widget.Box({
+                children: Array.from({ length: 10 }, (_, i) => i + 1).map(i => Widget.Button({
+                    onClicked: () => execAsync(`hyprctl dispatch workspace ${i}`).catch(print),
+                    child: Widget.Label({
+                        label: `${i}`,
+                        className: 'indicator',
+                        valign: 'center',
+                    }),
+                    connections: [[Hyprland, btn => {
+                        const occupied = Hyprland.getWorkspace(i)?.windows > 0;
+                        btn.toggleClassName('active', Hyprland.active.workspace.id === i);
+                        btn.toggleClassName('occupied', occupied);
+                    }]],
+                })),
+            }),
+        })],
     }),
 });
 
@@ -103,30 +129,19 @@ const Volume = () => Widget.Box({
     ],
 });
 
-// const BatteryLabel = () => Widget.Box({
-//     class_name: 'battery',
-//     visible: Battery.bind('available'),
-//     children: [
-// 	Widget.Icon({
-//             icon: Battery.bind('percent').transform(p => {
-//                 return `battery-level-${Math.floor(p / 10) * 10}-symbolic`;
-//             }),
-//         }),
-//         Widget.Label({
-//             label: Battery.bind('percent').transform(p => {
-//                 return p;
-//             })
-//         })
-//     ]
-// });
-
 const BatteryLabel = () => Widget.Box({
     class_name: 'battery',
     visible: Battery.bind('available'),
     children: [
         Widget.Icon({
             icon: Battery.bind('percent').transform(p => {
-                return `battery-${(Math.floor(p / 10) * 10 < 100 ? (Math.floor(p / 10) * 10).toString().padStart(3, '0') : Math.floor(p / 10) * 10)}`;
+                return `battery-level-${Math.floor(p / 10) * 10}-symbolic`;
+            }),
+        }),
+        Widget.ProgressBar({
+            vpack: 'center',
+            fraction: Battery.bind('percent').transform(p => {
+                return p > 0 ? p / 100 : 0;
             }),
         }),
     ],
