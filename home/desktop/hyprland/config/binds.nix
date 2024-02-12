@@ -26,7 +26,7 @@
         "$mod SHIFT, S, movetoworkspace, special:magic"
 
         "$mod, N, exec, grim -g \"$(slurp)\" - | swappy -f -"
-        "$mod, L, exec, swaylock --screenshots --clock --grace 2 --fade-in 1 --effect-blur 7x5 --effect-vignette 0.5:0.5"
+        "$mod, O, exec, swaylock --screenshots --clock --grace 2 --fade-in 1 --effect-blur 7x5 --effect-vignette 0.5:0.5"
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
