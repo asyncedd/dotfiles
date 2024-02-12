@@ -14,12 +14,23 @@
 	"* * 3p-frame block"
 	"* * 3p-script block"
 
-	"github.com * 3p-script allow"
-	"reddit.com * 3p-script allow"
-	"imgur.com * 3p-script allow"
-	"chat.openai.com * 3p-script allow"
-	"youtube.com * 3p-script allow"
-	"scratch.mit.edu * 3p-script allow"
+        "duolingo.com * 3p-frame noop"
+        "duolingo.com * 3p-script noop"
+        "github.com * 3p-frame noop"
+        "github.com * 3p-script noop"
+        "imgur.com * 3p-script noop"
+        "scratch.mit.edu * 3p-script noop"
+        "chat.openai.com * 3p-script noop"
+        "chat.openai.com gravatar.com * noop"
+        "quora.com * 3p-script noop"
+        "reddit.com * 3p-frame noop"
+        "reddit.com * 3p-script noop"
+        "youtube.com * 3p-frame noop"
+        "youtube.com * 3p-script noop"
+
+        "internals.rust-lang.org * 3p-script noop"
+        "users.rust-lang.org * 3p-script noop"
+        "community.brave.com * 3p-script noop"
       ];
       hostnameSwitchesString = "no-large-media: behind-the-scene false\nno-csp-reports: * true";
     };
