@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, inputs, ... }:
+{ config, pkgs, home-manager, inputs, editor, ... }:
 
 {
   home.username = "async";
@@ -20,7 +20,7 @@
   home.stateVersion = "23.11";
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = editor;
   };
 
   programs.home-manager.enable = true;

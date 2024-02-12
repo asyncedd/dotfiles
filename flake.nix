@@ -69,6 +69,8 @@
       pkgs = nixpkgs.legacyPackages.${system};
       unstable = unstable.legacyPackages.${system};
       nixos-hardware = inputs.nixos-hardware;
+
+      editor = "nvim";
     in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
     overlays = import ./overlays/default.nix { inherit inputs outputs; };
