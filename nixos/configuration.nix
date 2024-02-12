@@ -42,19 +42,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-
   programs.dconf.enable = true;
 
   zramSwap.enable = true;
 
-  hardware.cpu.intel.updateMicrocode = true;
-  boot = {
-    kernelModules = ["kvm-intel"];
-    kernelParams = ["i915.fastboot=1" "enable_gvt=1" "iommu=force"];
-  };
-  # enable the i915 kernel module
-  boot.initrd.kernelModules = ["i915"];
   # better performance than the actual Intel driver
   services.xserver.videoDrivers = ["modesetting"];
   hardware = {
@@ -152,6 +143,10 @@
     rustfmt
     rustPackages.clippy
     tor-browser
+    brave
+    mullvad-browser
+    vscodium
+    hyperfine
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
