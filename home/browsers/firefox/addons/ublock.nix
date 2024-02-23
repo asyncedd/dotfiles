@@ -49,7 +49,7 @@
       [ "ignoreGeneticCosmeticFilters" "true" ]
       [ "popupPanelSections" "31" ]
     ];
-    toAdd = {
+    toOverwrite = {
       filterLists = [
          "user-filters"
          "ublock-filters"
