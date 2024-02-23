@@ -21,7 +21,7 @@
         "imgur.com * 3p-script noop"
         "scratch.mit.edu * 3p-script noop"
         "chat.openai.com * 3p-script noop"
-        "chat.openai.com gravatar.com * noop"
+        "chat.openai.com gravatar.com * allow"
         "quora.com * 3p-script noop"
         "reddit.com * 3p-frame noop"
         "reddit.com * 3p-script noop"
