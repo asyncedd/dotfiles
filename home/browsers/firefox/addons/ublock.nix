@@ -34,7 +34,10 @@
         "* challenges.cloudflare.com 3p-script noop"
         "* challenges.cloudflare.com 3p-frame noop"
       ];
-      hostnameSwitchesString = "no-large-media: behind-the-scene false\nno-csp-reports: * true";
+      hostnameSwitchesString = lib.concatMapStrings (x: x + "\n") [
+        "no-large-media: behind-the-scene false"
+        "no-csp-reports: * true"
+      ];
     };
     advancedSettings = [
       [ "cnameMaxTTL" "720" ]
