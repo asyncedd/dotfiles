@@ -31,6 +31,7 @@
         "internals.rust-lang.org * 3p-script noop"
         "users.rust-lang.org * 3p-script noop"
         "community.brave.com * 3p-script noop"
+
         "* challenges.cloudflare.com 3p-script noop"
         "* challenges.cloudflare.com 3p-frame noop"
       ];
