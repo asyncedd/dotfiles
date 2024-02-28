@@ -1,12 +1,9 @@
-{ ... }:
-
-{
+{...}: {
   wayland.windowManager.hyprland.settings = {
-    bindm = 
-      [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+    bindm = [
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
+    ];
     bind =
       [
         "$mod, Q, killactive"
@@ -22,6 +19,11 @@
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
 
+        "$mod, h, movefocus, l"
+        "$mod, l, movefocus, r"
+        "$mod, k, movefocus, u"
+        "$mod, j, movefocus, d"
+
         "$mod, S, togglespecialworkspace, magic"
         "$mod SHIFT, S, movetoworkspace, special:magic"
 
@@ -30,11 +32,6 @@
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
-
-        "$mod, h, movefocus, l"
-        "$mod, l, movefocus, r"
-        "$mod, k, movefocus, u"
-        "$mod, j, movefocus, d"
 
         "$mod SHIFT, h, movewindow, l"
         "$mod SHIFT, l, movewindow, r"
@@ -47,8 +44,7 @@
         "$mod, G, togglegroup"
         "$mod, TAB, changegroupactive"
       ]
-      ++ 
-      (
+      ++ (
         # workspaces
         # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
         builtins.concatLists (builtins.genList (
@@ -62,8 +58,8 @@
               "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
               "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
             ]
-            )
-        10)
+          )
+          10)
       );
   };
 }
