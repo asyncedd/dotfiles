@@ -15,7 +15,7 @@
         "$mod, P, pseudo"
         "$mod, F, exec, firefox"
         "$mod, V, togglefloating,"
-        "$mod, M, exit"
+        "$mod, delete, exit"
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
