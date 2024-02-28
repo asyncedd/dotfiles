@@ -1,13 +1,15 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     ripgrep
     lazygit
     feh
     keepassxc
     obsidian
-    neovim
+    # neovim
     mpv
     gnome.gnome-tweaks
     btop
@@ -15,9 +17,10 @@
     yazi
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "obsidian"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "obsidian"
+    ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"

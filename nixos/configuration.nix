@@ -1,21 +1,20 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ 
+{
   config,
   pkgs,
   inputs,
   outputs,
-  ... 
-}:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./fonts.nix
-    ];
+  unstable,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./fonts.nix
+    ../modules/languages/default.nix
+  ];
 
   nixpkgs = {
     # You can add overlays here
@@ -33,10 +32,9 @@
     };
   };
 
-
   hardware.uinput.enable = true;
-  users.groups.uinput.members = [ "async" ];
-  users.groups.input.members = [ "async" ];
+  users.groups.uinput.members = ["async"];
+  users.groups.input.members = ["async"];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -53,7 +51,7 @@
       enable = true;
       extraPackages = with pkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
         intel-compute-runtime
         vaapiVdpau
         libvdpau-va-gl
@@ -62,9 +60,8 @@
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = 
-  with pkgs; [
-    pkgs.xdg-desktop-portal-gtk 
+  xdg.portal.extraPortals = with pkgs; [
+    pkgs.xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
   ];
 
@@ -84,12 +81,12 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.inputMethod = {
-   enabled = "fcitx5";
-   # fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
-   fcitx5.addons = with pkgs; [
-     fcitx5-mozc
-     fcitx5-gtk
-   ];
+    enabled = "fcitx5";
+    # fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
   };
 
   i18n.extraLocaleSettings = {
@@ -104,7 +101,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -112,7 +108,7 @@
   users.users.async = {
     isNormalUser = true;
     description = "async";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox
       kate
@@ -130,23 +126,18 @@
     ffmpeg
     zip
     unzip
-    gcc
-    clang
     zig
     nodejs_21
     sqlite
-    sqlitecpp
-    luajitPackages.sqlite
-    kdenlive
-    rustc
-    cargo
-    rustfmt
-    rustPackages.clippy
     tor-browser
     brave
     mullvad-browser
     vscodium
     hyperfine
+
+    bash
+
+    p7zip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -157,17 +148,7 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  services.printing.enable = true;
+  services.printing.enable = false;
 
   nixpkgs.config.packageOverrides = pkgs: {
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
@@ -179,4 +160,11 @@
   security.pam.services.swaylock = {};
   security.pam.services.gtklock = {};
 
+  programs.nix-ld.enable = true;
+
+  environment.variables = {
+    sqlite_nix_path = "${pkgs.sqlite.out}";
+  };
+
+  services.upower.enable = true;
 }

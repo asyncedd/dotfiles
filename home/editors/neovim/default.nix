@@ -1,10 +1,6 @@
-{
-  self,
-  inputs,
-  pkgs,
-  ...
-}: {
-  programs.neovim = {enable = true;};
-
-  home.file = {".config/nvim/".source = "${self.packages.${pkgs.system}.kodo}";};
+{pkgs, ...}: {
+  programs.neovim = {
+    package = pkgs.neovim-nightly;
+    enable = true;
+  };
 }

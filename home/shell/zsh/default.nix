@@ -23,6 +23,8 @@
       expireDuplicatesFirst = true;
     };
     initExtra = ''
+      compinit
+
       source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
 
@@ -32,6 +34,9 @@
       bindkey '^[[A' history-substring-search-up
       bindkey '^[OB' history-substring-search-down
       bindkey '^[[B' history-substring-search-down
+
+      path+=('/home/async/.cargo/bin')
+      export PATH
 
       zstyle ':completion:*' menu select
 
@@ -50,7 +55,6 @@
       setopt hist_ignore_space
       setopt hist_verify
       setopt inc_append_history
-      setopt share_history
 
       alias ls="eza -lo --hyperlink --git-repos -TL 1 --tree --icons"
       alias la="eza -lao --hyperlink --git-repos -TL 1 --tree --icons"

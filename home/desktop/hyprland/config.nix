@@ -1,6 +1,4 @@
-{ inputs, pkgs, config, ... }:
-
-{
+{...}: {
   imports = [
     ./config
   ];
@@ -19,7 +17,7 @@
         kb_layout = "us";
         kb_variant = "";
         kb_model = "";
-        kb_options = "escape:nocaps";
+        kb_options = "";
         kb_rules = "";
 
         follow_mouse = "1";
@@ -33,11 +31,11 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = 20;
-        border_size = 2;
+        gaps_out = 5;
+        border_size = 3;
 
         # "col.active_border" = "rgba(7ebae464)";
-        "col.active_border" = "rgba(7ebae4ff)";
+        "col.active_border" = "rgba(7ebae4ff) rgba(5277c3ff) 45deg";
         "col.inactive_border" = "rgba(7ebae40A)";
 
         resize_on_border = true;
@@ -57,13 +55,16 @@
           size = 6;
           passes = 3;
           xray = true;
-          special = true;
           ignore_opacity = true;
           new_optimizations = true;
         };
         drop_shadow = false;
 
         dim_inactive = true;
+      };
+
+      gestures = {
+        workspace_swipe = true;
       };
 
       animation = {
@@ -88,9 +89,9 @@
           # "fade, 1, 10, default"
           # "workspaces, 1, 5, wind"
 
-          "windowsIn, 1, 1.7, easeOutCubic, slide" # window open
-          "windowsOut, 1, 1.7, easeOutCubic, slide" # window close
-          "windowsMove, 1, 2.5, easeinoutsine, slide" # everything in between, moving, dragging, resizing
+          "windowsIn, 1, 3, easeOutCubic, slide" # window open
+          "windowsOut, 1, 3, easeOutCubic, slide" # window close
+          "windowsMove, 1, 3.5, easeinoutsine, slide" # everything in between, moving, dragging, resizing
 
           # fading
           "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
@@ -99,7 +100,8 @@
           "fadeShadow, 1, 5, easeOutCirc" # fade on changing activewindow for shadows
           "fadeDim, 1, 6, fluent_decel" # the easing of the dimming of inactive windows
           "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
-          "workspaces, 1, 2, fluent_decel, slidefade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+          "borderangle, 1, 60, easeOutCirc, loop" # for animating the border's color switch speed
+          "workspaces, 1, 3, fluent_decel, slidefade" # styles: slide, slidevert, fade, slidefade, slidefadevert
           "specialWorkspace, 1, 3, fluent_decel, slidevert"
         ];
       };
@@ -113,18 +115,18 @@
     extraConfig = ''
       # will switch to a submap called resize
       bind=$mod,R,submap,resize
-      
+
       # will start a submap called "resize"
       submap=resize
-      
+
       # sets repeatable binds for resizing the active window
       binde = , l, resizeactive, 10 0
       binde = , h, resizeactive, -10 0
       binde = , k, resizeactive, 0 -10
-      binde = , j, resizeactive, 0 10 
+      binde = , j, resizeactive, 0 10
       # use reset to go back to the global submap
-      bind=,escape,submap,reset 
-      
+      bind=,escape,submap,reset
+
       # will reset the submap, meaning end the current one and return to the global one
       submap=reset
     '';

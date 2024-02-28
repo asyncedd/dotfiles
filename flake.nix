@@ -19,7 +19,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.11";
-    unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -42,16 +42,20 @@
       url = "github:MrOtherGuy/firefox-csshacks";
       flake = false;
     };
-    lepton = { 
+    lepton = {
       url = "github:black7375/Firefox-UI-Fix";
       flake = false;
     };
-    edge-frfox = { 
+    edge-frfox = {
       url = "github:bmFtZQ/edge-frfox";
       flake = false;
     };
     firefox-mod-blur = {
       url = "github:datguypiko/Firefox-Mod-Blur";
+      flake = false;
+    };
+    arcwtf = {
+      url = "github:KiKaraage/ArcWTF";
       flake = false;
     };
     hyprland-contrib = {
@@ -60,20 +64,29 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, unstable, chaotic, home-manager, ... }@inputs: let
-      inherit (self) outputs;
-      lib = nixpkgs.lib;
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      unstable = unstable.legacyPackages.${system};
-      nixos-hardware = inputs.nixos-hardware;
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    chaotic,
+    home-manager,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    unstable = nixpkgs-unstable.legacyPackages.${system};
+    nixos-hardware = inputs.nixos-hardware;
 
-      editor = "nvim";
-    in {
+    editor = "nvim";
+  in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
-    overlays = import ./overlays/default.nix { inherit inputs outputs; };
+    overlays = import ./overlays/default.nix {inherit inputs outputs;};
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
@@ -81,6 +94,7 @@
           inherit inputs outputs;
           inherit system;
           inherit editor;
+          inherit unstable;
         };
         modules = [
           ./nixos/configuration.nix
@@ -104,10 +118,16 @@
           inherit inputs outputs;
           inherit system;
           inherit editor;
+          inherit unstable;
         };
         modules = [
           inputs.hyprland.homeManagerModules.default
           ./home/home.nix
+          {
+            nixpkgs.overlays = [
+              inputs.neovim-nightly-overlay.overlay
+            ];
+          }
         ];
       };
     };
