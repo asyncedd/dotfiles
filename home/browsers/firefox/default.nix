@@ -1,9 +1,8 @@
 {
-  config,
   pkgs,
   inputs,
   lib,
-  outputs,
+  unstable,
   ...
 }: let
   engines = {
@@ -34,19 +33,19 @@
     "eBay".metaData.hidden = true;
   };
   userChrome = ''
-    @import "${inputs.edge-frfox}/chrome/userChrome.css";
+    /* @import "${inputs.edge-frfox}/chrome/userChrome.css";*/
     @import "${inputs.arcwtf}/userChrome.css";
   '';
   smoothScrolling = ''
-    general.smoothScroll.mouseWheel.durationMaxMS = 100
-    general.smoothScroll.mouseWheel.durationMinMS = 100
-    general.smoothScroll.pages.durationMaxMS = 100
-    general.smoothScroll.pages.durationMinMS = 100
-    general.smoothScroll.pixels.durationMaxMS = 100
-    general.smoothScroll.pixels.durationMinMS = 100
-    general.smoothScroll.scrollbars.durationMaxMS = 100
-    general.smoothScroll.scrollbars.durationMinMS = 100
-    general.smoothScroll.stopDecelerationWeighting = 1
+    user_pref("general.smoothScroll.mouseWheel.durationMaxMS", 100);
+    user_pref("general.smoothScroll.mouseWheel.durationMinMS", 100);
+    user_pref("general.smoothScroll.pages.durationMaxMS", 100);
+    user_pref("general.smoothScroll.pages.durationMinMS", 100);
+    user_pref("general.smoothScroll.pixels.durationMaxMS", 100);
+    user_pref("general.smoothScroll.pixels.durationMinMS", 100);
+    user_pref("general.smoothScroll.scrollbars.durationMaxMS", 100);
+    user_pref("general.smoothScroll.scrollbars.durationMinMS", 100);
+    user_pref("general.smoothScroll.stopDecelerationWeighting", 1);
   '';
   disableGeoLocation = ''
     user_pref("geo.enabled", false);
@@ -77,9 +76,6 @@
     user_pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
     user_pref("browser.safebrowsing.allowOverride", false);
   '';
-  userChromeUserJS = ''
-    user_pref("uc.tweak.rounded-corners", true);
-  '';
   search = {
     force = true;
     default = "Brave";
@@ -102,19 +98,11 @@ in {
         inherit search;
         extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
-          (builtins.readFile "${inputs.edge-frfox}/user.js")
+          # (builtins.readFile "${inputs.edge-frfox}/user.js")
           smoothScrolling
           disableSafeBrowsing
           disableGeoLocation
           ''
-             // Better fonts
-             user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
-             user_pref("gfx.font_rendering.cleartype_params.enhanced_contrast", 50);
-             user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "");
-             user_pref("gfx.font_rendering.cleartype_params.pixel_structure", 1);
-             user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
-             user_pref("gfx.webrender.quality.force-subpixel-aa-where-possible", true);
-
             user_pref("browser.startup.page", 3); // 0102
             // user_pref("browser.privatebrowsing.autostart", false); // 0110 required if you had it set as true
             // user_pref("browser.sessionstore.privacy_level", 0); // 1003 optional to restore cookies/formdata
@@ -139,47 +127,6 @@ in {
           disableSafeBrowsing
           disableGeoLocation
           ''
-             // Better fonts
-             user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
-             user_pref("gfx.font_rendering.cleartype_params.enhanced_contrast", 50);
-             user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "");
-             user_pref("gfx.font_rendering.cleartype_params.pixel_structure", 1);
-             user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
-             user_pref("gfx.webrender.quality.force-subpixel-aa-where-possible", true);
-
-            user_pref("browser.startup.page", 3); // 0102
-            // user_pref("browser.privatebrowsing.autostart", false); // 0110 required if you had it set as true
-            // user_pref("browser.sessionstore.privacy_level", 0); // 1003 optional to restore cookies/formdata
-            user_pref("privacy.clearOnShutdown.history", false); // 2811
-            // user_pref("privacy.cpd.history", false); // 2820 optional to match when you use Ctrl-Shift-Del
-
-            user_pref("network.trr.mode", 3);
-            user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
-
-          ''
-        ];
-        inherit userChrome;
-      };
-      profiles.minecraft = {
-        id = 2;
-        name = "minecraft";
-        isDefault = false;
-        inherit search;
-        extraConfig = lib.strings.concatStrings [
-          (builtins.readFile "${inputs.betterfox}/user.js")
-          (builtins.readFile "${inputs.edge-frfox}/user.js")
-          smoothScrolling
-          disableSafeBrowsing
-          disableGeoLocation
-          ''
-             // Better fonts
-             user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
-             user_pref("gfx.font_rendering.cleartype_params.enhanced_contrast", 50);
-             user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "");
-             user_pref("gfx.font_rendering.cleartype_params.pixel_structure", 1);
-             user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
-             user_pref("gfx.webrender.quality.force-subpixel-aa-where-possible", true);
-
             user_pref("browser.startup.page", 3); // 0102
             // user_pref("browser.privatebrowsing.autostart", false); // 0110 required if you had it set as true
             // user_pref("browser.sessionstore.privacy_level", 0); // 1003 optional to restore cookies/formdata

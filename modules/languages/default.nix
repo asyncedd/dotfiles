@@ -8,5 +8,6 @@
     ./toml.nix
     ./nix.nix
     ./java.nix
+    ./rust.nix
   ];
 }

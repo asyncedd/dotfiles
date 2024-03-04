@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
       noto-fonts
@@ -8,7 +6,6 @@
       unifont
       noto-fonts-cjk-sans
       maple-mono-autohint
-      noto-fonts-emoji
       nerdfonts
       freetype
       lexend
@@ -21,10 +18,10 @@
       hinting.enable = true;
       hinting.autohint = true;
       defaultFonts = {
-        serif = [ "Lexend" ];
-        sansSerif = [ "Lexend" ];
-        monospace = [ "MapleMono" ];
-        emoji = [ "Twemoji" ];
+        serif = ["Lexend"];
+        sansSerif = ["Lexend"];
+        monospace = ["MapleMono"];
+        emoji = ["Twemoji Color Emoji"];
       };
       localConf = ''
         <?xml version="1.0"?>
@@ -54,5 +51,4 @@
       '';
     };
   };
-
 }

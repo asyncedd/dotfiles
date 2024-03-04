@@ -1,7 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     neofetch
     eza
@@ -43,7 +45,7 @@
       unsetopt menu_complete
       unsetopt flowcontrol
       unsetopt BEEP
-      
+
       setopt prompt_subst
       setopt always_to_end
       setopt append_history
