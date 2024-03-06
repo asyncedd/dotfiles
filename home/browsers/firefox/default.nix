@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   lib,
-  unstable,
   ...
 }: let
   engines = {
@@ -33,8 +32,10 @@
     "eBay".metaData.hidden = true;
   };
   userChrome = ''
-    /* @import "${inputs.edge-frfox}/chrome/userChrome.css";*/
     @import "${inputs.arcwtf}/userChrome.css";
+  '';
+  userContent = ''
+    @import "${inputs.arcwtf}/userContent.css";
   '';
   smoothScrolling = ''
     user_pref("general.smoothScroll.mouseWheel.durationMaxMS", 100);
@@ -98,22 +99,24 @@ in {
         inherit search;
         extraConfig = lib.strings.concatStrings [
           (builtins.readFile "${inputs.betterfox}/user.js")
-          # (builtins.readFile "${inputs.edge-frfox}/user.js")
-          smoothScrolling
-          disableSafeBrowsing
-          disableGeoLocation
+          # # (builtins.readFile "${inputs.edge-frfox}/user.js")
+          # smoothScrolling
+          # disableSafeBrowsing
+          # disableGeoLocation
           ''
-            user_pref("browser.startup.page", 3); // 0102
-            // user_pref("browser.privatebrowsing.autostart", false); // 0110 required if you had it set as true
-            // user_pref("browser.sessionstore.privacy_level", 0); // 1003 optional to restore cookies/formdata
-            user_pref("privacy.clearOnShutdown.history", false); // 2811
-            // user_pref("privacy.cpd.history", false); // 2820 optional to match when you use Ctrl-Shift-Del
+                  user_pref("browser.startup.page", 3); // 0102
+                  // user_pref("browser.privatebrowsing.autostart", false); // 0110 required if you had it set as true
+                  // user_pref("browser.sessionstore.privacy_level", 0); // 1003 optional to restore cookies/formdata
+                  user_pref("privacy.clearOnShutdown.history", false); // 2811
+                  // user_pref("privacy.cpd.history", false); // 2820 optional to match when you use Ctrl-Shift-Del
 
-            user_pref("network.trr.mode", 3);
-            user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
+                  user_pref("network.trr.mode", 3);
+                  user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
+
+            user_pref("svg.context-properties.content.enabled", true);
           ''
         ];
-        inherit userChrome;
+        inherit userChrome userContent;
       };
       profiles.anon = {
         id = 1;
@@ -141,7 +144,7 @@ in {
         inherit userChrome;
       };
       profiles.arkenfox = {
-        id = 3;
+        id = 2;
         name = "arkenfox";
         isDefault = false;
         inherit search;
