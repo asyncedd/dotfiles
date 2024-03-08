@@ -164,7 +164,12 @@
   security.pam.services.gtklock = {};
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = [];
+  programs.nix-ld.libraries = with pkgs; [
+    zlib
+    qt5.full
+    qtcreator
+    stdenv.cc.cc.lib
+  ];
 
   environment.variables = {
     sqlite_nix_path = "${pkgs.sqlite.out}";
