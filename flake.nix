@@ -62,6 +62,10 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
 
@@ -103,11 +107,13 @@
           ./modules/shared/audio.nix
           ./modules/shared/desktop.nix
           ./modules/shared/security
+          ./modules/languages
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-laptop-ssd
           chaotic.nixosModules.default
+          inputs.auto-cpufreq.nixosModules.default
         ];
       };
     };

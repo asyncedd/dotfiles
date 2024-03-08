@@ -2,18 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
-  inputs,
   outputs,
-  unstable,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./fonts.nix
-    ../modules/languages/default.nix
   ];
 
   nixpkgs = {
@@ -176,4 +172,16 @@
   };
 
   services.upower.enable = true;
+
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
 }
