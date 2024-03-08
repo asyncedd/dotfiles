@@ -164,6 +164,7 @@
   security.pam.services.gtklock = {};
 
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = [];
 
   environment.variables = {
     sqlite_nix_path = "${pkgs.sqlite.out}";
