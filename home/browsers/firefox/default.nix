@@ -1,29 +1,9 @@
 {
-  pkgs,
   inputs,
   lib,
   ...
 }: let
   engines = {
-    "Brave" = {
-      urls = [
-        {
-          template = "https://search.brave.com/search";
-          params = [
-            {
-              name = "q";
-              value = "{searchTerms}";
-            }
-          ];
-        }
-      ];
-      icon = "${pkgs.fetchurl {
-        url = "https://cdn.search.brave.com/serp/v2/_app/immutable/assets/brave-search-icon.rCBTNmje.svg";
-        sha256 = "sha256-Y56N3DuSdJyVQ16TV8zany5CBw75O6oPRkOq0BWyljI=";
-      }}";
-      definedAliases = ["@b"];
-    };
-
     "Wikipedia (en)".metaData.alias = "@wiki";
     "Google".metaData.hidden = true;
     "Amazon.com".metaData.hidden = true;
@@ -79,9 +59,8 @@
   '';
   search = {
     force = true;
-    default = "Brave";
-    privateDefault = "Brave";
-    order = ["Brave" "DuckDuckGo"];
+    default = "DuckDuckGo";
+    privateDefault = "DuckDuckGo";
     inherit engines;
   };
 in {
