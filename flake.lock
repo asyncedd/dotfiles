@@ -83,6 +83,26 @@
         "url": "https://flakehub.com/f/zhaofengli/attic/0.1.%2A.tar.gz"
       }
     },
+    "auto-cpufreq": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709504280,
+        "narHash": "sha256-tSSayEFZxf+rVhObbjBBCZ8nTyr/qthAuY+njR+/dSA=",
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "rev": "0354775b72e0ba619656290f07f2260904d79f4b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "type": "github"
+      }
+    },
     "betterfox": {
       "flake": false,
       "locked": {
@@ -889,6 +909,7 @@
         "ags": "ags",
         "arcwtf": "arcwtf",
         "arkenfox": "arkenfox",
+        "auto-cpufreq": "auto-cpufreq",
         "betterfox": "betterfox",
         "chaotic": "chaotic",
         "edge-frfox": "edge-frfox",
