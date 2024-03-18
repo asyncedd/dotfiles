@@ -828,6 +828,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-unsafe": {
+      "locked": {
+        "lastModified": 1710749515,
+        "narHash": "sha256-O2nGCrFm6UMLeD73t65reZeQ43KX9rBLBGQUwK85Ko8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ce2c33e0be160e07c19d6672822c7f38feb44421",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "master",
+        "type": "indirect"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1710272261,
@@ -923,6 +938,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-unsafe": "nixpkgs-unsafe",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
     },
