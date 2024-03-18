@@ -62,7 +62,7 @@
     xdg-desktop-portal-wlr
   ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "linux"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -138,8 +138,6 @@
 
     # lsp: https://www.reddit.com/r/neovim/comments/1b4bk5h/psa_new_fswatch_watchfunc_backend_available_on/
     fswatch
-
-    nvd
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
