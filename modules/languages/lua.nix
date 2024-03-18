@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-	environment.systemPackages = with pkgs; [
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
     stylua
     lua-language-server
   ];

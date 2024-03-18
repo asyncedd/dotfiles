@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable,
   lib,
   ...
 }: {
@@ -8,21 +9,12 @@
     lazygit
     feh
     keepassxc
-    obsidian
+    unstable.obsidian
     # neovim
     mpv
     gnome.gnome-tweaks
     btop
     eza
     yazi
-  ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "obsidian"
-    ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
   ];
 }

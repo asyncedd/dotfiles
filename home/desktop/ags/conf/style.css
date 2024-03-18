@@ -47,3 +47,9 @@ highlight {
 .battery {
   font-family: monospace;
 }
+
+.sys_tray button {
+  all: unset;
+  background: transparent;
+  padding: 10px;
+}

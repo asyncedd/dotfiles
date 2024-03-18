@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
+  unstable,
   outputs,
   ...
 }: {
@@ -117,7 +118,7 @@
     vim
     wget
     git
-    kitty
+    unstable.kitty
     scx
     ffmpeg
     zip
@@ -174,14 +175,6 @@
   services.upower.enable = true;
 
   services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
+
+  services.tlp.enable = false;
 }

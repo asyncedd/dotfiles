@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./config
   ];
@@ -7,6 +7,7 @@
       "$mod" = "SUPER";
       exec = [
         "hyprctl setcursor phinger-cursors 24"
+        "swww init"
       ];
       exec-once = [
         "fcitx5 -r & nm-applet --indicator"
@@ -32,11 +33,7 @@
       general = {
         gaps_in = 5;
         gaps_out = 5;
-        border_size = 3;
-
-        # "col.active_border" = "rgba(7ebae464)";
-        "col.active_border" = "rgba(7ebae4ff) rgba(5277c3ff) 45deg";
-        "col.inactive_border" = "rgba(7ebae40A)";
+        border_size = 0;
 
         resize_on_border = true;
 
@@ -49,13 +46,16 @@
         rounding = 10;
         blur = {
           enabled = true;
-          noise = "0.1";
-          contrast = "1.1";
-          brightness = "1.2";
-          size = 6;
+          noise = "0.07";
+          contrast = "0.7";
+          brightness = "1.0";
+          vibrancy = "0.6";
+          vibrancy_darkness = "0.5";
+          size = 30;
           passes = 3;
           xray = true;
-          ignore_opacity = true;
+          popups = true;
+          ignore_opacity = false;
           new_optimizations = true;
         };
         drop_shadow = false;
@@ -111,6 +111,9 @@
         vrr = true;
         vfr = true;
       };
+      layerrule = [
+        "blur,bar-0"
+      ];
     };
     extraConfig = ''
       # will switch to a submap called resize
@@ -129,6 +132,7 @@
 
       # will reset the submap, meaning end the current one and return to the global one
       submap=reset
+
     '';
   };
 }

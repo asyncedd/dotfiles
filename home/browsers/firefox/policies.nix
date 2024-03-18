@@ -45,7 +45,6 @@
         "https://addons.mozilla.org/firefox/downloads/file/4219626/refined_github-24.1.10.xpi" # Redefined Github
         "https://gitlab.com/magnolia1234/bpc-uploads/-/raw/master/bypass_paywalls_clean-latest.xpi" # Bypass Paywalls Clean
         "https://addons.mozilla.org/firefox/downloads/file/4218010/keepassxc_browser-1.8.11.xpi" # KeePassXC Browser
-        "https://addons.mozilla.org/firefox/downloads/file/4229258/enhancer_for_youtube-2.0.122.xpi" # Enhancer for Youtube
         "https://addons.mozilla.org/firefox/downloads/file/4205769/soundfixer-1.4.1.xpi" # Soundfixer
         "https://addons.mozilla.org/firefox/downloads/file/3912447/userchrome_toggle-1.2.xpi" # userchrome toggle
       ];

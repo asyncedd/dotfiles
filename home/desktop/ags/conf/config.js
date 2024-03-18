@@ -129,6 +129,7 @@ const BatteryLabel = () =>
 
 const SysTray = () =>
   Widget.Box({
+    class_name: "sys_tray",
     children: SystemTray.bind("items").transform((items) => {
       return items.map((item) =>
         Widget.Button({

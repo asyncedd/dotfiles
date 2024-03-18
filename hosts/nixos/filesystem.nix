@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   fileSystems."/".options = [
     "noatime"
     "discard"

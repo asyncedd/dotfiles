@@ -16,7 +16,7 @@
       antialias = true;
       cache32Bit = true;
       hinting.enable = true;
-      hinting.autohint = true;
+      # hinting.autohint = true;
       defaultFonts = {
         serif = ["Lexend"];
         sansSerif = ["Lexend"];

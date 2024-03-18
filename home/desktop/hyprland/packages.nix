@@ -1,6 +1,9 @@
-{ inputs, config, lib, pkgs, ... }:
-
 {
+  inputs,
+  unstable,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     fuzzel
     polkit_gnome
@@ -21,5 +24,6 @@
     swappy
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     inputs.hyprland-contrib.packages.${pkgs.system}.hdrop
+    unstable.swww
   ];
 }

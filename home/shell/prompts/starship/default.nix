@@ -13,5 +13,4 @@
   programs.zsh.initExtra = ''
     eval "$(starship init zsh)"
   '';
-
 }
