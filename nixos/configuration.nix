@@ -62,7 +62,7 @@
     xdg-desktop-portal-wlr
   ];
 
-  networking.hostName = "linux"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -176,5 +176,6 @@
 
   services.auto-cpufreq.enable = true;
 
+  services.thermald.enable = true;
   services.tlp.enable = false;
 }
