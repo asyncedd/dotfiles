@@ -134,6 +134,9 @@
               inputs.neovim-nightly-overlay.overlay
             ];
           }
+          {
+            nixpkgs.config.allowUnfreePredicate = _: true;
+          }
         ];
       };
     };

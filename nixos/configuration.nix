@@ -144,6 +144,8 @@
     # lsp: https://www.reddit.com/r/neovim/comments/1b4bk5h/psa_new_fswatch_watchfunc_backend_available_on/
     fswatch
     fd
+
+    # unstable.obsidian
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

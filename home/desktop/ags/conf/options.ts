@@ -7,7 +7,8 @@ import icons from "lib/icons"
 const options = mkOptions(OPTIONS, {
     autotheme: opt(false),
 
-    wallpaper: opt(`/home/${USER}/.background`, { persistent: true }),
+    // wallpaper: opt(`/home/${USER}/.background`, { persistent: true }),
+    wallpaper: opt(`/home/${USER}/.dotfiles/wallpapers/Kurzgesagt_Earth_rings.jpg`, { persistent: true }),
 
     theme: {
         dark: {
