@@ -5,6 +5,7 @@
   pkgs,
   unstable,
   outputs,
+  lib,
   ...
 }: {
   imports = [
@@ -26,6 +27,10 @@
     ];
     config = {
       allowUnfree = true;
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "obsidian-1.5.8"
+        ];
     };
   };
 

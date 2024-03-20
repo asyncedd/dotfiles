@@ -1,7 +1,6 @@
 {
   pkgs,
   unstable,
-  lib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -9,12 +8,14 @@
     lazygit
     feh
     keepassxc
-    unstable.obsidian
     # neovim
     mpv
     gnome.gnome-tweaks
     btop
     eza
     yazi
+    sass
+
+    unstable.obsidian
   ];
 }

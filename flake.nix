@@ -134,9 +134,6 @@
               inputs.neovim-nightly-overlay.overlay
             ];
           }
-          {
-            nixpkgs.config.allowUnfree = true;
-          }
         ];
       };
     };
