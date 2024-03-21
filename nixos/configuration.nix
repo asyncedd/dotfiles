@@ -141,6 +141,7 @@
   security = {
     polkit.enable = true;
     pam.services.ags = {};
+    pam.services.swaylock = {};
   };
 
   programs.nix-ld.enable = true;
