@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     unstable.cargo
     unstable.rustc

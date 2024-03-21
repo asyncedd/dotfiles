@@ -1,6 +1,5 @@
 {
   inputs,
-  unstable,
   pkgs,
   ...
 }: {
@@ -24,6 +23,5 @@
     swappy
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     inputs.hyprland-contrib.packages.${pkgs.system}.hdrop
-    unstable.swww
   ];
 }

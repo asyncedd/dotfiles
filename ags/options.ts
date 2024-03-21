@@ -7,8 +7,7 @@ import icons from "lib/icons"
 const options = mkOptions(OPTIONS, {
     autotheme: opt(false),
 
-    // wallpaper: opt(`/home/${USER}/.background`, { persistent: true }),
-    wallpaper: opt(`/home/${USER}/.dotfiles/wallpapers/Kurzgesagt_Earth_rings.jpg`, { persistent: true }),
+    wallpaper: opt(`/home/${USER}/.config/background`, { persistent: true }),
 
     theme: {
         dark: {
@@ -111,7 +110,7 @@ const options = mkOptions(OPTIONS, {
             low: opt(30),
         },
         workspaces: {
-            workspaces: opt(7),
+            workspaces: opt(10),
         },
         taskbar: {
             iconSize: opt(0),

@@ -1,24 +1,17 @@
-{
-  config,
-  pkgs,
-  home-manager,
-  inputs,
-  editor,
-  ...
-}: {
+{editor, ...}: {
   home.username = "async";
   home.homeDirectory = "/home/async";
 
   imports = [
-    ./shell/zsh/default.nix
-    ./shell/zoxide/default.nix
-    ./shell/fzf/default.nix
-    ./browsers/firefox/default.nix
-    ./editors/neovim/default.nix
-    ./desktop/ags/default.nix
-    ./desktop/hyprland/default.nix
-    ./shell/prompts/starship/default.nix
-    ./terminal/kitty/default.nix
+    ./shell/zsh
+    ./shell/zoxide
+    ./shell/fzf
+    ./browsers/firefox
+    ./editors/neovim
+    ./desktop/ags.nix
+    ./desktop/hyprland
+    ./shell/prompts/starship
+    ./terminal/kitty
     ./software/packages.nix
     ./software/gtk.nix
   ];

@@ -38,22 +38,6 @@
       url = "github:arkenfox/user.js";
       flake = false;
     };
-    firefox-csshacks = {
-      url = "github:MrOtherGuy/firefox-csshacks";
-      flake = false;
-    };
-    lepton = {
-      url = "github:black7375/Firefox-UI-Fix";
-      flake = false;
-    };
-    edge-frfox = {
-      url = "github:bmFtZQ/edge-frfox";
-      flake = false;
-    };
-    firefox-mod-blur = {
-      url = "github:datguypiko/Firefox-Mod-Blur";
-      flake = false;
-    };
     arcwtf = {
       url = "github:KiKaraage/ArcWTF";
       flake = false;
@@ -65,6 +49,16 @@
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    matugen = {
+      url = "github:InioX/Matugen";
+      # ref = "refs/tags/matugen-v0.10.0";
+    };
+    astal = {
+      url = "github:Aylur/Astal";
+    };
+    xdg-desktop-portal-hyprland = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
     };
 
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
@@ -83,9 +77,25 @@
     inherit (self) outputs;
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    unstable = nixpkgs-unstable.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [
+        # Add overlays your own flake exports (from overlays and pkgs dir):
+        outputs.overlays.additions
+        outputs.overlays.modifications
+        outputs.overlays.unstable-packages
+        (self: super: {
+          fcitx-engines = self.fcitx5;
+        })
+      ];
+    };
+    unstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
     nixos-hardware = inputs.nixos-hardware;
+    asztal = pkgs.callPackage ./ags {inherit inputs;};
 
     editor = "nvim";
   in {
@@ -99,6 +109,7 @@
           inherit system;
           inherit editor;
           inherit unstable;
+          inherit asztal;
         };
         modules = [
           ./nixos/configuration.nix
@@ -125,6 +136,7 @@
           inherit system;
           inherit editor;
           inherit unstable;
+          inherit asztal;
         };
         modules = [
           inputs.hyprland.homeManagerModules.default
@@ -133,9 +145,6 @@
             nixpkgs.overlays = [
               inputs.neovim-nightly-overlay.overlay
             ];
-          }
-          {
-            nixpkgs.config.allowUnfreePredicate = _: true;
           }
         ];
       };
