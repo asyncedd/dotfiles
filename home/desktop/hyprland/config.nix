@@ -167,25 +167,25 @@
           "SUPER ALT, l, resizeactive, 20 0"
           "SUPER ALT, h, resizeactive, -20 0"
         ]
-        ++ (map (i: ws (toString i) (toString i)) arr)
-        ++ (map (i: mvtows (toString i) (toString i)) arr);
-      # ++ (
-      #   # workspaces
-      #   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-      #   builtins.concatLists (builtins.genList (
-      #       x: let
-      #         ws = let
-      #           c = (x + 1) / 10;
-      #         in
-      #           builtins.toString (x + 1 - (c * 10));
-      #       in [
-      #         "$mod, ${ws}, workspace, ${toString (x + 1)}"
-      #         "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-      #         "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
-      #       ]
-      #     )
-      #     10)
-      # );
+        # ++ (map (i: ws (toString i) (toString i)) arr)
+        # ++ (map (i: mvtows (toString i) (toString i)) arr);
+        ++ (
+          # workspaces
+          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+          builtins.concatLists (builtins.genList (
+              x: let
+                ws = let
+                  c = (x + 1) / 10;
+                in
+                  builtins.toString (x + 1 - (c * 10));
+              in [
+                "$mod, ${ws}, workspace, ${toString (x + 1)}"
+                "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+                "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+              ]
+            )
+            10)
+        );
     };
     # extraConfig = ''
     #   # will switch to a submap called resize
