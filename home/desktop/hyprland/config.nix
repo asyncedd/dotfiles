@@ -114,6 +114,10 @@
       layerrule = [
         "blur,bar-0"
       ];
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
       bind = let
         binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
         ws = binding "SUPER" "workspace";

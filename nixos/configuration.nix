@@ -158,7 +158,6 @@
 
   services.auto-cpufreq.enable = true;
 
-  services.thermald.enable = true;
   services.tlp.enable = false;
 
   systemd = {
