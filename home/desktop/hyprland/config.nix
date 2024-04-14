@@ -1,7 +1,8 @@
-{pkgs, ...}: {
-  imports = [
-    ./config
-  ];
+{
+  pkgs,
+  lib,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     settings = {
       "$mod" = "SUPER";
