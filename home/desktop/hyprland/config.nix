@@ -192,24 +192,26 @@
             10)
         );
     };
-    # extraConfig = ''
-    #   # will switch to a submap called resize
-    #   bind=$mod,R,submap,resize
-    #
-    #   # will start a submap called "resize"
-    #   submap=resize
-    #
-    #   # sets repeatable binds for resizing the active window
-    #   binde = , l, resizeactive, 10 0
-    #   binde = , h, resizeactive, -10 0
-    #   binde = , k, resizeactive, 0 -10
-    #   binde = , j, resizeactive, 0 10
-    #   # use reset to go back to the global submap
-    #   bind=,escape,submap,reset
-    #
-    #   # will reset the submap, meaning end the current one and return to the global one
-    #   submap=reset
-    #
-    # '';
+    extraConfig = lib.concatMapStrings (x: x + "\n") [
+      "env = OZONE_PLATFORM,wayland"
+      "env = NIXOS_OZONE_WL,1"
+      "env = XDG_SESSION_TYPE,wayland"
+      "env = XDG_SESSION_DESKTOP,Hyprland"
+      "env = XDG_CURRENT_DESKTOP,Hyprland"
+
+      "env = GDK_BACKEND,wayland,x11"
+      "env = QT_QPA_PLATFORM,wayland;xcb"
+      "env = SDL_VIDEODRIVER,wayland"
+      "env = CLUTTER_BACKEND,wayland"
+      "env = QT_AUTO_SCREEN_SCALE_FACTOR,1"
+      "env = QT_QPA_PLATFORM,wayland;xcb"
+      "env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "env = QT_QPA_PLATFORMTHEME,qt5ct"
+      "env = GTK_THEME,adwaita-dark"
+      "env = XCURSOR_THEME,phinger-cursors"
+      "env = XCURSOR_SIZE,24"
+      "env = MOZ_ENABLE_WAYLAND,1"
+      "env = GTK_IM_MODULE,fcitx"
+    ];
   };
 }
