@@ -142,6 +142,7 @@
     polkit.enable = true;
     pam.services.ags = {};
     pam.services.swaylock = {};
+    pam.services.hyprlock = {};
   };
 
   programs.nix-ld.enable = true;

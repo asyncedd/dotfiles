@@ -130,7 +130,7 @@
           "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
           "SUPER, R,       ${e} -t launcher"
           "SUPER, S,       exec, ${pkgs.grimblast}/bin/grimblast copysave area"
-          "SUPER, C, exec, swaylock --screenshots --clock --grace 1 --fade-in 1 --effect-blur 7x5 --effect-vignette 0.5:0.5"
+          "SUPER, C, exec, hyprlock"
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
           ",Print,         ${e} -r 'recorder.screenshot()'"
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"

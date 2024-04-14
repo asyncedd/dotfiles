@@ -12,7 +12,6 @@
     hyprland-protocols
     hyprpicker
     swayidle
-    swaylock-effects
     swaybg
     xdg-desktop-portal-hyprland
     wlsunset

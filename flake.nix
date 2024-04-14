@@ -62,6 +62,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
+    hyprlock.url = "github:hyprwm/hyprlock";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
@@ -140,6 +141,7 @@
         };
         modules = [
           inputs.hyprland.homeManagerModules.default
+          inputs.hyprlock.homeManagerModules.default
           ./home/home.nix
           {
             nixpkgs.overlays = [
