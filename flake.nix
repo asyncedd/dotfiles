@@ -26,6 +26,7 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
+    aylur.url = "github:Aylur/dotfiles";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -96,7 +97,7 @@
       config.allowUnfree = true;
     };
     nixos-hardware = inputs.nixos-hardware;
-    asztal = pkgs.callPackage ./ags {inherit inputs;};
+    asztal = pkgs.callPackage "${inputs.aylur}/ags/" {inherit inputs;};
 
     editor = "nvim";
   in {
