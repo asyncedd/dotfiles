@@ -125,7 +125,9 @@
     fswatch
     fd
 
-    # unstable.obsidian
+    nix-output-monitor
+    nvd
+    unstable.nh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
