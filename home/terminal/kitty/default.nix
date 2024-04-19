@@ -1,5 +1,6 @@
-{
+{unstable, ...}: {
   programs.kitty = {
+    package = unstable.kitty;
     enable = true;
     settings = {
       font_size = "10";
