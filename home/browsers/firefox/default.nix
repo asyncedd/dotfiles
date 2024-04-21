@@ -46,7 +46,7 @@ in {
                              // user_pref("privacy.cpd.history", false); // 2820 optional to match when you use Ctrl-Shift-Del
 
                              user_pref("network.trr.mode", 3);
-                             user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
+                             user_pref("network.trr.uri", "https://dns.nextdns.io/5c65c8");
 
                              user_pref("svg.context-properties.content.enabled", true);
                         user_pref("gfx.webrender.all", true);
