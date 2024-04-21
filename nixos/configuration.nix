@@ -129,6 +129,8 @@
     nix-output-monitor
     nvd
     unstable.nh
+
+    simplex-chat-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -209,4 +211,7 @@
   ];
 
   services.xserver.displayManager.startx.enable = true;
+
+  services.tor.enable = true;
+  services.tor.client.enable = true;
 }
