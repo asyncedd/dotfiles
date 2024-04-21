@@ -203,8 +203,6 @@
       "env = QT_QPA_PLATFORM,wayland;xcb"
       "env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
       "env = QT_QPA_PLATFORMTHEME,qt5ct"
-      "env = GTK_THEME,adwaita-dark"
-      "env = XCURSOR_THEME,phinger-cursors"
       "env = XCURSOR_SIZE,24"
       "env = MOZ_ENABLE_WAYLAND,1"
       "env = GTK_IM_MODULE,fcitx"
