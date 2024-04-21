@@ -1,6 +1,5 @@
 {
   inputs,
-  unstable,
   lib,
   ...
 }: let
@@ -32,7 +31,6 @@ in {
   programs = {
     firefox = {
       enable = true;
-      package = unstable.firefox;
       profiles.async = {
         id = 0;
         name = "async";
