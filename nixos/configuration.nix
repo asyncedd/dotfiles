@@ -93,7 +93,7 @@
     description = "async";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      firefox
+      unstable.firefox
       kate
     ];
   };
