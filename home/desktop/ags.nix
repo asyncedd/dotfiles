@@ -37,9 +37,9 @@
 
   programs.ags = {
     enable = true;
-    configDir = ../../ags;
-    # extraPackages = with pkgs; [
-    #   accountsservice
-    # ];
+    configDir = "${inputs.aylur}/ags/";
+    extraPackages = with pkgs; [
+      accountsservice
+    ];
   };
 }
