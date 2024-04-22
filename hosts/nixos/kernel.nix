@@ -1,9 +1,5 @@
 {
-  lib,
-  pkgs,
-  ...
-}: {
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  # boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   hardware.cpu.intel.updateMicrocode = true;
   boot = {

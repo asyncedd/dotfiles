@@ -105,7 +105,7 @@
     wget
     git
     unstable.kitty
-    scx
+    # scx
     ffmpeg
     zip
     unzip

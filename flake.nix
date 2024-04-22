@@ -5,13 +5,13 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
-      "https://nyx.chaotic.cx"
+      # "https://nyx.chaotic.cx"
       "https://hyprland.cachix.org"
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nyx.chaotic.cx-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      # "nyx.chaotic.cx-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
@@ -24,7 +24,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
     aylur.url = "github:Aylur/dotfiles";
     firefox-addons = {
@@ -72,7 +72,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    chaotic,
+    # chaotic,
     home-manager,
     ...
   } @ inputs: let
@@ -124,7 +124,7 @@
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-laptop-ssd
-          chaotic.nixosModules.default
+          # chaotic.nixosModules.default
           inputs.auto-cpufreq.nixosModules.default
         ];
       };
