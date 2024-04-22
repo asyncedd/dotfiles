@@ -33,7 +33,7 @@
     opengl = {
       enable = true;
       extraPackages = with pkgs; [
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        # intel-media-driver # LIBVA_DRIVER_NAME=iHD
         vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
         intel-compute-runtime
         vaapiVdpau
@@ -160,6 +160,8 @@
 
   environment.variables = {
     sqlite_nix_path = "${pkgs.sqlite.out}";
+    # LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVER_NAME = "i965";
   };
 
   services.auto-cpufreq.enable = true;
