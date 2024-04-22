@@ -119,7 +119,6 @@
           ./modules/shared/nixos.nix
           ./modules/shared/audio.nix
           ./modules/shared/desktop.nix
-          ./modules/shared/security
           ./modules/languages
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop
