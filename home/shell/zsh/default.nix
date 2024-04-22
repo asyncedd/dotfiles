@@ -61,7 +61,6 @@
       alias ls="eza -lo --hyperlink --git-repos -TL 1 --tree --icons"
       alias la="eza -lao --hyperlink --git-repos -TL 1 --tree --icons"
       alias tree="eza -lao --hyperlink --git-repos --tree --icons"
-      alias sudo="doas"
 
       chpwd_functions+=(chpwd_cdls)
       function chpwd_cdls() {
