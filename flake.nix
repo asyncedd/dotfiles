@@ -26,7 +26,7 @@
 
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
-    aylur.url = "github:Aylur/dotfiles";
+    aylur.url = "github:asyncedd/aylurs";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -97,12 +97,12 @@
       config.allowUnfree = true;
     };
     nixos-hardware = inputs.nixos-hardware;
-    asztal = pkgs.callPackage "${inputs.aylur}/ags/" {inherit inputs;};
 
     editor = "nvim";
   in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
     overlays = import ./overlays/default.nix {inherit inputs outputs;};
+    packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage "${inputs.aylur}/ags/default.nix" {inherit inputs;};
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
@@ -111,7 +111,7 @@
           inherit system;
           inherit editor;
           inherit unstable;
-          inherit asztal;
+          asztal = self.packages.x86_64-linux.default;
         };
         modules = [
           ./nixos/configuration.nix
@@ -137,7 +137,7 @@
           inherit system;
           inherit editor;
           inherit unstable;
-          inherit asztal;
+          asztal = self.packages.x86_64-linux.default;
         };
         modules = [
           inputs.hyprland.homeManagerModules.default
