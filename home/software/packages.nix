@@ -12,6 +12,7 @@
     btop
     eza
     yazi
+    neovide
 
     (unstable.obsidian.overrideAttrs (e: rec {
       # Add arguments to the .desktop entry
