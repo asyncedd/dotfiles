@@ -17,7 +17,7 @@
         "reddit.com * 3p-frame noop"
         "youtube.com * 3p-frame noop"
 
-        "* challenges.cloudflare.com 3p-frame noop"
+        "* cloudflare.com 3p-frame noop"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
         "! YT Homepage and Subscriptions - Hide the Shorts section"
