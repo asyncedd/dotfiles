@@ -13,18 +13,6 @@
   gtk = {
     enable = true;
 
-    gtk2 = {
-      extraConfig = ''
-        gtk-enable-animations=true
-      '';
-    };
-
-    gtk3 = {
-      extraConfig = {
-        gtk-enable-animations = true;
-      };
-    };
-
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
