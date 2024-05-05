@@ -3,7 +3,8 @@
   home.homeDirectory = "/home/async";
 
   imports = [
-    ./shell/zsh
+    # ./shell/zsh
+    ./shell/nushell.nix
     ./shell/zoxide
     ./shell/fzf
     ./browsers/firefox
