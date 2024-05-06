@@ -40,6 +40,7 @@
          prepend /home/myuser/.apps |
          append /usr/bin/env
          )
+      krabby random
     '';
     shellAliases = {
       vi = "hx";
