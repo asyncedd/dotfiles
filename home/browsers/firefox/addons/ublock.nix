@@ -9,15 +9,17 @@
         "behind-the-scene * image noop"
         "behind-the-scene * 3p noop"
         "* * 3p-frame block"
-
+        ""
         "duolingo.com * 3p-frame noop"
         "github.com * 3p-frame noop"
         "chat.openai.com * 3p-frame noop"
         "twitter.com * 3p-frame noop"
         "reddit.com * 3p-frame noop"
         "youtube.com * 3p-frame noop"
-
-        "* cloudflare.com 3p-frame noop"
+        ""
+        "* cloudflare.com * noop"
+        "* recaptcha.net * noop"
+        "* google.com/recaptcha * noop"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
         "! YT Homepage and Subscriptions - Hide the Shorts section"
