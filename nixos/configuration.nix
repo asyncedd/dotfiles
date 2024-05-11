@@ -7,6 +7,7 @@
   inputs,
   asztal,
   config,
+  lib,
   ...
 }: {
   imports = [
@@ -113,7 +114,6 @@
     sqlite
     tor-browser
     brave
-    mullvad-browser
     vscodium
     hyperfine
 
@@ -160,10 +160,11 @@
     stdenv.cc.cc.lib
   ];
 
-  environment.variables = {
+  environment.variables = lib.mkForce {
     sqlite_nix_path = "${pkgs.sqlite.out}";
     # LIBVA_DRIVER_NAME = "iHD";
     LIBVA_DRIVER_NAME = "i965";
+    XDG_DATA_DIRS = with pkgs; "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
   };
 
   services.auto-cpufreq.enable = true;
