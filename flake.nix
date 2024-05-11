@@ -26,7 +26,7 @@
 
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
-    aylur.url = "github:asyncedd/aylurs";
+    aylur.url = "github:Aylur/dotfiles";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,13 +51,11 @@
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    matugen = {
-      url = "github:InioX/Matugen";
-      # ref = "refs/tags/matugen-v0.10.0";
-    };
     astal = {
       url = "github:Aylur/Astal";
     };
+    matugen.url = "github:InioX/matugen";
+    sops-nix.url = "github:Mic92/sops-nix";
     xdg-desktop-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
     };
@@ -116,6 +114,7 @@
         modules = [
           ./nixos/configuration.nix
           ./hosts/nixos/default.nix
+          ./modules/sops.nix
           ./modules/shared/nixos.nix
           ./modules/shared/audio.nix
           ./modules/shared/desktop.nix
@@ -126,6 +125,7 @@
           nixos-hardware.nixosModules.common-pc-laptop-ssd
           # chaotic.nixosModules.default
           inputs.auto-cpufreq.nixosModules.default
+          inputs.sops-nix.nixosModules.sops
         ];
       };
     };

@@ -45,7 +45,6 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
     inputs.xdg-desktop-portal-hyprland
   ];
 
@@ -93,7 +92,7 @@
     description = "async";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      unstable.firefox
+      firefox
       kate
     ];
   };
@@ -131,6 +130,9 @@
     unstable.nh
 
     simplex-chat-desktop
+    unstable.kdePackages.plasma-workspace
+    xdg-utils
+    age
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -189,7 +191,7 @@
     devmon.enable = true;
     udisks2.enable = true;
     upower.enable = true;
-    power-profiles-daemon.enable = true;
+    # power-profiles-daemon.enable = true;
     accounts-daemon.enable = true;
     gnome = {
       evolution-data-server.enable = true;
