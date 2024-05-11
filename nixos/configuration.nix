@@ -133,6 +133,7 @@
     unstable.kdePackages.plasma-workspace
     xdg-utils
     age
+    inputs.nix-alien.packages.${system}.nix-alien
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

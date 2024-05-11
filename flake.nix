@@ -64,6 +64,7 @@
     hyprlock.url = "github:hyprwm/hyprlock";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = {
@@ -114,7 +115,6 @@
         modules = [
           ./nixos/configuration.nix
           ./hosts/nixos/default.nix
-          ./modules/sops.nix
           ./modules/shared/nixos.nix
           ./modules/shared/audio.nix
           ./modules/shared/desktop.nix
