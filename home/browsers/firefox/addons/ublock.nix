@@ -13,7 +13,7 @@
         ""
         "duolingo.com * 3p-frame noop"
         "github.com githubassets.com * noop"
-        "chat.openai.com oaistatic.com * noop"
+        "chatgpt.com oaistatic.com * noop"
         "twitter.com * 3p-frame noop"
         "reddit.com redditstatic.com * noop"
         "youtube.com * 3p-frame noop"
