@@ -134,6 +134,7 @@
     xdg-utils
     age
     inputs.nix-alien.packages.${system}.nix-alien
+    inputs.matugen.packages.${system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
