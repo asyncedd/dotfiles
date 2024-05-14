@@ -131,15 +131,13 @@
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
         "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
-        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/spam-tlds-ublock.txt"
         "https://big.oisd.nl/"
       ];
-      externalLists = "https://filters.adtidy.org/extension/ublock/filters/101_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/122_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/14_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/2_optimized.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt\nhttps://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt\nhttps://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/spam-tlds-ublock.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt\nhttps://big.oisd.nl/";
+      externalLists = "https://filters.adtidy.org/extension/ublock/filters/101_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/122_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/14_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/2_optimized.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt\nhttps://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt\nhttps://big.oisd.nl/";
       importedLists = [
         "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
         "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt"
         "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
-        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/spam-tlds-ublock.txt"
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
         "https://big.oisd.nl/"
