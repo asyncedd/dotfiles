@@ -129,8 +129,6 @@
     nvd
     unstable.nh
 
-    simplex-chat-desktop
-    unstable.kdePackages.plasma-workspace
     xdg-utils
     age
     inputs.nix-alien.packages.${system}.nix-alien
@@ -218,7 +216,4 @@
   ];
 
   services.xserver.displayManager.startx.enable = true;
-
-  services.tor.enable = true;
-  services.tor.client.enable = true;
 }
