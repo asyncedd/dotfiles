@@ -46,6 +46,7 @@
         "https://addons.mozilla.org/firefox/downloads/file/3743190/ddg_bangs_but_faster-0.2.2.xpi" # DuckDuckGo !bangs but Faster
         "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi" # Return Youtube Dislikes
         "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-latest.xpi" # BPC
+        "https://addons.mozilla.org/firefox/downloads/file/4254118/dearrow-1.5.11.xpi" # dearrow
       ];
     };
     SearchEngines = {

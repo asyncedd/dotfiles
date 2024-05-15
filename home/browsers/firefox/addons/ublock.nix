@@ -26,34 +26,6 @@
         "* google.com/recaptcha * noop"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
-        "! YT Homepage and Subscriptions - Hide the Shorts section"
-        "youtube.com##[is-shorts]"
-        "! YT Menu - Hide the Shorts button"
-        "www.youtube.com###guide [title=\"Shorts\"], .ytd-mini-guide-entry-renderer[title=\"Shorts\"]"
-        "! YT Search - Hide Shorts"
-        "www.youtube.com##ytd-search ytd-video-renderer:has([overlay-style=\"SHORTS\"])"
-        "! YT Search, Channels and Sidebar or below the player - Hide the Shorts sections"
-        "www.youtube.com##ytd-reel-shelf-renderer"
-        "! YT Channels - Hide the Shorts tab"
-        "www.youtube.com##[tab-title=\"Shorts\"]"
-        "! YT Subscriptions - Hide Shorts - Grid View"
-        "www.youtube.com##ytd-browse[page-subtype=\"subscriptions\"] ytd-grid-video-renderer:has([overlay-style=\"SHORTS\"])"
-        "! YT Subscriptions - Hide Shorts - List View"
-        "www.youtube.com##ytd-browse[page-subtype=\"subscriptions\"] ytd-video-renderer:has([overlay-style=\"SHORTS\"])"
-        "! YT Subscriptions - New Layout - Hide Shorts"
-        "www.youtube.com##ytd-browse[page-subtype=\"subscriptions\"] ytd-rich-item-renderer:has([overlay-style=\"SHORTS\"])"
-        "! YT Sidebar - Hide Shorts"
-        "www.youtube.com###related ytd-compact-video-renderer:has([overlay-style=\"SHORTS\"])"
-        ""
-        "! YT Mobile - Hide the Shorts Menu button"
-        "m.youtube.com##ytm-pivot-bar-item-renderer:has(>.pivot-shorts)"
-        "! YT Mobile - Hide the Shorts sections"
-        "m.youtube.com##ytm-reel-shelf-renderer"
-        "! YT Mobile - Hide Shorts in search results"
-        "m.youtube.com##ytm-search ytm-video-with-context-renderer:has([data-style=\"SHORTS\"])"
-        "! YT Mobile - Hide the Shorts button on Channels"
-        "m.youtube.com##[tab-title=\"Shorts\"]"
-
         # "! (Firefox below 121) - Hide Homepage Videos Below 1K Views"
         # "www.youtube.com##ytd-browse[page-subtype=\"home\"] #video-title-link:not(:is([aria-label*=\",0\"],[aria-label*=\",1\"],[aria-label*=\",2\"],[aria-label*=\",3\"],[aria-label*=\",4\"],[aria-label*=\",5\"],[aria-label*=\",6\"],[aria-label*=\",7\"],[aria-label*=\",8\"],[aria-label*=\",9\"])):upward(ytd-rich-item-renderer)"
         "! (Chromium + FF121+) - Hide Homepage Videos Below 1K Views"
@@ -81,6 +53,15 @@
 
         "youtube.com##.ytp-quality-menu .ytp-menuitem:has(.ytp-premium-label)"
         "youtube.com##ytd-popup-container > tp-yt-paper-dialog > ytd-mealbar-promo-renderer, ytd-popup-container > tp-yt-paper-dialog > yt-mealbar-promo-renderer:has-text(/Claim Offer|Join now|Not Now|No thanks|YouTube TV|live TV|Live TV|movies|sports|Try it free|unlimited DVR|watch NFL/)"
+
+        "! Homepage"
+        "www.youtube.com##.grid-disabled.grid.ytd-browse.style-scope > .ytd-two-column-browse-results-renderer.style-scope"
+        ""
+        "! Sidebar recommendations"
+        "www.youtube.com##ytd-watch-next-secondary-results-renderer.ytd-watch-flexy.style-scope"
+        ""
+        "! End screen tiles"
+        "www.youtube.com##.ytp-endscreen-content"
       ];
       hostnameSwitchesString = lib.concatMapStrings (x: x + "\n") [
         "no-large-media: behind-the-scene false"
@@ -132,8 +113,23 @@
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
         "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
         "https://big.oisd.nl/"
+        "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
+        "https://raw.githubusercontent.com/yokoffing/filterlists/main/youtube_clear_view.txt"
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/BrowseWebsitesWithoutLoggingIn.txt"
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Sensitive%20lists/Twitter%20De-Politificator.txt"
       ];
-      externalLists = "https://filters.adtidy.org/extension/ublock/filters/101_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/122_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/14_optimized.txt\nhttps://filters.adtidy.org/extension/ublock/filters/2_optimized.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt\nhttps://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt\nhttps://big.oisd.nl/";
+      externalLists = lib.concatMapStrings (x: x + "\n") [
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt"
+        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
+        "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
+        "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
+        "https://big.oisd.nl/"
+        "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
+        "https://raw.githubusercontent.com/yokoffing/filterlists/main/youtube_clear_view.txt"
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/BrowseWebsitesWithoutLoggingIn.txt"
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Sensitive%20lists/Twitter%20De-Politificator.txt"
+      ];
       importedLists = [
         "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
         "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt"
@@ -141,6 +137,10 @@
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
         "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
         "https://big.oisd.nl/"
+        "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
+        "https://raw.githubusercontent.com/yokoffing/filterlists/main/youtube_clear_view.txt"
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/BrowseWebsitesWithoutLoggingIn.txt"
+        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Sensitive%20lists/Twitter%20De-Politificator.txt"
       ];
       trustedSiteDirectives = [
         "about-scheme"
