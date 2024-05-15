@@ -24,6 +24,8 @@
         "* cloudflare.com * noop"
         "* recaptcha.net * noop"
         "* google.com/recaptcha * noop"
+        ""
+        "knowyourmeme.com kym-cdn.com * noop"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
         # "! (Firefox below 121) - Hide Homepage Videos Below 1K Views"
