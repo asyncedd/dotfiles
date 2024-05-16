@@ -1,6 +1,8 @@
 {
   pkgs,
   unstable,
+  inputs,
+  system,
   ...
 }: {
   home.packages = with pkgs; [
@@ -26,5 +28,6 @@
 
     unstable.vesktop
     krabby
+    inputs.prismlauncher.packages.${system}.prismlauncher-qt5
   ];
 }
