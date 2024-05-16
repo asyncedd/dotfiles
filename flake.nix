@@ -65,6 +65,7 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nix-alien.url = "github:thiagokokada/nix-alien";
+    prismlauncher.url = "github:asyncedd/PrismLauncher";
   };
 
   outputs = {
