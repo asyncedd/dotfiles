@@ -119,7 +119,6 @@
 
     xdg-utils
     age
-    inputs.nix-alien.packages.${system}.nix-alien
     inputs.matugen.packages.${system}.default
   ];
 
