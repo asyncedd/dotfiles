@@ -30,18 +30,6 @@
 
   # better performance than the actual Intel driver
   services.xserver.videoDrivers = ["modesetting"];
-  hardware = {
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        # intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-        intel-compute-runtime
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
-  };
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
@@ -162,8 +150,6 @@
 
   environment.variables = lib.mkForce {
     sqlite_nix_path = "${pkgs.sqlite.out}";
-    # LIBVA_DRIVER_NAME = "iHD";
-    LIBVA_DRIVER_NAME = "i965";
     XDG_DATA_DIRS = with pkgs; "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
   };
 
