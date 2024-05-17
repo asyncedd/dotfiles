@@ -14,6 +14,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./fonts.nix
+    ../modules/nixos/fcitx5.nix
+    ../modules/nixos/security.nix
+    ../modules/nixos/nix-daemon.nix
   ];
 
   hardware.uinput.enable = true;
@@ -52,13 +55,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-gtk
-    ];
-  };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -132,13 +128,7 @@
 
   services.printing.enable = false;
 
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
-    pam.services.ags = {};
-    pam.services.swaylock = {};
-    pam.services.hyprlock = {};
-  };
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
