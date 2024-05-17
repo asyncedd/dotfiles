@@ -21,6 +21,5 @@
     slurp
     swappy
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    inputs.hyprland-contrib.packages.${pkgs.system}.hdrop
   ];
 }
