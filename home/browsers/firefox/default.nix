@@ -10,6 +10,38 @@
     "Amazon.co.jp".metaData.hidden = true;
     "Bing".metaData.hidden = true;
     "eBay".metaData.hidden = true;
+    "Wikipedia (en)".metaData.hidden = true;
+
+    "Noogle" = {
+      urls = [
+        {
+          template = "https://noogle.dev/q?term={searchTerms}";
+        }
+      ];
+      iconUpdateURL = "https://noogle.dev/favicon.png";
+      updateInterval = 24 * 60 * 60 * 1000; # every day
+      definedAliases = ["@ng"];
+    };
+    "MyNixOS" = {
+      urls = [
+        {
+          template = "https://mynixos.com/search?q={searchTerms}";
+        }
+      ];
+      iconUpdateURL = "https://mynixos.com/favicon-dark.svg";
+      updateInterval = 24 * 60 * 60 * 1000; # every day
+      definedAliases = ["@mno"];
+    };
+    "Home Manager Options" = {
+      urls = [
+        {
+          template = "https://home-manager-options.extranix.com/?query={searchTerms}";
+        }
+      ];
+      iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
+      updateInterval = 24 * 60 * 60 * 1000; # every day
+      definedAliases = ["@hm"];
+    };
   };
   userChrome = ''
     @import "${inputs.arcwtf}/userChrome.css";
