@@ -42,7 +42,6 @@
         "https://addons.mozilla.org/firefox/downloads/file/4218010/keepassxc_browser-1.8.11.xpi" # KeePassXC Browser
         "https://addons.mozilla.org/firefox/downloads/file/3912447/userchrome_toggle-1.2.xpi" # userchrome toggle
         "https://addons.mozilla.org/firefox/downloads/file/3786185/arc_dark_theme_we-2021.6.2.xpi" # Arc Dark Theme
-        "https://addons.mozilla.org/firefox/downloads/file/4250017/enhancer_for_youtube-2.0.123.xpi" # enhancer for youtube
         "https://addons.mozilla.org/firefox/downloads/file/3743190/ddg_bangs_but_faster-0.2.2.xpi" # DuckDuckGo !bangs but Faster
         "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi" # Return Youtube Dislikes
         "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-latest.xpi" # BPC
