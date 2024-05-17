@@ -3,15 +3,6 @@
   system.stateVersion = "23.11";
 
   nix = {
-    gc = {
-      # set up garbage collection to run daily,
-      # removing unused packages after three days
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 7d";
-    };
-    optimise.automatic = true;
-
     extraOptions = ''
       min-free = ${toString (5 * 1024 * 1024 * 1024)}
       max-free = ${toString (20 * 1024 * 1024 * 1024)}
