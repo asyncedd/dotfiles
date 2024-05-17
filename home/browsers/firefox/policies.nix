@@ -27,6 +27,13 @@
       Behavior = "accept";
       Locked = false;
     };
+    ExtensionSettings = {
+      "google@search.mozilla.org".installation_mode = "blocked";
+      "bing@search.mozilla.org".installation_mode = "blocked";
+      "amazondotcom@search.mozilla.org".installation_mode = "blocked";
+      "ebay@search.mozilla.org".installation_mode = "blocked";
+      "wikipedia@search.mozilla.org".installation_mode = "blocked";
+    };
     Extensions = {
       Uninstall = [
         "google@search.mozilla.org"
@@ -34,6 +41,7 @@
         "amazondotcom@search.mozilla.org"
         "ebay@search.mozilla.org"
         "twitter@search.mozilla.org"
+        "wikipedia@search.mozilla.org"
       ];
       Install = [
         "https://addons.mozilla.org/firefox/downloads/file/4216633/ublock_origin-latest.xpi" # Ublock origin
@@ -55,6 +63,7 @@
         "Amazon.com"
         "eBay"
         "Twitter"
+        "Wikipedia"
       ];
     };
   };
