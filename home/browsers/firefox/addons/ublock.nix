@@ -24,6 +24,7 @@
         "* cloudflare.com * noop"
         "* recaptcha.net * noop"
         "* google.com/recaptcha * noop"
+        "* unpkg.com * noop"
         ""
         "knowyourmeme.com kym-cdn.com * noop"
       ];
