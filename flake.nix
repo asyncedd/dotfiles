@@ -27,10 +27,6 @@
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
     aylur.url = "github:Aylur/dotfiles";
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     betterfox = {
       url = "github:yokoffing/Betterfox";
       flake = false;
@@ -64,7 +60,6 @@
     hyprlock.url = "github:hyprwm/hyprlock";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nix-alien.url = "github:thiagokokada/nix-alien";
     prismlauncher.url = "github:asyncedd/PrismLauncher";
   };
 
