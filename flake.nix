@@ -116,6 +116,7 @@
           ./modules/shared/desktop.nix
           ./modules/languages
           nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-gpu-intel
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-laptop-ssd
