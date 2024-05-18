@@ -1,11 +1,7 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    unstable.cargo
-    unstable.rustc
+    cargo
+    rustc
     rustfmt
     rustPackages.clippy
     rust-analyzer

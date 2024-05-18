@@ -2,8 +2,7 @@
   description = "flake.nix";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -34,7 +33,7 @@
     astal = {
       url = "github:Aylur/Astal";
     };
-    matugen.url = "github:InioX/matugen";
+    matugen.url = "github:InioX/matugen?ref=v2.2.0";
     sops-nix.url = "github:Mic92/sops-nix";
     xdg-desktop-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
@@ -50,7 +49,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
     # chaotic,
     home-manager,
     ...
@@ -65,15 +63,10 @@
         # Add overlays your own flake exports (from overlays and pkgs dir):
         outputs.overlays.additions
         outputs.overlays.modifications
-        outputs.overlays.unstable-packages
         (self: super: {
           fcitx-engines = self.fcitx5;
         })
       ];
-    };
-    unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
     };
     nixos-hardware = inputs.nixos-hardware;
 
@@ -89,7 +82,6 @@
           inherit inputs outputs;
           inherit system;
           inherit editor;
-          inherit unstable;
           asztal = self.packages.x86_64-linux.default;
         };
         modules = [
@@ -117,7 +109,6 @@
           inherit inputs outputs;
           inherit system;
           inherit editor;
-          inherit unstable;
           asztal = self.packages.x86_64-linux.default;
         };
         modules = [

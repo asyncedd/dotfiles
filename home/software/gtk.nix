@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: rec {
   qt = {
     enable = true;
 
@@ -6,7 +10,7 @@
 
     style = {
       package = pkgs.adwaita-qt;
-      name = "adwaita-dark";
+      name = "adw-gtk3";
     };
   };
 
@@ -18,23 +22,30 @@
       name = "Papirus-Dark";
     };
 
-    cursorTheme = {
-      package = pkgs.phinger-cursors;
-      name = "phinger-cursors";
-      size = 24;
-    };
-
     theme = {
       package = pkgs.adw-gtk3;
       name = "adw-gtk3";
     };
+
+    font = {
+      name = "Lexend";
+      package = pkgs.lexend;
+    };
+
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   };
 
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.phinger-cursors;
-    name = "phinger-cursors";
-    size = 28;
+    name = "phinger-cursors-dark";
+    size = 24;
   };
+
+  home.packages = [
+    home.pointerCursor.package
+    gtk.theme.package
+    gtk.iconTheme.package
+  ];
 }

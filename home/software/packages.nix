@@ -1,6 +1,5 @@
 {
   pkgs,
-  unstable,
   inputs,
   system,
   ...
@@ -14,9 +13,8 @@
     btop
     eza
     yazi
-    neovide
 
-    (unstable.obsidian.overrideAttrs (e: rec {
+    (obsidian.overrideAttrs (e: rec {
       # Add arguments to the .desktop entry
       desktopItem = e.desktopItem.override (d: {
         exec = "${d.exec} --enable-wayland-ime ";
@@ -26,8 +24,9 @@
       installPhase = builtins.replaceStrings ["${e.desktopItem}"] ["${desktopItem}"] e.installPhase;
     }))
 
-    unstable.vesktop
+    vesktop
     krabby
     inputs.prismlauncher.packages.${system}.prismlauncher-qt5
+    phinger-cursors
   ];
 }

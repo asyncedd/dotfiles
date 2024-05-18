@@ -1,13 +1,16 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
+}: let
+  pointer = config.home.pointerCursor;
+in {
   wayland.windowManager.hyprland = {
     settings = {
       "$mod" = "SUPER";
       exec = [
-        "hyprctl setcursor phinger-cursors 24"
+        "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
         "swww init"
       ];
       exec-once = [
@@ -137,7 +140,7 @@
           "SUPER, E, exec, kitty -e yazi"
 
           # "ALT, Tab, focuscurrentorlast"
-          # "CTRL ALT, Delete, exit"
+          "SUPER, Delete, exit"
           "SUPER, Q, killactive"
           "SUPER, F, togglefloating"
           "SUPER, G, fullscreen"
@@ -195,9 +198,11 @@
       "env = XDG_SESSION_DESKTOP,Hyprland"
       "env = XDG_CURRENT_DESKTOP,Hyprland"
 
-      "env = XCURSOR_SIZE,24"
+      # "env = XCURSOR_SIZE,24"
       "env = MOZ_ENABLE_WAYLAND,1"
       "env = GTK_IM_MODULE,fcitx"
+      "env = HYPRCURSOR_THEME,phinger-cursors"
+      "env = HYPRCURSOR_SIZE,24"
     ];
   };
 }

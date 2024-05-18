@@ -1,14 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    neofetch
     eza
     zsh-history-substring-search
     zsh-vi-mode
+    carapace
   ];
 
   programs.zsh = {
@@ -25,8 +20,6 @@
       expireDuplicatesFirst = true;
     };
     initExtra = ''
-      compinit
-
       source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
 
@@ -58,10 +51,6 @@
       setopt hist_verify
       setopt inc_append_history
 
-      alias ls="eza -lo --hyperlink --git-repos -TL 1 --tree --icons"
-      alias la="eza -lao --hyperlink --git-repos -TL 1 --tree --icons"
-      alias tree="eza -lao --hyperlink --git-repos --tree --icons"
-
       chpwd_functions+=(chpwd_cdls)
       function chpwd_cdls() {
         if [[ -o interactive ]]; then
@@ -69,10 +58,18 @@
           ls
         fi
       }
+
+      source <(${pkgs.carapace}/bin/carapace _carapace)
+    '';
+    completionInit = ''
+      compinit
     '';
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
+      ls = "eza -lo --hyperlink --git-repos -TL 1 --tree --icons";
+      la = "eza -lao --hyperlink --git-repos -TL 1 --tree --icons";
+      tree = "eza -lao --hyperlink --git-repos --tree --icons";
     };
   };
 }

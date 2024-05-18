@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
-  unstable,
   inputs,
   asztal,
   config,
@@ -24,7 +23,7 @@
   users.groups.input.members = ["async"];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   programs.dconf.enable = true;
@@ -32,7 +31,7 @@
   zramSwap.enable = true;
 
   # better performance than the actual Intel driver
-  services.xserver.videoDrivers = ["modesetting"];
+  services.xserver.videoDrivers = ["modesetting" "intel"];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
@@ -88,13 +87,13 @@
     vim
     wget
     git
-    unstable.kitty
+    kitty
     # scx
     ffmpeg
     zip
     unzip
     zig
-    nodejs_21
+    nodejs_22
     sqlite
     tor-browser
     brave
@@ -111,7 +110,7 @@
 
     nix-output-monitor
     nvd
-    unstable.nh
+    nh
 
     xdg-utils
     age
@@ -128,7 +127,7 @@
 
   services.printing.enable = false;
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -195,18 +194,20 @@
     };
   };
 
-  services.greetd = {
-    enable = true;
-    settings.default_session.command = pkgs.writeShellScript "greeter" ''
-      export XKB_DEFAULT_LAYOUT=${config.services.xserver.xkb.layout}
-      export XCURSOR_THEME=Qogir
-      ${asztal}/bin/greeter
-    '';
-  };
+  # services.greetd = {
+  #   enable = true;
+  #   settings.default_session.command = pkgs.writeShellScript "greeter" ''
+  #     export XKB_DEFAULT_LAYOUT=${config.services.xserver.xkb.layout}
+  #     export XCURSOR_THEME=Qogir
+  #     ${asztal}/bin/greeter
+  #   '';
+  # };
+  #
+  # systemd.tmpfiles.rules = [
+  #   "d '/var/cache/greeter' - greeter greeter - -"
+  # ];
 
-  systemd.tmpfiles.rules = [
-    "d '/var/cache/greeter' - greeter greeter - -"
-  ];
+  # services.xserver.displayManager.startx.enable = true;
 
-  services.xserver.displayManager.startx.enable = true;
+  hardware.opengl.enable = true;
 }
