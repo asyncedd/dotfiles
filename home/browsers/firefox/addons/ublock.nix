@@ -56,15 +56,6 @@
 
         "youtube.com##.ytp-quality-menu .ytp-menuitem:has(.ytp-premium-label)"
         "youtube.com##ytd-popup-container > tp-yt-paper-dialog > ytd-mealbar-promo-renderer, ytd-popup-container > tp-yt-paper-dialog > yt-mealbar-promo-renderer:has-text(/Claim Offer|Join now|Not Now|No thanks|YouTube TV|live TV|Live TV|movies|sports|Try it free|unlimited DVR|watch NFL/)"
-
-        "! Homepage"
-        "www.youtube.com##.grid-disabled.grid.ytd-browse.style-scope > .ytd-two-column-browse-results-renderer.style-scope"
-        ""
-        "! Sidebar recommendations"
-        "www.youtube.com##ytd-watch-next-secondary-results-renderer.ytd-watch-flexy.style-scope"
-        ""
-        "! End screen tiles"
-        "www.youtube.com##.ytp-endscreen-content"
       ];
       hostnameSwitchesString = lib.concatMapStrings (x: x + "\n") [
         "no-large-media: behind-the-scene false"
