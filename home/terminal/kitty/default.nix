@@ -9,7 +9,7 @@
       cursor_blink_interval = 0;
     };
     theme = "One Dark";
-    font.name = "MapleMono";
+    font.name = "MapleMono NF";
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
             undercurl_style thick-dense

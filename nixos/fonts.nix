@@ -5,7 +5,7 @@
       ubuntu_font_family
       unifont
       noto-fonts-cjk-sans
-      maple-mono-autohint
+      maple-mono-NF
       nerdfonts
       freetype
       lexend
