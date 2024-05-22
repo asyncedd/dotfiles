@@ -16,7 +16,9 @@
         "chatgpt.com oaistatic.com * noop"
         "twitter.com * 3p-frame noop"
         "reddit.com redditstatic.com * noop"
+        "www.reddit.com reddit.map.fastly.net * noop"
         "youtube.com * 3p-frame noop"
+        "youtube.com * 3p-script noop"
         "* jquery.com * noop"
         "* fontawesome.com * noop"
         "* gstatic.com * noop"
@@ -25,6 +27,7 @@
         "* recaptcha.net * noop"
         "* google.com * noop"
         "* unpkg.com * noop"
+        "* youtube-nocookie.com * noop"
         ""
         "knowyourmeme.com kym-cdn.com * noop"
       ];
