@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   # dont change it unless you know what you doin'!
   system.stateVersion = "23.11";
 
@@ -6,6 +6,8 @@
     extraOptions = ''
       min-free = ${toString (5 * 1024 * 1024 * 1024)}
       max-free = ${toString (20 * 1024 * 1024 * 1024)}
+
+      !include ${config.sops.secrets."nix/access_tokens".path}
     '';
     settings = {
       experimental-features = ["nix-command" "flakes" "ca-derivations"];

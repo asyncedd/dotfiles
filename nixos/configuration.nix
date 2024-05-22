@@ -4,8 +4,6 @@
 {
   pkgs,
   inputs,
-  asztal,
-  config,
   lib,
   ...
 }: {
@@ -15,6 +13,7 @@
     ./fonts.nix
     ../modules/nixos/fcitx5.nix
     ../modules/nixos/security.nix
+    ../modules/nixos/secrets.nix
     ../modules/nixos/nix-daemon.nix
   ];
 

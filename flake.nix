@@ -35,6 +35,7 @@
     };
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
     sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     xdg-desktop-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
     };
@@ -114,6 +115,7 @@
         modules = [
           inputs.hyprland.homeManagerModules.default
           inputs.hyprlock.homeManagerModules.default
+          inputs.sops-nix.homeManagerModules.sops
           ./home/home.nix
           {
             nixpkgs.overlays = [
