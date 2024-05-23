@@ -19,17 +19,6 @@
       ignoreDups = true;
       expireDuplicatesFirst = true;
     };
-    historySubstringSearch = {
-      searchUpKey = ''        ^[[A' history-substring-search-up
-              bindkey "$terminfo[kcuu1]" history-substring-search-up
-              bindkey -M vicmd 'k' history-substring-search-up
-              bindkey -M emacs '^P'';
-      searchDownKey = ''        ^[[B' history-substring-search-down
-              bindkey "$terminfo[kcud1]" history-substring-search-down
-              bindkey -M vicmd 'j' history-substring-search-down
-              bindkey -M emacs '^N'';
-      enable = true;
-    };
     localVariables = {
       ZSH_AUTOSUGGEST_STRATEGY = ["history" "completion"];
     };
@@ -81,9 +70,6 @@
       source <(${pkgs.carapace}/bin/carapace _carapace)
 
       ${pkgs.krabby}/bin/krabby random
-    '';
-    completionInit = ''
-      compinit
     '';
     shellAliases = {
       ll = "ls -l";
