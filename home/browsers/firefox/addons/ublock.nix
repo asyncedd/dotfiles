@@ -30,6 +30,8 @@
         "* youtube-nocookie.com * noop"
         ""
         "knowyourmeme.com kym-cdn.com * noop"
+        ""
+        "lichess.org lichess1.org * noop"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
         # "! (Firefox below 121) - Hide Homepage Videos Below 1K Views"
