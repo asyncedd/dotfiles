@@ -11,8 +11,6 @@
     wl-clipboard
     hyprland-protocols
     hyprpicker
-    swayidle
-    swaybg
     xdg-desktop-portal-hyprland
     wlsunset
     pavucontrol
