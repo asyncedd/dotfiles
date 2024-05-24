@@ -1,4 +1,4 @@
-{editor, ...}: {
+{userConfig, ...}: {
   home.username = "async";
   home.homeDirectory = "/home/async";
 
@@ -22,7 +22,7 @@
   home.stateVersion = "23.11";
 
   home.sessionVariables = {
-    EDITOR = editor;
+    EDITOR = userConfig.editor;
   };
 
   programs.home-manager.enable = true;

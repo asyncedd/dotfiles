@@ -71,7 +71,10 @@
     };
     nixos-hardware = inputs.nixos-hardware;
 
-    editor = "nvim";
+    userConfig = {
+      editor = "nvim";
+      terminal = "foot";
+    };
   in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
     overlays = import ./overlays/default.nix {inherit inputs outputs;};
@@ -82,7 +85,7 @@
         specialArgs = {
           inherit inputs outputs;
           inherit system;
-          inherit editor;
+          inherit userConfig;
           asztal = self.packages.x86_64-linux.default;
         };
         modules = [
@@ -109,7 +112,7 @@
         extraSpecialArgs = {
           inherit inputs outputs;
           inherit system;
-          inherit editor;
+          inherit userConfig;
           asztal = self.packages.x86_64-linux.default;
         };
         modules = [
