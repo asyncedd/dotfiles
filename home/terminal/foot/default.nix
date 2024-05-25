@@ -10,6 +10,7 @@
         pad = "25x25center";
         notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
         selection-target = "clipboard";
+        include = "${./Themes/catppuccin-mocha.ini}";
       };
     };
   };

@@ -13,7 +13,7 @@
     ./desktop/hyprland
     ./shell/prompts/starship
     ./terminal/kitty
-    ./terminal/foot.nix
+    ./terminal/foot
     ./software/packages.nix
     ./software/gtk.nix
     ./desktop/hyprlock.nix
