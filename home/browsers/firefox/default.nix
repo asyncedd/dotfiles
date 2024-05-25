@@ -83,8 +83,6 @@ in {
 
             user_pref("svg.context-properties.content.enabled", true);
             user_pref("gfx.webrender.all", true);
-            user_pref("media.ffmpeg.vaapi.enabled", true);
-            user_pref("media.rdd-process.enabled", false);
             user_pref("extensions.activeThemeID", "arc-dark-theme@afnankhan");
           ''
         ];
