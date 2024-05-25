@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  userConfig,
   ...
 }: let
   pointer = config.home.pointerCursor;
@@ -135,7 +136,7 @@ in {
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           "SUPER, Tab,     ${e} -t overview"
           ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
-          "SUPER, Return, exec, kitty" # xterm is a symlink, not actually xterm
+          "SUPER, Return, exec, ${userConfig.terminal}" # xterm is a symlink, not actually xterm
           "SUPER, W, exec, firefox"
           "SUPER, E, exec, kitty -e yazi"
 
