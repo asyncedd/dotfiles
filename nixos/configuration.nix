@@ -15,6 +15,7 @@
     ../modules/nixos/security.nix
     ../modules/nixos/secrets.nix
     ../modules/nixos/nix-daemon.nix
+    ../modules/battery.nix
   ];
 
   hardware.uinput.enable = true;
@@ -30,7 +31,7 @@
   zramSwap.enable = true;
 
   # better performance than the actual Intel driver
-  services.xserver.videoDrivers = ["modesetting" "intel"];
+  services.xserver.videoDrivers = ["modesetting"];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
@@ -74,10 +75,6 @@
     isNormalUser = true;
     description = "async";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      firefox
-      kate
-    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -113,7 +110,10 @@
 
     xdg-utils
     age
+    pkg-config
+    openssl
     inputs.matugen.packages.${system}.default
+    jdk17
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -141,26 +141,6 @@
     XDG_DATA_DIRS = with pkgs; "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
   };
 
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 20;
-
-      #Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-    };
-  };
-
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
@@ -182,7 +162,6 @@
     devmon.enable = true;
     udisks2.enable = true;
     upower.enable = true;
-    thermald.enable = true;
     # power-profiles-daemon.enable = true;
     accounts-daemon.enable = true;
     gnome = {
