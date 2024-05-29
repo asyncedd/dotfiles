@@ -24,6 +24,8 @@
         "* jquery.com * noop"
         "* fontawesome.com * noop"
         "* gstatic.com * noop"
+        "* cloudflare.net * noop"
+        "* fastly.net * noop"
         ""
         "* cloudflare.com * noop"
         "* recaptcha.net * noop"
@@ -32,6 +34,7 @@
         "* youtube-nocookie.com * noop"
         ""
         "knowyourmeme.com kym-cdn.com * noop"
+        "knowyourmeme.com llnwi.net * noop"
         ""
         "lichess.org lichess1.org * noop"
         "wallhaven.cc whvn.cc * noop"
@@ -40,6 +43,9 @@
         "*.spotify.com spotifycdn.map.fastly.net * noop"
         "*.spotify.com scdn.co * noop"
         "*.spotify.com spotify.map.fastly.net * noop"
+        ""
+        "* *.cloudfront.net * noop"
+        "msn.com d.akamaiedge.net * noop"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
         # "! (Firefox below 121) - Hide Homepage Videos Below 1K Views"
