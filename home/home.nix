@@ -3,17 +3,13 @@
   home.homeDirectory = "/home/async";
 
   imports = [
-    ./shell/zsh
-    # ./shell/nushell.nix
-    ./shell/zoxide
-    ./shell/fzf
+    ./shell
     ./browsers/firefox
     ./editors/neovim
     ./desktop/ags.nix
     ./desktop/hyprland
-    ./shell/prompts/starship
     ./terminal/kitty
-    ./terminal/foot
+    # ./terminal/foot
     ./software/packages.nix
     ./software/gtk.nix
     ./desktop/hyprlock.nix

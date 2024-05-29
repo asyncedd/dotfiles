@@ -8,7 +8,7 @@
       update_check_interval = 0;
       cursor_blink_interval = 0;
     };
-    theme = "One Dark";
+    theme = "Catppuccin-Mocha";
     font.name = "MapleMono NF";
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''

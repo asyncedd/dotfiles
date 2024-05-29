@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  eza = "${pkgs.eza}/bin/eza --group-directories-first --git --hyperlink --icons";
+in {
   home.packages = with pkgs; [
-    eza
-    bat
     carapace
     zsh-vi-mode
   ];
@@ -11,7 +15,10 @@
     autocd = true;
     enableCompletion = true;
     enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
+    syntaxHighlighting = {
+      enable = true;
+      highlighters = ["main" "brackets" "pattern" "cursor" "regexp" "root" "line"];
+    };
     history = {
       size = 1024;
       save = 512;
@@ -22,10 +29,19 @@
     localVariables = {
       ZSH_AUTOSUGGEST_STRATEGY = ["history" "completion"];
     };
+    # initExtraBeforeCompInit = ''
+    #   fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
+    # '';
     initExtra = ''
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        source ${./p10k.zsh}
       	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
+        source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
 
       	ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_NEX
+        HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=bg=default
+        HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=bg=default
       	bindkey '^[[Z' reverse-menu-complete
 
       	path+=('/home/async/.cargo/bin')
@@ -50,20 +66,22 @@
       	setopt hist_verify
       	setopt inc_append_history
 
+        bindkey '^[[A' history-substring-search-up
+        bindkey '^[[B' history-substring-search-down
+
         # disable sort when completing `git checkout`
         zstyle ':completion:*:git-checkout:*' sort false
         # set list-colors to enable filename colorizing
         zstyle ':completion:*' list-colors ''${(s.:.)EZA_COLORS}
         # preview directory's content with exa when completing cd
         zstyle -d ':completion:*' format
-        zstyle ':completion:*:descriptions' format '[%d]'
       	bindkey "^[[1;5C" forward-word
 
       	chpwd_functions+=(chpwd_cdls)
       	function chpwd_cdls() {
       		if [[ -o interactive ]]; then
       			emulate -L zsh
-      				eza -lo --hyperlink --git-repos -TL 1 --tree --icons
+      				${config.programs.zsh.shellAliases.ls}
       				fi
       	}
 
@@ -74,9 +92,9 @@
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-      ls = "eza -lo --hyperlink --git-repos -TL 1 --tree --icons";
-      la = "eza -lao --hyperlink --git-repos -TL 1 --tree --icons";
-      tree = "eza -lao --hyperlink --git-repos --tree --icons";
+      ls = "${eza} -TL 1";
+      la = "${eza} -a -TL 1";
+      tree = "${eza} -a";
       cat = "bat";
     };
   };
