@@ -1,7 +1,7 @@
 {
   inputs,
   lib,
-  config,
+  pkgs,
   ...
 }: let
   engines = {
@@ -64,6 +64,7 @@ in {
   programs = {
     firefox = {
       enable = true;
+      package = pkgs.firefox-beta;
       profiles.async = {
         id = 0;
         name = "async";
