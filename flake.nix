@@ -73,7 +73,8 @@
 
     userConfig = {
       editor = "nvim";
-      terminal = "foot";
+      terminal = "kitty";
+      browser = "firefox-beta";
     };
   in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
