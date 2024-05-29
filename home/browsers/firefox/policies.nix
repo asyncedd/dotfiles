@@ -46,7 +46,7 @@
       Install = [
         "https://addons.mozilla.org/firefox/downloads/file/4216633/ublock_origin-latest.xpi" # Ublock origin
         "https://github.com/mbnuqw/sidebery/releases/download/v5.0.0/sidebery-5.0.0.1.xpi" # Sidebery
-        "https://addons.mozilla.org/firefox/downloads/file/4202411/sponsorblock-5.4.29.xpi" # SponsorBlock
+        "https://github.com/ajayyy/SponsorBlock/releases/download/5.6/FirefoxSignedInstaller.xpi" # SponsorBlock
         "https://addons.mozilla.org/firefox/downloads/file/4218010/keepassxc_browser-1.8.11.xpi" # KeePassXC Browser
         "https://addons.mozilla.org/firefox/downloads/file/3912447/userchrome_toggle-1.2.xpi" # userchrome toggle
         "https://addons.mozilla.org/firefox/downloads/file/3786185/arc_dark_theme_we-2021.6.2.xpi" # Arc Dark Theme
