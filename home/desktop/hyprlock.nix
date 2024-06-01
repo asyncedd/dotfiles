@@ -2,50 +2,46 @@
   programs.hyprlock = {
     enable = true;
 
-    general = {
-      disable_loading_bar = true;
-      hide_cursor = false;
-      no_fade_in = true;
-    };
+    settings = {
+      general = {
+        disable_loading_bar = false;
+        hide_cursor = false;
+        no_fade_in = false;
+      };
 
-    backgrounds = [
-      {
+      background = {
         monitor = "";
-        path = "${../../wallpapers/wallpaper-black-blur.jpg}";
-      }
-    ];
+        path = "${../../wallpapers/forest-anime.jpg}";
+        color = "rgba(0, 0, 0, 0.5)";
+        blur_passes = 3;
+        contrast = 0.8916;
+        brightness = 0.8172;
+        vibrancy = 0.1696;
+        vibrancy_darkness = 0.0;
+      };
 
-    input-fields = [
-      {
-        monitor = "eDP-1";
+      input-field = {
+        monitor = "";
 
-        size = {
-          width = 300;
-          height = 50;
-        };
-
-        outline_thickness = 2;
+        size = "300, 50";
+        outline_thickness = 0;
 
         dots_spacing = 0.3;
         dots_center = true;
-      }
-    ];
+        placeholder_text = "<i>Input Password...</i>";
+        fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+      };
 
-    labels = [
-      {
+      label = {
         monitor = "";
-        text = "$TIME";
-        font_family = "Lexend";
+        text = "<b>$TIME</b>";
+        font_family = "Inter";
         font_size = 50;
 
-        position = {
-          x = 0;
-          y = 80;
-        };
-
+        position = "0, 80";
         valign = "center";
         halign = "center";
-      }
-    ];
+      };
+    };
   };
 }
