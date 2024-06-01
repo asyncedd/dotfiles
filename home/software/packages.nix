@@ -26,7 +26,7 @@
 
     vesktop
     krabby
-    inputs.prismlauncher.packages.${system}.prismlauncher-qt5
+    (inputs.prismlauncher.packages.${system}.prismlauncher.override {jdks = [jdk17 jdk8];})
     phinger-cursors
   ];
 }

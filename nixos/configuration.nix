@@ -113,7 +113,6 @@
     pkg-config
     openssl
     inputs.matugen.packages.${system}.default
-    jdk17
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

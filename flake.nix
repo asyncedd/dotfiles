@@ -44,7 +44,7 @@
     hyprlock.url = "github:hyprwm/hyprlock";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    prismlauncher.url = "github:asyncedd/PrismLauncher";
+    prismlauncher.url = "github:asyncedd/PrismLauncher?branch=develop";
   };
 
   outputs = {
