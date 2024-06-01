@@ -89,7 +89,6 @@
     advancedSettings = [
       ["cnameMaxTTL" "720"]
       ["filterAuthorMode" "true"]
-      ["updateAssetBypassBrowserCache" "true"]
     ];
     userSettings = [
       ["advancedUserEnabled" "true"]
