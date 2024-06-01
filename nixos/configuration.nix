@@ -93,7 +93,6 @@
     nodejs_22
     sqlite
     tor-browser
-    brave
     vscodium
     hyperfine
 

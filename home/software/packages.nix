@@ -23,6 +23,7 @@
       # Update the install script to use the new .desktop entry
       installPhase = builtins.replaceStrings ["${e.desktopItem}"] ["${desktopItem}"] e.installPhase;
     }))
+    (brave.override {commandLineArgs = "--enable-wayland-ime";})
 
     vesktop
     krabby
