@@ -43,6 +43,16 @@
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = ["@hm"];
     };
+    "SearX (puffyan)" = {
+      urls = [
+        {
+          template = "https://searx.puffyan.us/search?q={searchTerms}&category_general=1&language=auto&time_range=&safesearch=0&theme=simple";
+        }
+      ];
+      iconUpdateURL = "https://searx.puffyan.us/favicon.ico";
+      updateInterval = 24 * 60 * 60 * 1000; # every day
+      definedAliases = ["!searx"];
+    };
   };
   userChrome = ''
     @import "${inputs.arcwtf}/userChrome.css";
