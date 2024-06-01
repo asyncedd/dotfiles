@@ -8,7 +8,7 @@
       maple-mono-NF
       nerdfonts
       freetype
-      lexend
+      inter
       twitter-color-emoji
     ];
 
@@ -18,8 +18,8 @@
       hinting.enable = true;
       # hinting.autohint = true;
       defaultFonts = {
-        serif = ["Lexend"];
-        sansSerif = ["Lexend"];
+        serif = ["Inter"];
+        sansSerif = ["Inter"];
         monospace = ["MapleMono"];
         emoji = ["Twemoji Color Emoji"];
       };
