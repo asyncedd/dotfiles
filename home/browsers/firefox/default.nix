@@ -53,10 +53,10 @@
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = ["!searx"];
     };
-    "Invidious (puffyan)" = {
+    "Invidious (yewtu.be)" = {
       urls = [
         {
-          template = "https://vid.puffyan.us/search?q={searchTerms}";
+          template = "https://yewtu.be/search?q={searchTerms}";
         }
       ];
       iconUpdateURL = "https://vid.puffyan.us/favicon.ico";
