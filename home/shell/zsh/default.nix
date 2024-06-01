@@ -74,6 +74,9 @@ in {
         # set list-colors to enable filename colorizing
         zstyle ':completion:*' list-colors ''${(s.:.)EZA_COLORS}
         # preview directory's content with exa when completing cd
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview '${config.programs.zsh.shellAliases.ls} --color=always $realpath'
+        zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ''${(Q)realpath}'
+
         zstyle -d ':completion:*' format
       	bindkey "^[[1;5C" forward-word
 
