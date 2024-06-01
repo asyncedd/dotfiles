@@ -15,6 +15,7 @@
     ../modules/nixos/security.nix
     ../modules/nixos/secrets.nix
     ../modules/nixos/nix-daemon.nix
+    ../modules/hardware.nix
     ../modules/battery.nix
   ];
 
