@@ -2,6 +2,7 @@
   programs.firefox.policies."3rdparty".Extensions."uBlock0@raymondhill.net" = {
     adminSettings = {
       dynamicFilteringString = lib.concatMapStrings (x: x + "\n") [
+        "no-cosmetic-filtering: * true"
         "behind-the-scene * * noop"
         "behind-the-scene * inline-script noop"
         "behind-the-scene * 1p-script noop"
@@ -46,6 +47,7 @@
         ""
         "* *.cloudfront.net * noop"
         "msn.com d.akamaiedge.net * noop"
+        "no-cosmetic-filtering: youtube.com false"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
         # "! (Firefox below 121) - Hide Homepage Videos Below 1K Views"
