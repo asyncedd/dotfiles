@@ -3,6 +3,8 @@
     adminSettings = {
       dynamicFilteringString = lib.concatMapStrings (x: x + "\n") [
         "no-cosmetic-filtering: * true"
+        "no-csp-reports: * true"
+        "no-large-media: behind-the-scene false"
         "behind-the-scene * * noop"
         "behind-the-scene * inline-script noop"
         "behind-the-scene * 1p-script noop"
