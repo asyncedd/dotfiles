@@ -13,6 +13,7 @@
     ./software/packages.nix
     ./software/gtk.nix
     ./desktop/hyprlock.nix
+    ./xdg.nix
   ];
 
   home.stateVersion = "23.11";
