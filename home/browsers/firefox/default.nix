@@ -53,6 +53,16 @@
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = ["!searx"];
     };
+    "Invidious (puffyan)" = {
+      urls = [
+        {
+          template = "https://vid.puffyan.us/search?q={searchTerms}";
+        }
+      ];
+      iconUpdateURL = "https://vid.puffyan.us/favicon.ico";
+      updateInterval = 24 * 60 * 60 * 1000;
+      definedAliases = ["!vid"];
+    };
   };
   userChrome = ''
     @import "${inputs.arcwtf}/userChrome.css";
