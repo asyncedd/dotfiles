@@ -10,7 +10,6 @@
     DisableFeedbackCommands = true;
     DisableFirefoxScreenshots = true;
     DontCheckDefaultBrowser = true;
-    NoDefaultBookmarks = true;
     PasswordManagerEnabled = false;
     FirefoxHome = {
       Pocket = false;
