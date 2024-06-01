@@ -47,6 +47,9 @@
         ""
         "* *.cloudfront.net * noop"
         "msn.com d.akamaiedge.net * noop"
+        ""
+        "* gravatar.com * noop"
+        ""
         "no-cosmetic-filtering: youtube.com false"
       ];
       userFilters = lib.concatMapStrings (x: x + "\n") [
