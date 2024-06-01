@@ -15,10 +15,6 @@ in {
     autocd = true;
     enableCompletion = true;
     enableAutosuggestions = true;
-    syntaxHighlighting = {
-      enable = true;
-      highlighters = ["main" "brackets" "pattern" "cursor" "regexp" "root" "line"];
-    };
     history = {
       size = 1024;
       save = 512;
@@ -38,10 +34,12 @@ in {
       	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
         source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
+        source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
       	ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_NEX
         HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=bg=default
         HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=bg=default
+        ZSH_HIGHLIGHT_HIGHLIGHTERS+=('main' 'brackets' 'pattern' 'cursor' 'regexp' 'root' 'line')
       	bindkey '^[[Z' reverse-menu-complete
 
       	path+=('/home/async/.cargo/bin')
