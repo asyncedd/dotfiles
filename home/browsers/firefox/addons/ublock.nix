@@ -27,6 +27,7 @@
         "* gstatic.com * noop"
         "* cloudflare.net * noop"
         "* fastly.net * noop"
+        "* *.fastly.net * noop"
         ""
         "* cloudflare.com * noop"
         "* recaptcha.net * noop"
