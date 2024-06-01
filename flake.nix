@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -41,7 +41,6 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
-    hyprlock.url = "github:hyprwm/hyprlock";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     prismlauncher.url = "github:asyncedd/PrismLauncher?branch=develop";
@@ -61,9 +60,6 @@
       inherit system;
       config.allowUnfree = true;
       overlays = [
-        # Add overlays your own flake exports (from overlays and pkgs dir):
-        outputs.overlays.additions
-        outputs.overlays.modifications
         (self: super: {
           fcitx-engines = self.fcitx5;
         })
@@ -75,10 +71,10 @@
       editor = "nvim";
       terminal = "kitty";
       browser = "firefox-beta";
+      wallpaper = ./wallpapers/forest-anime.jpg;
     };
   in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
-    overlays = import ./overlays/default.nix {inherit inputs outputs;};
     packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage "${inputs.aylur}/ags/default.nix" {inherit inputs;};
     nixosConfigurations = {
       nixos = lib.nixosSystem {
@@ -117,7 +113,6 @@
         };
         modules = [
           inputs.hyprland.homeManagerModules.default
-          inputs.hyprlock.homeManagerModules.default
           inputs.sops-nix.homeManagerModules.sops
           ./home/home.nix
           {
