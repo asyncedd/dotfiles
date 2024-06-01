@@ -20,4 +20,6 @@
   ];
 
   hardware.cpu.intel.updateMicrocode = true;
+  hardware.bluetooth.enable = false;
+  hardware.bluetooth.powerOnBoot = false;
 }
