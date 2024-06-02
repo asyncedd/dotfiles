@@ -113,6 +113,7 @@
     age
     pkg-config
     openssl
+    jdk21_headless
     inputs.matugen.packages.${system}.default
   ];
 
