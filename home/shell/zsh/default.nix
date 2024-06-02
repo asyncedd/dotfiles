@@ -7,7 +7,6 @@
 in {
   home.packages = with pkgs; [
     carapace
-    zsh-vi-mode
   ];
 
   programs.zsh = {
