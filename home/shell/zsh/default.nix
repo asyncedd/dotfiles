@@ -83,6 +83,11 @@ in {
         # preview directory's content with exa when completing cd
         zstyle ':fzf-tab:complete:cd:*' fzf-preview '${config.programs.zsh.shellAliases.ls} --color=always $realpath'
         zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ''${(Q)realpath}'
+                zstyle ':completion:*:descriptions' format '[%d]'
+        # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+        zstyle ':completion:*' menu no
+        # switch group using `<` and `>`
+        zstyle ':fzf-tab:*' switch-group '<' '>'
 
         zstyle -d ':completion:*' format
       	bindkey "^[[1;5C" forward-word
