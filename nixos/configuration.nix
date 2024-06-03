@@ -140,6 +140,7 @@
   environment.variables = lib.mkForce {
     sqlite_nix_path = "${pkgs.sqlite.out}";
     XDG_DATA_DIRS = with pkgs; "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
+    HOME_MANAGER_BACKUP_EXT = 1;
   };
 
   systemd = {

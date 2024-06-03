@@ -42,7 +42,6 @@ in {
     initExtra = ''
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source ${./p10k.zsh}
-      	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
         source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
 

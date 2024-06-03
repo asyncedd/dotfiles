@@ -44,6 +44,7 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     prismlauncher.url = "github:asyncedd/PrismLauncher?branch=develop";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -56,15 +57,6 @@
     inherit (self) outputs;
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [
-        (self: super: {
-          fcitx-engines = self.fcitx5;
-        })
-      ];
-    };
     nixos-hardware = inputs.nixos-hardware;
 
     userConfig = {
@@ -91,34 +83,45 @@
           ./modules/shared/audio.nix
           ./modules/shared/desktop.nix
           ./modules/languages
+          ./modules/stylix.nix
           nixos-hardware.nixosModules.common-cpu-intel-cpu-only
           nixos-hardware.nixosModules.common-gpu-intel
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-laptop-ssd
 
-          # chaotic.nixosModules.default
           inputs.sops-nix.nixosModules.sops
-        ];
-      };
-    };
-    homeConfigurations = {
-      async = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-          inherit system;
-          inherit userConfig;
-          asztal = self.packages.x86_64-linux.default;
-        };
-        modules = [
-          inputs.hyprland.homeManagerModules.default
-          inputs.sops-nix.homeManagerModules.sops
-          ./home/home.nix
+          inputs.stylix.nixosModules.stylix
+
+          home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [
-              inputs.neovim-nightly-overlay.overlay
-            ];
+            nixpkgs = {
+              config.allowUnfree = true;
+              overlays = [
+                inputs.neovim-nightly-overlay.overlay
+                (self: super: {
+                  fcitx-engines = self.fcitx5;
+                })
+              ];
+            };
+          }
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.async.imports = [
+                inputs.hyprland.homeManagerModules.default
+                inputs.sops-nix.homeManagerModules.sops
+                ./home/home.nix
+                ./modules/home-manager/stylix.nix
+              ];
+              extraSpecialArgs = {
+                inherit inputs system;
+                inherit outputs;
+                inherit userConfig;
+                asztal = self.packages.x86_64-linux.default;
+              };
+            };
           }
         ];
       };

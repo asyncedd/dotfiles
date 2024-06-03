@@ -8,8 +8,6 @@
       update_check_interval = 0;
       cursor_blink_interval = 0;
     };
-    theme = "Catppuccin-Mocha";
-    font.name = "MapleMono NF";
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
       include ${./Themes/Everblush.conf}
