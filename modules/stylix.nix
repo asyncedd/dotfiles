@@ -42,11 +42,11 @@
     };
     sansSerif = {
       package = pkgs.inter;
-      name = "InterVariable";
+      name = "Inter Medium";
     };
     serif = {
       package = pkgs.inter;
-      name = "InterVariable";
+      name = "Inter Medium";
     };
   };
 }
