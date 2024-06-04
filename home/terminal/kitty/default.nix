@@ -10,8 +10,6 @@
     };
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
-      include ${./Themes/Everblush.conf}
-
       undercurl_style thick-dense
       modify_font underline_thickness 150%
       modify_font underline_position 2
