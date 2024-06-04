@@ -1,5 +1,9 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  NewYork = pkgs.callPackage ../pkgs/fonts/NewYork/default.nix {inherit pkgs;};
+in {
   fonts = {
+    fontDir.enable = true;
+    enableGhostscriptFonts = true;
     packages = with pkgs; [
       noto-fonts
       ubuntu_font_family
@@ -10,6 +14,7 @@
       freetype
       inter
       twitter-color-emoji
+      NewYork
     ];
 
     fontconfig = {

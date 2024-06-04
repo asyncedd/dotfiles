@@ -35,7 +35,7 @@
       label = {
         monitor = "";
         text = "<b>$TIME</b>";
-        font_family = "Inter";
+        font_family = "New York";
         font_size = 50;
 
         position = "0, 80";
