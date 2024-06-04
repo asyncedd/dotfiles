@@ -76,29 +76,29 @@ in {
           "easeinoutsine, 0.37, 0, 0.63, 1"
         ];
         animation = [
-          # "windows, 1, 6, wind, slide"
-          # "windowsIn, 1, 6, winIn, slide"
-          # "windowsOut, 1, 5, winOut, slide"
-          # "windowsMove, 1, 5, wind, slide"
-          # "border, 1, 1, liner"
-          # "borderangle, 1, 30, liner, loop"
-          # "fade, 1, 10, default"
-          # "workspaces, 1, 5, wind"
+          "windows, 1, 6, wind, slide"
+          "windowsIn, 1, 6, winIn, slide"
+          "windowsOut, 1, 5, winOut, slide"
+          "windowsMove, 1, 5, wind, slide"
+          "border, 1, 1, liner"
+          "borderangle, 1, 30, liner, loop"
+          "fade, 1, 10, default"
+          "workspaces, 1, 5, wind"
 
-          "windowsIn, 1, 3, easeOutCubic, slide" # window open
-          "windowsOut, 1, 3, easeOutCubic, slide" # window close
-          "windowsMove, 1, 3.5, easeinoutsine, slide" # everything in between, moving, dragging, resizing
-
-          # fading
-          "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
-          "fadeOut, 1, 3, easeOutCubic" # fade out (close) -> layers and windows
-          "fadeSwitch, 1, 5, easeOutCirc" # fade on changing activewindow and its opacity
-          "fadeShadow, 1, 5, easeOutCirc" # fade on changing activewindow for shadows
-          "fadeDim, 1, 6, fluent_decel" # the easing of the dimming of inactive windows
-          "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
-          "borderangle, 0, 60, easeOutCirc, loop" # for animating the border's color switch speed
-          "workspaces, 1, 3, fluent_decel, slidefade" # styles: slide, slidevert, fade, slidefade, slidefadevert
-          "specialWorkspace, 1, 3, fluent_decel, slidevert"
+          # "windowsIn, 1, 3, easeOutCubic, slide" # window open
+          # "windowsOut, 1, 3, easeOutCubic, slide" # window close
+          # "windowsMove, 1, 3.5, easeinoutsine, slide" # everything in between, moving, dragging, resizing
+          #
+          # # fading
+          # "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
+          # "fadeOut, 1, 3, easeOutCubic" # fade out (close) -> layers and windows
+          # "fadeSwitch, 1, 5, easeOutCirc" # fade on changing activewindow and its opacity
+          # "fadeShadow, 1, 5, easeOutCirc" # fade on changing activewindow for shadows
+          # "fadeDim, 1, 6, fluent_decel" # the easing of the dimming of inactive windows
+          # "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
+          # "borderangle, 0, 60, easeOutCirc, loop" # for animating the border's color switch speed
+          # "workspaces, 1, 3, fluent_decel, slidefade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+          # "specialWorkspace, 1, 3, fluent_decel, slidevert"
         ];
       };
 
