@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: rec {
   qt = {
     enable = true;
 
@@ -7,5 +7,13 @@
 
   gtk = {
     enable = true;
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
   };
+
+  home.packages = [
+    gtk.iconTheme.package
+  ];
 }
