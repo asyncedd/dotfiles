@@ -153,11 +153,6 @@ in {
           "SUPER SHIFT, left, workspace, e-1"
           "SUPER SHIFT, right, workspace, e+1"
 
-          "SUPER CTRL, k, moveactive, 0 -20"
-          "SUPER CTRL, j, moveactive, 0 20"
-          "SUPER CTRL, l, moveactive, 20 0"
-          "SUPER CTRL, h, moveactive, -20 0"
-
           "SUPER ALT, k, resizeactive, 0 -20"
           "SUPER ALT, j, resizeactive, 0 20"
           "SUPER ALT, l, resizeactive, 20 0"
