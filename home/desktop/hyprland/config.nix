@@ -51,17 +51,8 @@ in {
         rounding = 10;
         blur = {
           enabled = true;
-          noise = "0.07";
-          contrast = "0.7";
-          brightness = "1.0";
-          vibrancy = "0.6";
-          vibrancy_darkness = "0.5";
-          size = 30;
-          passes = 3;
-          xray = true;
-          popups = true;
-          ignore_opacity = false;
-          new_optimizations = true;
+          size = 4;
+          passes = 2;
         };
         drop_shadow = false;
 
