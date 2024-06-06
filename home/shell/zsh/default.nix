@@ -101,6 +101,8 @@ in {
       	}
 
       source <(${pkgs.carapace}/bin/carapace _carapace)
+
+      export SUDO_PROMPT=$'Password for ->\033[32;05;16m %u\033[0m  '
       export FZF_DEFAULT_OPTS="
        --color fg:#${colors.base04}
        --color fg+:#${colors.base06}
