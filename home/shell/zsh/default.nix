@@ -4,6 +4,7 @@
   ...
 }: let
   eza = "${pkgs.eza}/bin/eza --group-directories-first --git --hyperlink --icons";
+  colors = config.lib.stylix.colors;
 in {
   home.packages = with pkgs; [
     carapace
@@ -100,6 +101,28 @@ in {
       	}
 
       source <(${pkgs.carapace}/bin/carapace _carapace)
+      export FZF_DEFAULT_OPTS="
+       --color fg:#${colors.base04}
+       --color fg+:#${colors.base06}
+       --color bg:#${colors.base00}
+       --color bg+:#${colors.base01}
+       --color hl:#${colors.base0D}
+       --color hl+:#${colors.base0D}
+       --color info:#${colors.base0A}
+       --color marker:#${colors.base0C}
+       --color prompt:#${colors.base0A}
+       --color spinner:#${colors.base0C}
+       --color pointer:#${colors.base0C}
+       --color header:#${colors.base0D}
+       --color preview-fg:#${colors.base0D}
+       --color preview-bg:#${colors.base01}
+       --color gutter:#${colors.base00}
+       --color border:#${colors.base0B}
+       --border
+       --prompt 'λ '
+       --pointer ''
+       --marker ''
+      "
     '';
     shellAliases = {
       ll = "ls -l";
