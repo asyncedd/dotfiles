@@ -129,38 +129,12 @@
         "easylist"
         "JPN-1"
         "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
-        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
-        "https://big.oisd.nl/"
-        "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/youtube_clear_view.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/BrowseWebsitesWithoutLoggingIn.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Sensitive%20lists/Twitter%20De-Politificator.txt"
       ];
       externalLists = lib.concatMapStrings (x: x + "\n") [
         "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt"
-        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
-        "https://big.oisd.nl/"
-        "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/youtube_clear_view.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/BrowseWebsitesWithoutLoggingIn.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Sensitive%20lists/Twitter%20De-Politificator.txt"
       ];
       importedLists = [
         "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Special%20security%20lists/AntiFaviconList.txt"
-        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
-        "https://big.oisd.nl/"
-        "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
-        "https://raw.githubusercontent.com/yokoffing/filterlists/main/youtube_clear_view.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/BrowseWebsitesWithoutLoggingIn.txt"
-        "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Sensitive%20lists/Twitter%20De-Politificator.txt"
       ];
       trustedSiteDirectives = [
         "about-scheme"
