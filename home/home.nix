@@ -14,7 +14,7 @@
     ./desktop/ags.nix
     ./desktop/hyprland
     ./terminal/kitty
-    # ./terminal/foot
+    ./terminal/foot
     ./software/packages.nix
     ./software/gtk.nix
     ./desktop/hyprlock.nix
