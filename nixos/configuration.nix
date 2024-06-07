@@ -23,10 +23,6 @@
   users.groups.uinput.members = ["async"];
   users.groups.input.members = ["async"];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = lib.mkForce true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   programs.dconf.enable = true;
 
   zramSwap.enable = true;
@@ -196,5 +192,30 @@
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/user/.dotfiles";
+  };
+
+  boot = {
+    plymouth = {
+      enable = true;
+    };
+    # Enable "Silent Boot"
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
+    # Bootloader.
+    loader.systemd-boot.enable = lib.mkForce true;
+    loader.efi.canTouchEfiVariables = true;
   };
 }
