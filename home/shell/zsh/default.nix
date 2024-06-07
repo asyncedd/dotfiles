@@ -90,7 +90,6 @@ in {
         zstyle ':fzf-tab:*' switch-group '<' '>'
 
         zstyle -d ':completion:*' format
-      	bindkey "^[[1;5C" forward-word
 
       	chpwd_functions+=(chpwd_cdls)
       	function chpwd_cdls() {
@@ -133,6 +132,7 @@ in {
       la = "${eza} -a -TL 1";
       tree = "${eza} -a";
       cat = "bat";
+      g = "${pkgs.gitui}/bin/gitui";
     };
   };
 }
