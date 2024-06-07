@@ -185,7 +185,13 @@
 
   # services.xserver.displayManager.startx.enable = true;
 
-  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  programs.gamemode.enable = true;
 
   programs.nh = {
     enable = true;
