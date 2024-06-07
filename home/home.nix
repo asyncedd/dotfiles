@@ -15,6 +15,7 @@
     ./desktop/hyprland
     ./terminal/kitty
     ./terminal/foot
+    ./terminal/wezterm
     ./software/packages.nix
     ./software/gtk.nix
     ./desktop/hyprlock.nix
