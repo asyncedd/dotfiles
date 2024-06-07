@@ -157,6 +157,11 @@ in {
           "SUPER ALT, j, resizeactive, 0 20"
           "SUPER ALT, l, resizeactive, 20 0"
           "SUPER ALT, h, resizeactive, -20 0"
+
+          "SUPER&Alt_L, k, movewindow, u"
+          "SUPER&Alt_L, j, movewindow, d"
+          "SUPER&Alt_L, l, movewindow, r"
+          "SUPER&Alt_L, h, movewindow, l"
         ]
         # ++ (map (i: ws (toString i) (toString i)) arr)
         # ++ (map (i: mvtows (toString i) (toString i)) arr);
