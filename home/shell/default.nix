@@ -3,6 +3,7 @@
     ./zsh
     ./tools/zoxide
     ./tools/fzf
+    ./tools/gitui.nix
     # ./prompts/starship
   ];
 
