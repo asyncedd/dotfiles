@@ -1,20 +1,20 @@
 {
-  config,
-  lib,
+  # config,
+  # lib,
   pkgs,
   ...
 }: {
   boot.initrd.kernelModules = ["i915"];
-  environment.variables = {
-    VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
-  };
+  # environment.variables = {
+  #   VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+  # };
   hardware.opengl.extraPackages = with pkgs; [
-    intel-vaapi-driver
+    # intel-vaapi-driver
     libvdpau-va-gl
     intel-media-driver
   ];
   hardware.opengl.extraPackages32 = with pkgs.driversi686Linux; [
-    intel-vaapi-driver
+    # intel-vaapi-driver
     libvdpau-va-gl
     intel-media-driver
   ];

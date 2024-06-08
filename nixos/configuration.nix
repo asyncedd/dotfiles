@@ -16,7 +16,7 @@
     ../modules/nixos/secrets.nix
     ../modules/nixos/nix-daemon.nix
     ../modules/hardware.nix
-    ../modules/battery.nix
+    ./power.nix
   ];
 
   hardware.uinput.enable = true;
@@ -107,7 +107,6 @@
 
     xdg-utils
     age
-    pkg-config
     openssl
     jdk21_headless
     inputs.matugen.packages.${system}.default
@@ -122,8 +121,6 @@
   };
 
   services.printing.enable = false;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -204,24 +201,5 @@
     plymouth = {
       enable = true;
     };
-    # Enable "Silent Boot"
-    consoleLogLevel = 0;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "loglevel=3"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-    ];
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    loader.timeout = 0;
-    # Bootloader.
-    loader.systemd-boot.enable = lib.mkForce true;
-    loader.efi.canTouchEfiVariables = true;
   };
 }
