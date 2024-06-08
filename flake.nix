@@ -22,6 +22,10 @@
       url = "github:KiKaraage/ArcWTF";
       flake = false;
     };
+    omz = {
+      url = "github:ohmyzsh/ohmyzsh";
+      flake = false;
+    };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +49,9 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     prismlauncher.url = "github:asyncedd/PrismLauncher?branch=develop";
     stylix.url = "github:danth/stylix";
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -89,6 +96,14 @@
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-laptop-ssd
+
+          inputs.nix-index-database.nixosModules.nix-index
+          {
+            programs.nix-index.enable = true;
+          }
+          {
+            programs.command-not-found.enable = false;
+          }
 
           inputs.sops-nix.nixosModules.sops
           inputs.stylix.nixosModules.stylix
