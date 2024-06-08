@@ -6,7 +6,7 @@
 }: {
   home.packages = with pkgs; [
     ripgrep
-    gitui
+    lazygit
     feh
     keepassxc
     mpv
