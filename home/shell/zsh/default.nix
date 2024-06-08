@@ -1,15 +1,17 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: let
   eza = "${pkgs.eza}/bin/eza --group-directories-first --git --hyperlink --icons";
   colors = config.lib.stylix.colors;
+  omz = name: "source ${inputs.omz}/plugins/${name}/${name}.plugin.zsh";
 in {
   home.packages = with pkgs; [
     carapace
   ];
-
+  home.file.".zshlogin".source = ./.zlogin;
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -29,6 +31,10 @@ in {
     localVariables = {
       ZSH_AUTOSUGGEST_STRATEGY = ["history" "completion"];
     };
+    # completionInit = ''
+    #   autoload -Uz compinit; compinit -C
+    #   (autoload -Uz compinit; compinit &)
+    # '';
     # initExtraBeforeCompInit = ''
     #   fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
     # '';
@@ -53,6 +59,16 @@ in {
 
       	path+=('/home/async/.cargo/bin')
       	export PATH
+
+        # ZVM_VI_HIGHLIGHT_FOREGROUND=#${colors.base00}
+        # ZVM_VI_HIGHLIGHT_BACKGROUND=#${colors.base02}
+        #
+        # ${omz "common-aliases"}
+        ${omz "cp"}
+        ${omz "git"}
+        # autoload colors
+        # ${omz "colored-man-pages"}
+        # ${omz "command-not-found"}
 
       	zstyle ':completion:*' menu select
 
@@ -119,20 +135,22 @@ in {
        --color preview-bg:#${colors.base01}
        --color gutter:#${colors.base00}
        --color border:#${colors.base0B}
-       --border
+       # --border
        --prompt 'λ '
        --pointer ''
        --marker ''
       "
     '';
     shellAliases = {
-      ll = "ls -l";
+      ll = "${eza} -l";
+      lla = "${eza} -al -TL 1";
       ".." = "cd ..";
       ls = "${eza} -TL 1";
       la = "${eza} -a -TL 1";
+      lt = "${eza} -a";
       tree = "${eza} -a";
       cat = "bat";
-      g = "${pkgs.gitui}/bin/gitui";
+      gu = "${pkgs.gitui}/bin/gitui";
     };
   };
 }
