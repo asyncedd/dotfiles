@@ -3,6 +3,7 @@
   lib,
   config,
   userConfig,
+  inputs,
   ...
 }: let
   pointer = config.home.pointerCursor;
@@ -37,7 +38,7 @@ in {
 
       general = {
         gaps_in = 5;
-        gaps_out = 5;
+        gaps_out = 20;
         border_size = 0;
 
         resize_on_border = true;
@@ -76,14 +77,14 @@ in {
           "easeinoutsine, 0.37, 0, 0.63, 1"
         ];
         animation = [
-          "windows, 1, 6, wind, slide"
-          "windowsIn, 1, 6, winIn, slide"
-          "windowsOut, 1, 5, winOut, slide"
-          "windowsMove, 1, 5, wind, slide"
+          "windows, 1, 5, wind, slide"
+          "windowsIn, 1, 5, winIn, popin"
+          "windowsOut, 1, 4, winOut, popin"
+          "windowsMove, 1, 3, wind, popin"
           "border, 1, 1, liner"
-          "borderangle, 1, 30, liner, loop"
+          "borderangle, 0"
           "fade, 1, 10, default"
-          "workspaces, 1, 5, wind"
+          "workspaces, 1, 3, wind"
 
           # "windowsIn, 1, 3, easeOutCubic, slide" # window open
           # "windowsOut, 1, 3, easeOutCubic, slide" # window close
@@ -120,7 +121,7 @@ in {
         [
           "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
           "SUPER, R,       ${e} -t launcher"
-          "SUPER, S,       exec, ${pkgs.grimblast}/bin/grimblast copysave area"
+          "SUPER, S,       exec, ${inputs.hyprland-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast copysave area"
           "SUPER, C, exec, hyprlock"
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
           ",Print,         ${e} -r 'recorder.screenshot()'"

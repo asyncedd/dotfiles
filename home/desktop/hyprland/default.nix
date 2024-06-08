@@ -1,6 +1,5 @@
 {inputs, ...}: {
   imports = [
-    ./packages.nix
     ./config.nix
   ];
 
