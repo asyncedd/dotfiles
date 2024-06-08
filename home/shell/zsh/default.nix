@@ -135,7 +135,7 @@ in {
        --color preview-bg:#${colors.base01}
        --color gutter:#${colors.base00}
        --color border:#${colors.base0B}
-       # --border
+       --border
        --prompt 'λ '
        --pointer ''
        --marker ''
