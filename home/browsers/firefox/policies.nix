@@ -52,6 +52,7 @@
         "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi" # Return Youtube Dislikes
         "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-latest.xpi" # BPC
         "https://addons.mozilla.org/firefox/downloads/file/4254118/dearrow-1.5.11.xpi" # dearrow
+        "https://addons.mozilla.org/firefox/downloads/file/3920533/skip_redirect-2.3.6.xpi" # skip_redirect
       ];
     };
     SearchEngines = {
