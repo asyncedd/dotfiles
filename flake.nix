@@ -69,7 +69,7 @@
     userConfig = {
       editor = "nvim";
       terminal = "kitty";
-      browser = "firefox-beta";
+      browser = "firefox";
       wallpaper = ./wallpapers/forest-anime.jpg;
     };
   in {
