@@ -123,6 +123,7 @@ in {
             user_pref("svg.context-properties.content.enabled", true);
             user_pref("gfx.webrender.all", true);
             user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
+            user_pref("browser.download.useDownloadDir", false);
 
             ///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
             ///  copy into firefox/librewolf profile as user.js, add to existing, or set in about:config
