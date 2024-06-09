@@ -48,7 +48,6 @@
         "https://github.com/ajayyy/SponsorBlock/releases/download/5.6/FirefoxSignedInstaller.xpi" # SponsorBlock
         "https://addons.mozilla.org/firefox/downloads/file/4218010/keepassxc_browser-1.8.11.xpi" # KeePassXC Browser
         "https://addons.mozilla.org/firefox/downloads/file/3912447/userchrome_toggle-1.2.xpi" # userchrome toggle
-        "https://addons.mozilla.org/firefox/downloads/file/4190142/everblushcs-1.1.xpi" # Everblush
         "https://addons.mozilla.org/firefox/downloads/file/3743190/ddg_bangs_but_faster-0.2.2.xpi" # DuckDuckGo !bangs but Faster
         "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi" # Return Youtube Dislikes
         "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-latest.xpi" # BPC
