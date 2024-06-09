@@ -47,6 +47,7 @@
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     prismlauncher.url = "github:asyncedd/PrismLauncher?branch=develop";
     stylix.url = "github:danth/stylix";
 
