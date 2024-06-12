@@ -20,6 +20,7 @@
         "x.com * 3p-frame noop"
         "x.com edgecastcdn.net * noop"
         "x.com twimg.com * noop"
+        "x.com twitter.com * noop"
         "reddit.com redditstatic.com * noop"
         "www.reddit.com reddit.map.fastly.net * noop"
         "youtube.com * 3p-frame noop"
