@@ -22,4 +22,15 @@
   hardware.cpu.intel.updateMicrocode = true;
   hardware.bluetooth.enable = false;
   hardware.bluetooth.powerOnBoot = false;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  services.printing.enable = false;
+  services.xserver.videoDrivers = ["modesetting"];
+  zramSwap.enable = true;
+  programs.dconf.enable = true;
 }

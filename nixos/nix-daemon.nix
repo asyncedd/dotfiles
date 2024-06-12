@@ -1,6 +1,6 @@
 {config, ...}: {
   # dont change it unless you know what you doin'!
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 
   nix = {
     extraOptions = ''

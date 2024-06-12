@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   NewYork = pkgs.callPackage ../pkgs/fonts/NewYork/default.nix {inherit pkgs;};
+  MapleMono = pkgs.callPackage ../pkgs/fonts/MapleMono-NerdFonts/default.nix {inherit pkgs;};
 in {
   fonts = {
     fontDir.enable = true;
@@ -9,12 +10,13 @@ in {
       ubuntu_font_family
       unifont
       noto-fonts-cjk-sans
-      maple-mono-NF
+      maple-mono-autohint
       nerdfonts
       freetype
       inter
       twitter-color-emoji
       NewYork
+      geist-font
     ];
 
     fontconfig = {
@@ -25,7 +27,7 @@ in {
       defaultFonts = {
         serif = ["Inter"];
         sansSerif = ["Inter"];
-        monospace = ["MapleMono"];
+        monospace = ["Maple Mono"];
         emoji = ["Twemoji Color Emoji"];
       };
       localConf = ''

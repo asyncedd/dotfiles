@@ -11,24 +11,22 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./fonts.nix
-    ../modules/nixos/fcitx5.nix
-    ../modules/nixos/security.nix
-    ../modules/nixos/secrets.nix
-    ../modules/nixos/nix-daemon.nix
-    ../modules/hardware.nix
+    ./ime.nix
+    ./nix-daemon.nix
+    ./secrets.nix
+    ./security.nix
+    ./hardware.nix
     ./power.nix
+    ./filesystem.nix
+    ./shell.nix
+    ./kernel.nix
+    ./audio.nix
+    ./desktop.nix
   ];
 
   hardware.uinput.enable = true;
   users.groups.uinput.members = ["async"];
   users.groups.input.members = ["async"];
-
-  programs.dconf.enable = true;
-
-  zramSwap.enable = true;
-
-  # better performance than the actual Intel driver
-  services.xserver.videoDrivers = ["modesetting"];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
@@ -44,13 +42,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -65,18 +60,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.async = {
     isNormalUser = true;
     description = "async";
     extraGroups = ["networkmanager" "wheel"];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -109,7 +98,9 @@
     age
     openssl
     jdk21_headless
+    tree-sitter
     inputs.matugen.packages.${system}.default
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -120,20 +111,11 @@
     enableSSHSupport = true;
   };
 
-  services.printing.enable = false;
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    zlib
-    qt5.full
-    qtcreator
-    stdenv.cc.cc.lib
-  ];
-
   environment.variables = lib.mkForce {
     sqlite_nix_path = "${pkgs.sqlite.out}";
     XDG_DATA_DIRS = with pkgs; "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
     HOME_MANAGER_BACKUP_EXT = 1;
+    XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
   };
 
   systemd = {
@@ -181,12 +163,6 @@
   # ];
 
   # services.xserver.displayManager.startx.enable = true;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
 
   programs.gamemode.enable = true;
 

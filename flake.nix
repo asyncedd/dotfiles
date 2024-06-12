@@ -86,9 +86,6 @@
         };
         modules = [
           ./nixos/configuration.nix
-          ./hosts/nixos/default.nix
-          ./modules/shared/audio.nix
-          ./modules/shared/desktop.nix
           ./modules/languages
           ./modules/stylix
           nixos-hardware.nixosModules.common-cpu-intel-cpu-only
