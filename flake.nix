@@ -9,7 +9,6 @@
 
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
-    aylur.url = "github:Aylur/dotfiles";
     betterfox = {
       url = "github:yokoffing/Betterfox";
       flake = false;
@@ -75,7 +74,7 @@
     };
   in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
-    packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage "${inputs.aylur}/ags/default.nix" {inherit inputs;};
+    packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage "${./ags}/default.nix" {inherit inputs;};
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
