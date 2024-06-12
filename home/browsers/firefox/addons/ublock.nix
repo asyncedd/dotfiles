@@ -31,6 +31,7 @@
         "* cloudflare.net * noop"
         "* fastly.net * noop"
         "* *.fastly.net * noop"
+        "* jsdelivr.net * noop"
         ""
         "* cloudflare.com * noop"
         "* recaptcha.net * noop"
