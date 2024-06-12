@@ -1,6 +1,5 @@
 {pkgs, ...}: let
   NewYork = pkgs.callPackage ../pkgs/fonts/NewYork/default.nix {inherit pkgs;};
-  MapleMono = pkgs.callPackage ../pkgs/fonts/MapleMono-NerdFonts/default.nix {inherit pkgs;};
 in {
   fonts = {
     fontDir.enable = true;

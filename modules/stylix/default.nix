@@ -16,8 +16,8 @@
 
   stylix.fonts = {
     monospace = {
-      package = pkgs.maple-mono-NF;
-      name = "MapleMono NF";
+      package = pkgs.maple-mono-autohint;
+      name = "Maple Mono";
     };
     sansSerif = {
       package = pkgs.inter;
