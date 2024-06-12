@@ -121,7 +121,7 @@ in {
         [
           "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
           "SUPER, R,       ${e} -t launcher"
-          "SUPER, S,       exec, ${inputs.hyprland-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast copysave area"
+          "SUPER, S,       exec, grimblast copysave area"
           "SUPER, C, exec, hyprlock"
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
           ",Print,         ${e} -r 'recorder.screenshot()'"
@@ -184,18 +184,16 @@ in {
             10)
         );
     };
-    extraConfig = lib.concatMapStrings (x: x + "\n") [
-      "env = OZONE_PLATFORM,wayland"
-      "env = NIXOS_OZONE_WL,1"
-      "env = XDG_SESSION_TYPE,wayland"
-      "env = XDG_SESSION_DESKTOP,Hyprland"
-      "env = XDG_CURRENT_DESKTOP,Hyprland"
-
-      # "env = XCURSOR_SIZE,24"
-      "env = MOZ_ENABLE_WAYLAND,1"
-      "env = GTK_IM_MODULE,fcitx"
-      "env = HYPRCURSOR_THEME,phinger-cursors"
-      "env = HYPRCURSOR_SIZE,24"
-    ];
+    extraConfig = ''
+      env = HYPRCURSOR_SIZE,24
+      env = HYPRCURSOR_THEME,phinger-cursors
+      env = GTK_IM_MODULE,fcitx
+      env = MOZ_ENABLE_WAYLAND,1
+      env = XDG_CURRENT_DESKTOP,Hyprland
+      env = XDG_SESSION_DESKTOP,Hyprland
+      env = XDG_SESSION_TYPE,wayland
+      env = NIXOS_OZONE_WL,1
+      env = OZONE_PLATFORM,wayland
+    '';
   };
 }
