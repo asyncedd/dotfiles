@@ -23,7 +23,7 @@
   home.stateVersion = "23.11";
 
   home.sessionVariables = {
-    EDITOR = userConfig.editor;
+    EDITOR = "nvim";
   };
 
   programs.home-manager.enable = true;

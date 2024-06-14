@@ -128,9 +128,9 @@ in {
           "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
           "SUPER, Tab,     ${e} -t overview"
           ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
-          "SUPER, Return, exec, ${userConfig.terminal}" # xterm is a symlink, not actually xterm
-          "SUPER, W, exec, ${userConfig.browser}"
-          "SUPER, E, exec, ${userConfig.terminal} -e yazi"
+          "SUPER, Return, exec, kitty" # xterm is a symlink, not actually xterm
+          "SUPER, W, exec, firefox"
+          "SUPER, E, exec, kitty -e yazi"
 
           # "ALT, Tab, focuscurrentorlast"
           "SUPER, Delete, exit"

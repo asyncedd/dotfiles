@@ -64,12 +64,6 @@
     inherit (self) outputs;
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    userConfig = {
-      editor = "nvim";
-      terminal = "kitty";
-      browser = "firefox";
-      wallpaper = ./wallpapers/forest-anime.jpg;
-    };
   in {
     formatter = nixpkgs.legacyPackages.${system}.alejandra;
     packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage "${./ags}/default.nix" {inherit inputs;};
@@ -79,7 +73,6 @@
         specialArgs = {
           inherit inputs outputs;
           inherit system;
-          inherit userConfig;
           asztal = self.packages.x86_64-linux.default;
         };
         modules = [
@@ -128,7 +121,6 @@
               extraSpecialArgs = {
                 inherit inputs system;
                 inherit outputs;
-                inherit userConfig;
                 asztal = self.packages.x86_64-linux.default;
               };
             };
