@@ -1,8 +1,4 @@
 {
-  inputs,
-  userConfig,
-  ...
-}: {
   home.username = "async";
   home.homeDirectory = "/home/async";
 
