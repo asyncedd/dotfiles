@@ -32,7 +32,7 @@
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
-    inputs.xdg-desktop-portal-hyprland
+    xdg-desktop-portal-hyprland
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -100,7 +100,7 @@
     jdk21_headless
     tree-sitter
     inputs.matugen.packages.${system}.default
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    grimblast
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -178,4 +178,6 @@
       enable = true;
     };
   };
+
+  documentation.nixos.enable = false;
 }

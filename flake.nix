@@ -9,48 +9,42 @@
 
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     ags.url = "github:Aylur/ags";
+    ags.inputs.nixpkgs.follows = "nixpkgs";
     betterfox = {
       url = "github:yokoffing/Betterfox";
-      flake = false;
-    };
-    arkenfox = {
-      url = "github:arkenfox/user.js";
-      flake = false;
-    };
-    arcwtf = {
-      url = "github:KiKaraage/ArcWTF";
       flake = false;
     };
     omz = {
       url = "github:ohmyzsh/ohmyzsh";
       flake = false;
     };
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     astal = {
       url = "github:Aylur/Astal";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
+    matugen.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    xdg-desktop-portal-hyprland = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    };
-
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     prismlauncher.url = "github:asyncedd/PrismLauncher?branch=develop";
+    prismlauncher.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    firefox-csshacks = {
+      url = "github:MrOtherGuy/firefox-csshacks";
+      flake = false;
+    };
+    arcwtf = {
+      url = "github:KiKaraage/ArcWTF";
+      flake = false;
+    };
   };
 
   outputs = {

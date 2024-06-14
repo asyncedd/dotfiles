@@ -15,4 +15,6 @@
     pipes
     cbonsai
   ];
+
+  programs.btop.enable = true;
 }

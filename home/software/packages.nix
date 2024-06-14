@@ -10,7 +10,6 @@
     feh
     keepassxc
     mpv
-    btop
     eza
     yazi
 
