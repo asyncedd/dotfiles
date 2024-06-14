@@ -86,7 +86,7 @@
         };
         modules = [
           ./nixos/configuration.nix
-          ./modules/languages
+          ./modules/languages/lsp.nix
           ./modules/stylix
           nixos-hardware.nixosModules.common-cpu-intel-cpu-only
           nixos-hardware.nixosModules.common-gpu-intel
