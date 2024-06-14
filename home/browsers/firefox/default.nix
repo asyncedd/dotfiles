@@ -65,7 +65,6 @@
   };
   userChrome = ''
     @import "${inputs.arcwtf}/userChrome.css";
-    @import "${./css/statuspanel.css}";
   '';
   userContent = ''
     @import "${inputs.arcwtf}/userContent.css";
