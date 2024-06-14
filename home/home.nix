@@ -18,6 +18,7 @@
     ./software/packages.nix
     ./software/gtk.nix
     ./desktop/hyprlock.nix
+    ./cava.nix
   ];
 
   home.stateVersion = "23.11";
