@@ -514,6 +514,60 @@ in {
 
             // PREF: use macOS Appearance Panel text smoothing setting when rendering text [macOS]
             //user_pref("gfx.use_text_smoothing_setting", true);
+
+            /****************************************************************************
+             * SECTION: NETWORK                                                         *
+            ****************************************************************************/
+
+            // PREF: use bigger packets
+            // [WARNING] Cannot open HTML files bigger than 4MB if changed [2].
+            // Reduce Firefox's CPU usage by requiring fewer application-to-driver data transfers.
+            // However, it does not affect the actual packet sizes transmitted over the network.
+            // [1] https://www.mail-archive.com/support-seamonkey@lists.mozilla.org/msg74561.html
+            // [2] https://github.com/yokoffing/Betterfox/issues/279
+            user_pref("network.buffer.cache.size", 262144); // 256 kb; default=32768 (32 kb)
+            user_pref("network.buffer.cache.count", 128); // default=24
+
+            // PREF: increase the absolute number of HTTP connections
+            // [1] https://kb.mozillazine.org/Network.http.max-connections
+            // [2] https://kb.mozillazine.org/Network.http.max-persistent-connections-per-server
+            // [3] https://www.reddit.com/r/firefox/comments/11m2yuh/how_do_i_make_firefox_use_more_of_my_900_megabit/jbfmru6/
+            user_pref("network.http.max-connections", 1800); // default=900
+            user_pref("network.http.max-persistent-connections-per-server", 10); // default=6; download connections; anything above 10 is excessive
+                user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5); // default=3
+                //user_pref("network.http.max-persistent-connections-per-proxy", 48); // default=32
+            //user_pref("network.websocket.max-connections", 200); // DEFAULT
+
+            // PREF: pacing requests [FF23+]
+            // Controls how many HTTP requests are sent at a time.
+            // Pacing HTTP requests can have some benefits, such as reducing network congestion,
+            // improving web page loading speed, and avoiding server overload.
+            // Pacing requests adds a slight delay between requests to throttle them.
+            // If you have a fast machine and internet connection, disabling pacing
+            // may provide a small speed boost when loading pages with lots of requests.
+            // false=Firefox will send as many requests as possible without pacing
+            // true=Firefox will pace requests (default)
+            // user_pref("network.http.pacing.requests.enabled", false);
+            user_pref("network.http.pacing.requests.enabled", true);
+                //user_pref("network.http.pacing.requests.min-parallelism", 10); // default=6
+                //user_pref("network.http.pacing.requests.burst", 14); // default=10
+
+            // PREF: increase DNS cache
+            // [1] https://developer.mozilla.org/en-US/docs/Web/Performance/Understanding_latency
+            user_pref("network.dnsCacheEntries", 1000); // default=400
+
+            // PREF: adjust DNS expiration time
+            // [ABOUT] about:networking#dns
+            // [NOTE] These prefs will be ignored by DNS resolver if using DoH/TRR.
+            user_pref("network.dnsCacheExpiration", 3600); // keep entries for 1 hour
+                //user_pref("network.dnsCacheExpirationGracePeriod", 240); // default=60; cache DNS entries for 4 minutes after they expire
+
+            // PREF: the number of threads for DNS
+            user_pref("network.dns.max_high_priority_threads", 40); // DEFAULT [FF 123?]
+            user_pref("network.dns.max_any_priority_threads", 24); // DEFAULT [FF 123?]
+
+            // PREF: increase TLS token caching
+            user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS token caching (fast reconnects)
           ''
         ];
         inherit userChrome userContent;
