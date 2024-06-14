@@ -43,7 +43,6 @@
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
@@ -113,7 +112,6 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.async.imports = [
-                inputs.hyprland.homeManagerModules.default
                 inputs.sops-nix.homeManagerModules.sops
                 ./home/home.nix
                 ./modules/home-manager/stylix.nix
