@@ -7,7 +7,6 @@
   home.homeDirectory = "/home/async";
 
   imports = [
-    inputs.hyprland.homeManagerModules.default
     ./shell
     ./browsers/firefox
     ./editors/neovim
