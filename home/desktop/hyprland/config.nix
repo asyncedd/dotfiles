@@ -1,11 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  userConfig,
-  inputs,
-  ...
-}: let
+{config, ...}: let
   pointer = config.home.pointerCursor;
 in {
   wayland.windowManager.hyprland = {
