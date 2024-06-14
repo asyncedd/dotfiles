@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # nix
     nil
-    alejandra
+    nixfmt
 
     # rust
     cargo
