@@ -64,8 +64,6 @@
     inherit (self) outputs;
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    nixos-hardware = inputs.nixos-hardware;
-
     userConfig = {
       editor = "nvim";
       terminal = "kitty";
@@ -88,11 +86,11 @@
           ./nixos/configuration.nix
           ./modules/languages/lsp.nix
           ./modules/stylix
-          nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-          nixos-hardware.nixosModules.common-gpu-intel
-          nixos-hardware.nixosModules.common-pc-laptop
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
+          inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
+          inputs.nixos-hardware.nixosModules.common-gpu-intel
+          inputs.nixos-hardware.nixosModules.common-pc-laptop
+          inputs.nixos-hardware.nixosModules.common-pc
+          inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
 
           inputs.nix-index-database.nixosModules.nix-index
           {
