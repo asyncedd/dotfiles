@@ -16,7 +16,7 @@ in {
         "swww init"
       ];
       exec-once = [
-        "fcitx5 -r & nm-applet --indicator"
+        "fcitx5 -d"
         "ags -b hypr"
       ];
       monitor = ",highres,0x0,1,bitdepth,10";
