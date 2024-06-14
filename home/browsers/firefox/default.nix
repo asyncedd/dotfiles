@@ -62,6 +62,16 @@
       updateInterval = 24 * 60 * 60 * 1000;
       definedAliases = ["!vid"];
     };
+    "Mojeek" = {
+      urls = [
+        {
+          template = "https://www.mojeek.com/search?q={searchTerms}&theme=dark&hp=minimal&qss=Brave%2CDuckDuckGo%2CEcosia%2CStartpage";
+        }
+      ];
+      iconUpdateURL = "https://www.mojeek.com/favicon.ico";
+      updateInterval = 24 * 60 * 60 * 1000;
+      definedAliases = ["!mojeek"];
+    };
   };
   userChrome = ''
     @import "${inputs.arcwtf}/userChrome.css";
