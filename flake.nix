@@ -48,19 +48,24 @@
     };
   };
 
-  outputs = { self, nixpkgs,
-    # chaotic,
-    home-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      # chaotic,
+      home-manager,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-    in {
+    in
+    {
       formatter = nixpkgs.legacyPackages.${system}.alejandra;
       packages.x86_64-linux.default =
-        nixpkgs.legacyPackages.x86_64-linux.callPackage "${./ags}/default.nix" {
-          inherit inputs;
-        };
+        nixpkgs.legacyPackages.x86_64-linux.callPackage "${./ags}/default.nix"
+          { inherit inputs; };
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
@@ -83,6 +88,7 @@
             inputs.stylix.nixosModules.stylix
 
             home-manager.nixosModules.home-manager
+            { home-manager.backupFileExtension = "bak"; }
             {
               nixpkgs = {
                 config.allowUnfree = true;

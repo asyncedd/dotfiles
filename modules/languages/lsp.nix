@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     # nix
     nil
-    nixfmt
+    nixfmt-rfc-style
 
     # rust
     cargo
