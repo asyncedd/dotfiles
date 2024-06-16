@@ -1,5 +1,5 @@
-{config, ...}: let
-  pointer = config.home.pointerCursor;
+{ config, ... }:
+let pointer = config.home.pointerCursor;
 in {
   wayland.windowManager.hyprland = {
     settings = {
@@ -8,10 +8,7 @@ in {
         "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
         "swww init"
       ];
-      exec-once = [
-        "fcitx5 -d"
-        "ags -b hypr"
-      ];
+      exec-once = [ "fcitx5 -d" "ags -b hypr" ];
       monitor = ",highres,0x0,1,bitdepth,10";
       input = {
         kb_layout = "us";
@@ -22,9 +19,7 @@ in {
 
         follow_mouse = "1";
 
-        touchpad = {
-          natural_scroll = false;
-        };
+        touchpad = { natural_scroll = false; };
 
         sensitivity = 0;
       };
@@ -48,14 +43,15 @@ in {
           size = 4;
           passes = 2;
         };
-        drop_shadow = false;
+        drop_shadow = true;
+        shadow_range = 7;
+        shadow_render_power = 3;
 
         dim_inactive = true;
+        dim_strength = 0.3;
       };
 
-      gestures = {
-        workspace_swipe = true;
-      };
+      gestures = { workspace_swipe = true; };
 
       animation = {
         bezier = [
@@ -101,81 +97,68 @@ in {
         vrr = true;
         vfr = true;
       };
-      layerrule = [
-        "blur,bar-0"
-      ];
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
-      bind = let
-        e = "exec, ags -b hypr";
-      in
-        [
-          "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
-          "SUPER, R,       ${e} -t launcher"
-          "SUPER, S,       exec, grimblast copysave area"
-          "SUPER, C, exec, hyprlock"
-          ",XF86Launch4,   ${e} -r 'recorder.start()'"
-          ",Print,         ${e} -r 'recorder.screenshot()'"
-          "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
-          "SUPER, Tab,     ${e} -t overview"
-          ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
-          "SUPER, Return, exec, kitty" # xterm is a symlink, not actually xterm
-          "SUPER, W, exec, firefox"
-          "SUPER, E, exec, kitty -e yazi"
+      layerrule = [ "blur,bar-0" ];
+      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
+      bind = let e = "exec, ags -b hypr";
+      in [
+        "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
+        "SUPER, R,       ${e} -t launcher"
+        "SUPER, S,       exec, grimblast copysave area"
+        "SUPER, C, exec, hyprlock"
+        ",XF86Launch4,   ${e} -r 'recorder.start()'"
+        ",Print,         ${e} -r 'recorder.screenshot()'"
+        "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
+        "SUPER, Tab,     ${e} -t overview"
+        ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
+        "SUPER, Return, exec, kitty" # xterm is a symlink, not actually xterm
+        "SUPER, W, exec, firefox"
+        "SUPER, E, exec, kitty -e yazi"
 
-          # "ALT, Tab, focuscurrentorlast"
-          "SUPER, Delete, exit"
-          "SUPER, Q, killactive"
-          "SUPER, F, togglefloating"
-          "SUPER, G, fullscreen"
-          "SUPER, O, fakefullscreen"
-          "SUPER, P, togglesplit"
+        # "ALT, Tab, focuscurrentorlast"
+        "SUPER, Delete, exit"
+        "SUPER, Q, killactive"
+        "SUPER, F, togglefloating"
+        "SUPER, G, fullscreen"
+        "SUPER, O, fakefullscreen"
+        "SUPER, P, togglesplit"
 
-          "SUPER, k, movefocus, u"
-          "SUPER, j, movefocus, d"
-          "SUPER, l, movefocus, r"
-          "SUPER, h, movefocus, l"
+        "SUPER, k, movefocus, u"
+        "SUPER, j, movefocus, d"
+        "SUPER, l, movefocus, r"
+        "SUPER, h, movefocus, l"
 
-          "SUPER, left, workspace, e-1"
-          "SUPER, right, workspace, e+1"
+        "SUPER, left, workspace, e-1"
+        "SUPER, right, workspace, e+1"
 
-          "SUPER SHIFT, left, movetoworkspace, e-1"
-          "SUPER SHIFT, right, movetoworkspace, e+1"
+        "SUPER SHIFT, left, movetoworkspace, e-1"
+        "SUPER SHIFT, right, movetoworkspace, e+1"
 
-          "SUPER SHIFT, left, workspace, e-1"
-          "SUPER SHIFT, right, workspace, e+1"
+        "SUPER SHIFT, left, workspace, e-1"
+        "SUPER SHIFT, right, workspace, e+1"
 
-          "SUPER ALT, k, resizeactive, 0 -20"
-          "SUPER ALT, j, resizeactive, 0 20"
-          "SUPER ALT, l, resizeactive, 20 0"
-          "SUPER ALT, h, resizeactive, -20 0"
+        "SUPER ALT, k, resizeactive, 0 -20"
+        "SUPER ALT, j, resizeactive, 0 20"
+        "SUPER ALT, l, resizeactive, 20 0"
+        "SUPER ALT, h, resizeactive, -20 0"
 
-          "SUPER SHIFT, k, movewindow, u"
-          "SUPER SHIFT, j, movewindow, d"
-          "SUPER SHIFT, l, movewindow, r"
-          "SUPER SHIFT, h, movewindow, l"
-        ]
-        # ++ (map (i: ws (toString i) (toString i)) arr)
-        # ++ (map (i: mvtows (toString i) (toString i)) arr);
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-          builtins.concatLists (builtins.genList (
-              x: let
-                ws = let
-                  c = (x + 1) / 10;
-                in
-                  builtins.toString (x + 1 - (c * 10));
-              in [
-                "$mod, ${ws}, workspace, ${toString (x + 1)}"
-                "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-                "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
-              ]
-            )
-            10)
-        );
+        "SUPER SHIFT, k, movewindow, u"
+        "SUPER SHIFT, j, movewindow, d"
+        "SUPER SHIFT, l, movewindow, r"
+        "SUPER SHIFT, h, movewindow, l"
+      ]
+      # ++ (map (i: ws (toString i) (toString i)) arr)
+      # ++ (map (i: mvtows (toString i) (toString i)) arr);
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+        builtins.concatLists (builtins.genList (x:
+          let
+            ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
+          in [
+            "$mod, ${ws}, workspace, ${toString (x + 1)}"
+            "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+            "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+          ]) 10));
     };
     extraConfig = ''
       env = HYPRCURSOR_SIZE,24

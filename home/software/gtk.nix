@@ -1,4 +1,4 @@
-{pkgs, ...}: rec {
+{ pkgs, ... }: rec {
   qt = {
     enable = true;
 
@@ -8,12 +8,14 @@
   gtk = {
     enable = true;
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
+      package = pkgs.morewaita-icon-theme;
+      name = "MoreWaita";
     };
   };
 
-  home.packages = [
+  home.packages = with pkgs; [
     gtk.iconTheme.package
+    gnome.adwaita-icon-theme
+    papirus-icon-theme
   ];
 }

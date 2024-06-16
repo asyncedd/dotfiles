@@ -1,4 +1,4 @@
-{
+{ osConfig, ... }: {
   programs.hyprlock = {
     enable = true;
 
@@ -11,7 +11,7 @@
 
       background = {
         monitor = "";
-        path = "${../../wallpapers/forest-anime.jpg}";
+        path = "${osConfig.stylix.image}";
         color = "rgba(0, 0, 0, 0.5)";
         blur_passes = 3;
         contrast = 0.8916;
@@ -34,7 +34,7 @@
 
       label = {
         monitor = "";
-        text = "<b>$TIME</b>";
+        text = "<b><big>$TIME</big></b>";
         font_family = "New York";
         font_size = 50;
 

@@ -18,9 +18,9 @@
 
   home.stateVersion = "23.11";
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables = { EDITOR = "nvim"; };
 
   programs.home-manager.enable = true;
+
+  home.file.".face".source = ../assets/PFP/luckystar01.jpg;
 }

@@ -186,6 +186,22 @@
         "type": "github"
       }
     },
+    "edgyarc-fr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717074318,
+        "narHash": "sha256-KvzYDTMHZom9kDCGL9NMBH76s4kIgtOVG8hb88VfREY=",
+        "owner": "artsyfriedchicken",
+        "repo": "EdgyArc-fr",
+        "rev": "2ba31f414811324f218111c94586651456d89fdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "artsyfriedchicken",
+        "repo": "EdgyArc-fr",
+        "type": "github"
+      }
+    },
     "firefox-csshacks": {
       "flake": false,
       "locked": {
@@ -574,26 +590,6 @@
         "type": "github"
       }
     },
-    "nix-index-database": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1717744769,
-        "narHash": "sha256-1usk5faO+KRn/03xKW3G3ex9/wHeLfwKTa7x8QNcygc=",
-        "owner": "nix-community",
-        "repo": "nix-index-database",
-        "rev": "4ac3639cebb6286f1a68d015b80e9e0c6c869ce6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-index-database",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1717574423,
@@ -612,11 +608,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1717196966,
-        "narHash": "sha256-yZKhxVIKd2lsbOqYd5iDoUIwsRZFqE87smE2Vzf6Ck0=",
+        "lastModified": 1718318537,
+        "narHash": "sha256-4Zu0RYRcAY/VWuu6awwq4opuiD//ahpc2aFHg2CWqFY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "57610d2f8f0937f39dbd72251e9614b1561942d8",
+        "rev": "e9ee548d90ff586a6471b4ae80ae9cfcbceb3420",
         "type": "github"
       },
       "original": {
@@ -717,11 +713,11 @@
         "arcwtf": "arcwtf",
         "astal": "astal",
         "betterfox": "betterfox",
+        "edgyarc-fr": "edgyarc-fr",
         "firefox-csshacks": "firefox-csshacks",
         "home-manager": "home-manager",
         "matugen": "matugen",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "omz": "omz",

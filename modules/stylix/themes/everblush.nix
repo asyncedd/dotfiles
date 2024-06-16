@@ -18,5 +18,6 @@
     base0E = "#c47fd5";
     base0F = "#ef7d7d";
   };
-  stylix.image = ../../../wallpapers/forest-anime.jpg;
+  # stylix.image = ../../../wallpapers/forest-anime.jpg;
+  stylix.image = ../../../wallpapers/everblush-mountain.jpg;
 }

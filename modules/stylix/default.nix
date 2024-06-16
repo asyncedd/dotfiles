@@ -1,11 +1,13 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./themes/everblush.nix
+    # ./themes/decay.nix
+    # ./themes/evergarden.nix
     # ./themes/catppuccin.nix
   ];
   stylix.cursor = {
-    package = pkgs.phinger-cursors;
-    name = "phinger-cursors-dark";
+    package = pkgs.qogir-icon-theme;
+    name = "Qogir";
     size = 24;
   };
 
