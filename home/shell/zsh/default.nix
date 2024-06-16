@@ -1,16 +1,11 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
-}: let
-  eza = "${pkgs.eza}/bin/eza --group-directories-first --git --hyperlink --icons";
-  colors = config.lib.stylix.colors;
+{ pkgs, config, inputs, ... }:
+let
+  eza =
+    "${pkgs.eza}/bin/eza --group-directories-first --git --hyperlink --icons";
+  # colors = config.lib.stylix.colors;
   omz = name: "source ${inputs.omz}/plugins/${name}/${name}.plugin.zsh";
 in {
-  home.packages = with pkgs; [
-    carapace
-  ];
+  home.packages = with pkgs; [ carapace ];
   home.file.".zshlogin".source = ./.zlogin;
   programs.zsh = {
     enable = true;
@@ -18,7 +13,7 @@ in {
     enableCompletion = true;
     syntaxHighlighting = {
       enable = true;
-      highlighters = ["main" "brackets"];
+      highlighters = [ "main" "brackets" ];
     };
     history = {
       size = 1024;
@@ -28,7 +23,7 @@ in {
       expireDuplicatesFirst = true;
     };
     localVariables = {
-      ZSH_AUTOSUGGEST_STRATEGY = ["history" "completion"];
+      ZSH_AUTOSUGGEST_STRATEGY = [ "history" "completion" ];
       HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND = "bg=default";
       HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND = "bg=default";
       HISTORY_SUBSTRING_SEARCH_FUZZY = "";
@@ -51,7 +46,8 @@ in {
       }
       {
         name = "zsh-history-substring-search";
-        src = "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
+        src =
+          "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
         file = "zsh-history-substring-search.zsh";
       }
       {
@@ -107,8 +103,8 @@ in {
 
        path+=('/home/async/.cargo/bin')
        export PATH
-       ${omz "cp"}
-       ${omz "git"}
+       # ${omz "cp"}
+       # ${omz "git"}
 
       chpwd_functions+=(chpwd_cdls)
       function chpwd_cdls() {
@@ -118,66 +114,6 @@ in {
       			fi
       }
     '';
-    # initExtra = ''
-    #   	ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_NEX
-    #     HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=bg=default
-    #     HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=bg=default
-    #   	bindkey '^[[Z' reverse-menu-complete
-    #
-    #   	path+=('/home/async/.cargo/bin')
-    #   	export PATH
-    #
-    #     ${omz "cp"}
-    #     ${omz "git"}
-    #
-    #   	zstyle ':completion:*' menu select
-    #
-    #   	unsetopt menu_complete
-    #   	unsetopt flowcontrol
-    #   	unsetopt BEEP
-    #
-    #     setopt INTERACTIVE_COMMENTS
-    #   	setopt prompt_subst
-    #   	setopt always_to_end
-    #   	setopt append_history
-    #   	setopt auto_menu
-    #   	setopt complete_in_word
-    #   	setopt extended_history
-    #   	setopt hist_expire_dups_first
-    #   	setopt hist_ignore_dups
-    #   	setopt hist_ignore_space
-    #   	setopt hist_verify
-    #   	setopt inc_append_history
-    #
-    #     bindkey '^[[A' history-substring-search-up
-    #     bindkey '^[[B' history-substring-search-down
-    #
-    #     # disable sort when completing `git checkout`
-    #     zstyle ':completion:*:git-checkout:*' sort false
-    #     # set list-colors to enable filename colorizing
-    #     zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-    #     # preview directory's content with exa when completing cd
-    #     zstyle ':fzf-tab:complete:cd:*' fzf-preview '${config.programs.zsh.shellAliases.ls} --color=always $realpath'
-    #     zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ''${(Q)realpath}'
-    #             zstyle ':completion:*:descriptions' format '[%d]'
-    #     # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-    #     zstyle ':completion:*' menu no
-    #     # switch group using `<` and `>`
-    #     zstyle ':fzf-tab:*' switch-group '<' '>'
-    #
-    #     zstyle -d ':completion:*' format
-    #   	bindkey "^[[1;5C" forward-word
-    #
-    #   	chpwd_functions+=(chpwd_cdls)
-    #   	function chpwd_cdls() {
-    #   		if [[ -o interactive ]]; then
-    #   			emulate -L zsh
-    #   				${config.programs.zsh.shellAliases.ls}
-    #   				fi
-    #   	}
-    #
-    #   source <(${pkgs.carapace}/bin/carapace _carapace)
-    # '';
     shellAliases = {
       ll = "${eza} -l";
       lla = "${eza} -al -TL 1";
