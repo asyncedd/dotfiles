@@ -1,19 +1,27 @@
-{ pkgs, config, inputs, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 let
-  eza =
-    "${pkgs.eza}/bin/eza --group-directories-first --git --hyperlink --icons";
+  eza = "${pkgs.eza}/bin/eza --group-directories-first --git --hyperlink --icons";
   # colors = config.lib.stylix.colors;
   omz = name: "source ${inputs.omz}/plugins/${name}/${name}.plugin.zsh";
-in {
-  home.packages = with pkgs; [ carapace ];
-  home.file.".zshlogin".source = ./.zlogin;
+in
+{
+  # home.packages = with pkgs; [ carapace ];
+  # home.file.".zshlogin".source = ./.zlogin;
   programs.zsh = {
     enable = true;
     autocd = true;
     enableCompletion = true;
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" ];
+      highlighters = [
+        "main"
+        "brackets"
+      ];
     };
     history = {
       size = 1024;
@@ -23,7 +31,10 @@ in {
       expireDuplicatesFirst = true;
     };
     localVariables = {
-      ZSH_AUTOSUGGEST_STRATEGY = [ "history" "completion" ];
+      ZSH_AUTOSUGGEST_STRATEGY = [
+        "history"
+        "completion"
+      ];
       HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND = "bg=default";
       HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND = "bg=default";
       HISTORY_SUBSTRING_SEARCH_FUZZY = "";
@@ -46,8 +57,7 @@ in {
       }
       {
         name = "zsh-history-substring-search";
-        src =
-          "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
+        src = "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
         file = "zsh-history-substring-search.zsh";
       }
       {
@@ -103,8 +113,8 @@ in {
 
        path+=('/home/async/.cargo/bin')
        export PATH
-       # ${omz "cp"}
-       # ${omz "git"}
+       ${omz "cp"}
+       ${omz "git"}
 
       chpwd_functions+=(chpwd_cdls)
       function chpwd_cdls() {
