@@ -32,13 +32,9 @@ let
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = [ "@hm" ];
     };
-    "SearX (puffyan)" = {
-      urls = [
-        {
-          template = "https://searx.puffyan.us/search?q={searchTerms}&category_general=1&language=auto&time_range=&safesearch=0&theme=simple";
-        }
-      ];
-      iconUpdateURL = "https://searx.puffyan.us/favicon.ico";
+    "SearX" = {
+      urls = [ { template = "https://searxng.site/searxng/search?q={searchTerms}"; } ];
+      iconUpdateURL = "https://searxng.site/searxng/favicon.ico";
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = [ "!searx" ];
     };
@@ -47,16 +43,6 @@ let
       iconUpdateURL = "https://vid.puffyan.us/favicon.ico";
       updateInterval = 24 * 60 * 60 * 1000;
       definedAliases = [ "!vid" ];
-    };
-    "Mojeek" = {
-      urls = [
-        {
-          template = "https://www.mojeek.com/search?q={searchTerms}&theme=dark&hp=minimal&qss=Brave%2CDuckDuckGo%2CEcosia%2CStartpage";
-        }
-      ];
-      iconUpdateURL = "https://www.mojeek.com/favicon.ico";
-      updateInterval = 24 * 60 * 60 * 1000;
-      definedAliases = [ "!mojeek" ];
     };
 
     "Brave" = {
@@ -82,8 +68,8 @@ let
   '';
   search = {
     force = true;
-    default = "Brave";
-    privateDefault = "Brave";
+    default = "Searx";
+    privateDefault = "Searx";
     inherit engines;
   };
 in
