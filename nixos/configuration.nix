@@ -6,7 +6,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -25,8 +26,8 @@
   ];
 
   hardware.uinput.enable = true;
-  users.groups.uinput.members = ["async"];
-  users.groups.input.members = ["async"];
+  users.groups.uinput.members = [ "async" ];
+  users.groups.input.members = [ "async" ];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
@@ -63,7 +64,10 @@
   users.users.async = {
     isNormalUser = true;
     description = "async";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -101,6 +105,8 @@
     tree-sitter
     inputs.matugen.packages.${system}.default
     grimblast
+
+    git-crypt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -113,7 +119,9 @@
 
   environment.variables = lib.mkForce {
     sqlite_nix_path = "${pkgs.sqlite.out}";
-    XDG_DATA_DIRS = with pkgs; "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
+    # XDG_DATA_DIRS =
+    #   with pkgs;
+    #   "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
     HOME_MANAGER_BACKUP_EXT = 1;
     XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
   };
@@ -121,9 +129,9 @@
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";

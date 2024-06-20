@@ -1,6 +1,8 @@
-{pkgs, ...}: let
-  NewYork = pkgs.callPackage ../pkgs/fonts/NewYork/default.nix {inherit pkgs;};
-in {
+{ pkgs, ... }:
+let
+  NewYork = pkgs.callPackage ../pkgs/fonts/NewYork/default.nix { inherit pkgs; };
+in
+{
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
@@ -24,10 +26,10 @@ in {
       hinting.enable = true;
       # hinting.autohint = true;
       defaultFonts = {
-        serif = ["Inter"];
-        sansSerif = ["Inter"];
-        monospace = ["Maple Mono"];
-        emoji = ["Twemoji Color Emoji"];
+        serif = [ "Inter" ];
+        sansSerif = [ "Inter" ];
+        monospace = [ "Maple Mono" ];
+        emoji = [ "Twemoji Color Emoji" ];
       };
       localConf = ''
         <?xml version="1.0"?>
