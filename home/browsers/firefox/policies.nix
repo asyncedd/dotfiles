@@ -55,6 +55,7 @@
         "https://addons.mozilla.org/firefox/downloads/file/4045009/auto_tab_discard-0.6.7.xpi" # auto tab discard
         "https://addons.mozilla.org/firefox/downloads/file/4287785/dearrow-1.6.xpi" # dearrow
         "https://addons.mozilla.org/firefox/downloads/file/4285762/keepassxc_browser-1.9.0.5.xpi" # keepassxc browser
+        "https://addons.mozilla.org/firefox/downloads/file/4269135/enhancer_for_youtube-2.0.124.2.xpi" # enahcner for youtube
       ];
     };
     SearchEngines = {

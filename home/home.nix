@@ -13,12 +13,16 @@
     ./software/packages.nix
     ./software/gtk.nix
     ./desktop/hyprlock.nix
-    ./cava.nix
+    ./config/cava.nix
+    ./config/fastfetch.nix
+    ./config/hypridle.nix
   ];
 
   home.stateVersion = "23.11";
 
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   programs.home-manager.enable = true;
 

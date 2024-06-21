@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     # nix
     nil
@@ -44,5 +45,11 @@
     # markdown
     marksman
     markdown-oxide
+
+    # python
+    python3
+    basedpyright
+    ruff-lsp
+    black
   ];
 }
