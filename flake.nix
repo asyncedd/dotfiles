@@ -46,6 +46,14 @@
       url = "github:artsyfriedchicken/EdgyArc-fr";
       flake = false;
     };
+    shyfox = {
+      url = "github:asyncedd/ShyFox";
+      flake = false;
+    };
+    edge-frfox = {
+      url = "github:bmFtZQ/edge-frfox";
+      flake = false;
+    };
   };
 
   outputs =

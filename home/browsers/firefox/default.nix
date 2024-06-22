@@ -52,30 +52,35 @@ let
     };
   };
   userChrome = ''
-    @import "${inputs.edgyarc-fr}/chrome/userChrome.css";
+    @import "${inputs.shyfox}/chrome/userChrome.css";
+    @import "${inputs.edge-frfox}/chrome/icons/icons.css";
+    @import "${inputs.edge-frfox}/chrome/global/popup.css";
+    @import "${inputs.edge-frfox}/chrome/global/tree.css";
+    @import "${inputs.edge-frfox}/chrome/global/tweaks.css";
 
     :root {
-       --af-content-border: 0px;
+      --outline: 0;
     }
-
-    @-moz-document regexp("^moz-extension://.*?/sidebar/sidebar.html") {
-      #root.root {--border: rgba(0,0,0,0);}
-      #root.root {--tabs-margin: 12px;}
-    }
-
-    .tab-background[selected] {
-      border: 0;
-      outline: 0;
-
-      /* Fractional scaling adjustments (150%, 175%, etc.) */
-      @media (1dppx < resolution < 2dppx) {
-        outline-width: 1.5px !important;
-      }
-    }
-
   '';
   userContent = ''
-    @import "${inputs.edgyarc-fr}/chrome/userContent.css";
+    @import "${inputs.shyfox}/chrome/userContent.css";
+
+    @-moz-document regexp("^moz-extension://.*?/sidebar/sidebar.html")
+    {
+      #nav_bar {
+        box-shadow: none !important;
+      }
+
+      #icon_settings path {
+        d: path("M8 0a8.02 8.02 0 0 0-1.672.174.474.474 0 0 0-.367.377L5.617 2.44a.942.942 0 0 1-1.242.717L2.57 2.512a.47.47 0 0 0-.508.127A7.998 7.998 0 0 0 .386 5.537a.47.47 0 0 0 .143.504l1.463 1.242a.94.94 0 0 1 0 1.433L.529 9.958a.471.471 0 0 0-.143.504 7.988 7.988 0 0 0 1.676 2.898.47.47 0 0 0 .508.127l1.805-.644a.941.941 0 0 1 1.242.717l.344 1.889c.034.187.18.337.367.377A8.022 8.022 0 0 0 8 15.999c.567 0 1.126-.057 1.672-.173a.472.472 0 0 0 .366-.377l.345-1.89a.942.942 0 0 1 1.242-.717l1.805.645a.47.47 0 0 0 .508-.127 7.998 7.998 0 0 0 1.676-2.898.47.47 0 0 0-.143-.504l-1.463-1.242a.94.94 0 0 1 0-1.433l1.463-1.242a.471.471 0 0 0 .143-.504 7.988 7.988 0 0 0-1.676-2.898.47.47 0 0 0-.508-.127l-1.805.645a.941.941 0 0 1-1.242-.717L10.037.55a.472.472 0 0 0-.365-.376A8.027 8.027 0 0 0 8 0zm0 .941c.395 0 .786.032 1.17.096l.285 1.572a1.88 1.88 0 0 0 2.486 1.434l1.502-.537c.5.605.897 1.289 1.172 2.025l-1.219 1.033a1.883 1.883 0 0 0 0 2.87l1.22 1.034a7.043 7.043 0 0 1-1.173 2.025l-1.502-.537a1.882 1.882 0 0 0-2.486 1.433l-.285 1.572a7.135 7.135 0 0 1-2.342 0l-.283-1.572a1.88 1.88 0 0 0-2.486-1.433l-1.502.537a7.054 7.054 0 0 1-1.172-2.025l1.219-1.033a1.883 1.883 0 0 0 0-2.871L1.384 5.53a7.046 7.046 0 0 1 1.173-2.025l1.502.537a1.882 1.882 0 0 0 2.486-1.434l.283-1.572A7.132 7.132 0 0 1 8 .941zm0 4.56A2.5 2.5 0 1 0 8 10.5a2.5 2.5 0 0 0 0-5zm0 1a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z") !important;
+      }
+
+      /* selected tab outline */
+      .Tab[data-pin="true"][data-active="true"] .body {
+        border: 0 !important;
+        background-color: var(--tabs-activated-bg) !important;
+      }
+    }
   '';
   search = {
     force = true;
@@ -142,7 +147,7 @@ in
             user_pref("layout.css.light-dark.enabled", true);
             user_pref("layout.css.has-selector.enabled", true);
           ''
-          # edgyarc-fr
+          # edge-frfox
           ''
             user_pref("uc.tweak.rounded-corners", true);
             user_pref("uc.tweak.hide-tabs-bar", true);
@@ -154,6 +159,12 @@ in
             user_pref("af.edgyarc.centered-url", true);
             user_pref("af.sidebery.edgyarc-theme", true);
             user_pref("af.edgyarc.edge-sidebar", true);
+          ''
+          ''
+            user_pref("browser.urlbar.suggest.calculator", true);
+            user_pref("browser.urlbar.unitConversion.enabled", true);
+            user_pref("browser.urlbar.trimHttps", true);
+            user_pref("browser.urlbar.trimURLs", true);
           ''
           ''
             user_pref("browser.startup.page", 3); // 0102
@@ -168,59 +179,23 @@ in
           ''
           ''
             /****************************************************************************************
-             * OPTION: NATURAL SMOOTH SCROLLING V4                                                 *
+             * OPTION: SHARPEN SCROLLING                                                           *
             ****************************************************************************************/
-            ///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
-            ///  copy into firefox/librewolf profile as user.js, add to existing, or set in about:config
-            user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS",   12);//NSS    [120]
-            user_pref("general.smoothScroll.msdPhysics.enabled",                    true);//NSS  [false]
-            user_pref("general.smoothScroll.msdPhysics.motionBeginSpringConstant",   200);//NSS   [1250]
-            user_pref("general.smoothScroll.msdPhysics.regularSpringConstant",       250);//NSS   [1000]
-            user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaMS",           25);//NSS     [12]
-            user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaRatio",     "2.0");//NSS    [1.3]
-            user_pref("general.smoothScroll.msdPhysics.slowdownSpringConstant",      250);//NSS   [2000]
-            user_pref("general.smoothScroll.currentVelocityWeighting",             "1.0");//NSS ["0.25"]
-            user_pref("general.smoothScroll.stopDecelerationWeighting",            "1.0");//NSS  ["0.4"]
-
-            /// adjust multiply factor for mousewheel - or set to false if scrolling is way too fast
-            user_pref("mousewheel.system_scroll_override.horizontal.factor",         200);//NSS    [200]
-            user_pref("mousewheel.system_scroll_override.vertical.factor",           200);//NSS    [200]
-            user_pref("mousewheel.system_scroll_override_on_root_content.enabled",  true);//NSS   [true]
-            user_pref("mousewheel.system_scroll_override.enabled",                  true);//NSS   [true]
-
-            /// adjust pixels at a time count for mousewheel - cant do more than a page at once if <100
-            user_pref("mousewheel.default.delta_multiplier_x",                       100);//NSS    [100]
-            user_pref("mousewheel.default.delta_multiplier_y",                       100);//NSS    [100]
-            user_pref("mousewheel.default.delta_multiplier_z",                       100);//NSS    [100]
-
-            ///  this preset will reset couple extra variables for consistency
-            user_pref("apz.allow_zooming",                                          true);//NSS   [true]
-            user_pref("apz.force_disable_desktop_zooming_scrollbars",              false);//NSS  [false]
-            user_pref("apz.paint_skipping.enabled",                                 true);//NSS   [true]
-            user_pref("apz.windows.use_direct_manipulation",                        true);//NSS   [true]
-            user_pref("dom.event.wheel-deltaMode-lines.always-disabled",           false);//NSS  [false]
-            user_pref("general.smoothScroll.durationToIntervalRatio",                200);//NSS    [200]
-            user_pref("general.smoothScroll.lines.durationMaxMS",                    150);//NSS    [150]
-            user_pref("general.smoothScroll.lines.durationMinMS",                    150);//NSS    [150]
-            user_pref("general.smoothScroll.other.durationMaxMS",                    150);//NSS    [150]
-            user_pref("general.smoothScroll.other.durationMinMS",                    150);//NSS    [150]
-            user_pref("general.smoothScroll.pages.durationMaxMS",                    150);//NSS    [150]
-            user_pref("general.smoothScroll.pages.durationMinMS",                    150);//NSS    [150]
-            user_pref("general.smoothScroll.pixels.durationMaxMS",                   150);//NSS    [150]
-            user_pref("general.smoothScroll.pixels.durationMinMS",                   150);//NSS    [150]
-            user_pref("general.smoothScroll.scrollbars.durationMaxMS",               150);//NSS    [150]
-            user_pref("general.smoothScroll.scrollbars.durationMinMS",               150);//NSS    [150]
-            user_pref("general.smoothScroll.mouseWheel.durationMaxMS",               200);//NSS    [200]
-            user_pref("general.smoothScroll.mouseWheel.durationMinMS",                50);//NSS     [50]
-            user_pref("layers.async-pan-zoom.enabled",                              true);//NSS   [true]
-            user_pref("layout.css.scroll-behavior.spring-constant",                "250");//NSS    [250]
-            user_pref("mousewheel.transaction.timeout",                             1500);//NSS   [1500]
-            user_pref("mousewheel.acceleration.factor",                               10);//NSS     [10]
-            user_pref("mousewheel.acceleration.start",                                -1);//NSS     [-1]
-            user_pref("mousewheel.min_line_scroll_amount",                             5);//NSS      [5]
-            user_pref("toolkit.scrollbox.horizontalScrollDistance",                    5);//NSS      [5]
-            user_pref("toolkit.scrollbox.verticalScrollDistance",                      3);//NSS      [3]
-            ///
+            // credit: https://github.com/black7375/Firefox-UI-Fix
+            // only sharpen scrolling
+            user_pref("apz.overscroll.enabled", false); // DEFAULT NON-LINUX
+            user_pref("general.smoothScroll", true); // DEFAULT
+            user_pref("mousewheel.min_line_scroll_amount", 10); // 10-40; adjust this number to your liking; default=5
+            user_pref("general.smoothScroll.mouseWheel.durationMinMS", 80); // default=50
+            user_pref("general.smoothScroll.currentVelocityWeighting", "0.15"); // default=.25
+            user_pref("general.smoothScroll.stopDecelerationWeighting", "0.6"); // default=.4
+            // Firefox Nightly only:
+            // [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1846935
+            user_pref("general.smoothScroll.msdPhysics.enabled", false); // [FF122+ Nightly]
+            user_pref("apz.gtk.pangesture.page_delta_mode_multiplier", 0.5);
+          ''
+          ''
+            user_pref("privacy.query_stripping.strip_list", "__hsfp __hssc __hstc __s _hsenc _openstat dclid fbclid gbraid gclid hsCtaTracking igshid mc_eid ml_subscriber ml_subscriber_hash msclkid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id rb_clickid s_cid twclid vero_conv vero_id wbraid wickedid yclid");
           ''
         ];
         inherit userChrome userContent;

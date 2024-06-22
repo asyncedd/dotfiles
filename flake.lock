@@ -186,6 +186,22 @@
         "type": "github"
       }
     },
+    "edge-frfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717262566,
+        "narHash": "sha256-gukpChNyhn22nyxkiRoecxzfNREX5EDTyFwBiVDobu0=",
+        "owner": "bmFtZQ",
+        "repo": "edge-frfox",
+        "rev": "3dbae0d753353c7fabf1d886590e375ca2bac7a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bmFtZQ",
+        "repo": "edge-frfox",
+        "type": "github"
+      }
+    },
     "edgyarc-fr": {
       "flake": false,
       "locked": {
@@ -713,6 +729,7 @@
         "arcwtf": "arcwtf",
         "astal": "astal",
         "betterfox": "betterfox",
+        "edge-frfox": "edge-frfox",
         "edgyarc-fr": "edgyarc-fr",
         "firefox-csshacks": "firefox-csshacks",
         "home-manager": "home-manager",
@@ -722,8 +739,25 @@
         "nixpkgs": "nixpkgs",
         "omz": "omz",
         "prismlauncher": "prismlauncher",
+        "shyfox": "shyfox",
         "sops-nix": "sops-nix",
         "stylix": "stylix"
+      }
+    },
+    "shyfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719020400,
+        "narHash": "sha256-zwEoc7hka2K6jIMppmOTr804KtIor6E6h3y5vKkcqZs=",
+        "owner": "asyncedd",
+        "repo": "ShyFox",
+        "rev": "07fb345f6f06426823c30b3c2205e08b98ecc4fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "asyncedd",
+        "repo": "ShyFox",
+        "type": "github"
       }
     },
     "sops-nix": {

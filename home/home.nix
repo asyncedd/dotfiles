@@ -14,7 +14,6 @@
     ./software/gtk.nix
     ./desktop/hyprlock.nix
     ./config/cava.nix
-    ./config/fastfetch.nix
     ./config/hypridle.nix
   ];
 
