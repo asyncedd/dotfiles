@@ -98,7 +98,6 @@
     nvd
     nh
 
-    xdg-utils
     age
     openssl
     jdk21_headless
@@ -126,7 +125,6 @@
     #   with pkgs;
     #   "$XDG_DATA_DIRS:${gtk3}/share/gsettings-schemas/gtk+3-${gtk3.version}:${gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-${gsettings-desktop-schemas.version}";
     HOME_MANAGER_BACKUP_EXT = 1;
-    XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
   };
 
   systemd = {

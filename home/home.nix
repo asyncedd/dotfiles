@@ -15,6 +15,7 @@
     ./desktop/hyprlock.nix
     ./config/cava.nix
     ./config/hypridle.nix
+    ./config/xdg.nix
   ];
 
   home.stateVersion = "23.11";
