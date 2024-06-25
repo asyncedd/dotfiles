@@ -52,7 +52,6 @@
         "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-latest.xpi" # BPC
         "https://addons.mozilla.org/firefox/downloads/file/3920533/skip_redirect-2.3.6.xpi" # skip_redirect
         "https://addons.mozilla.org/firefox/downloads/file/3912447/userchrome_toggle-1.2.xpi" # userchrome toggle
-        "https://addons.mozilla.org/firefox/downloads/file/4045009/auto_tab_discard-0.6.7.xpi" # auto tab discard
         "https://addons.mozilla.org/firefox/downloads/file/4287785/dearrow-1.6.xpi" # dearrow
         "https://addons.mozilla.org/firefox/downloads/file/4285762/keepassxc_browser-1.9.0.5.xpi" # keepassxc browser
         "https://addons.mozilla.org/firefox/downloads/file/4269135/enhancer_for_youtube-2.0.124.2.xpi" # enahcner for youtube

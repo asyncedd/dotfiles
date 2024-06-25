@@ -747,11 +747,11 @@
     "shyfox": {
       "flake": false,
       "locked": {
-        "lastModified": 1719020400,
-        "narHash": "sha256-zwEoc7hka2K6jIMppmOTr804KtIor6E6h3y5vKkcqZs=",
+        "lastModified": 1719240841,
+        "narHash": "sha256-OYcG1U//NZxd6v81x4FaOhcElfGIC3+3nVwwWHDRIcQ=",
         "owner": "asyncedd",
         "repo": "ShyFox",
-        "rev": "07fb345f6f06426823c30b3c2205e08b98ecc4fa",
+        "rev": "70b440a39a5fb65a3e4128ed1fcbd50c84d884bd",
         "type": "github"
       },
       "original": {

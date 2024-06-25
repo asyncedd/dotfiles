@@ -88,16 +88,6 @@ let
       #root.root {--nav-btn-margin: 2px;}
       #root.root {--toolbar-bg: transparent;}
 
-      /* Moving Sidebery navigation bar to bottom, to mimic how Space works on Arc Browser. Make sure to choose Horizontal when activating the navigation bar. */
-      .NavigationBar {box-shadow: none;}
-      .top-horizontal-box {
-        display: flex;
-        order: 1; 
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-top: 3px;
-      }
-
       .PinnedTabsBar {margin: 10px 0px;}
     }
   '';

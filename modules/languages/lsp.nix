@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     # nix
     nil
+    nixd
     nixfmt-rfc-style
 
     # rust
@@ -51,5 +52,6 @@
     basedpyright
     ruff-lsp
     black
+    vscode-extensions.ms-python.debugpy
   ];
 }

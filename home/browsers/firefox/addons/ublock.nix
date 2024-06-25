@@ -56,6 +56,7 @@
         "msn.com d.akamaiedge.net * noop"
         ""
         "* gravatar.com * noop"
+        "* discourse-cdn.com * noop"
         ""
         "no-cosmetic-filtering: youtube.com false"
       ];
